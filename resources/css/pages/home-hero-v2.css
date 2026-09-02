@@ -1,17 +1,19 @@
 /* ============================================================
    SPLIT DISTRIBUTION
-   HOME HERO V2 — MAISON / SYSTÈMES CVC
+   HOME HERO V3 — MAISON / SYSTÈMES CVC
    ------------------------------------------------------------
-   Surcharge ciblée du hero de l'accueil.
-   Le reste de la page continue d'utiliser home.css.
+   Surcharge ciblée du hero d'accueil.
+   Le visuel conserve son ratio naturel : aucun cartouche produit
+   n'est recadré sur desktop.
 ============================================================ */
 
 .page-home .home-hero {
-    min-height: 760px;
-    height: 92svh;
-    max-height: 900px;
+    min-height: 680px;
+    height: calc(100svh - var(--header-height));
+    max-height: 760px;
 
-    background: #070b08;
+    background: #060a07;
+    color: #ffffff;
 }
 
 
@@ -20,62 +22,100 @@
 ------------------------------------------------------------ */
 
 .page-home .home-hero__background {
-    inset: 0 0 0 38%;
+    inset: 0;
 
-    background: #111813;
+    overflow: hidden;
+    background: #060a07;
+}
+
+
+.page-home .home-hero__background::before {
+    content: "";
+
+    position: absolute;
+    z-index: 1;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: min(62vw, 1085px);
+
+    background:
+        linear-gradient(
+            90deg,
+            #060a07 0%,
+            rgba(6, 10, 7, 0.84) 8%,
+            rgba(6, 10, 7, 0.38) 18%,
+            rgba(6, 10, 7, 0.08) 29%,
+            transparent 40%
+        );
+
+    pointer-events: none;
 }
 
 
 .page-home .home-hero__background::after {
+    content: "";
+
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+
     background:
         linear-gradient(
             90deg,
-            rgba(7, 11, 8, 0.96) 0%,
-            rgba(7, 11, 8, 0.76) 15%,
-            rgba(7, 11, 8, 0.34) 34%,
-            rgba(7, 11, 8, 0.08) 55%,
-            transparent 72%
+            rgba(5, 9, 6, 0.97) 0%,
+            rgba(5, 9, 6, 0.94) 20%,
+            rgba(5, 9, 6, 0.72) 31%,
+            rgba(5, 9, 6, 0.30) 40%,
+            rgba(5, 9, 6, 0.06) 48%,
+            transparent 57%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(4, 7, 5, 0.34) 0%,
+            transparent 30%
         );
+
+    pointer-events: none;
 }
 
 
 .page-home .home-hero__background img {
-    width: 100%;
+    position: absolute;
+    z-index: 0;
+
+    top: 0;
+    right: 0;
+
+    width: auto;
+    max-width: none;
     height: 100%;
 
-    object-fit: cover;
-    object-position: center center;
+    object-fit: contain;
+    object-position: right center;
 
     filter:
-        saturate(0.94)
-        contrast(1.03)
-        brightness(0.9);
+        saturate(0.95)
+        contrast(1.025)
+        brightness(0.98);
 
-    transform: scale(1.015);
+    transform: none;
 }
 
 
 .page-home .home-hero__overlay {
+    z-index: 1;
+
     background:
         radial-gradient(
-            circle at 68% 48%,
-            rgba(141, 198, 63, 0.08),
+            circle at 71% 50%,
+            rgba(141, 198, 63, 0.045),
             transparent 28%
-        ),
-        linear-gradient(
-            90deg,
-            #070b08 0%,
-            rgba(7, 11, 8, 0.99) 27%,
-            rgba(7, 11, 8, 0.92) 35%,
-            rgba(7, 11, 8, 0.46) 47%,
-            rgba(7, 11, 8, 0.08) 62%,
-            transparent 76%
-        ),
-        linear-gradient(
-            0deg,
-            rgba(5, 8, 6, 0.58) 0%,
-            transparent 34%
         );
+
+    pointer-events: none;
 }
 
 
@@ -84,18 +124,26 @@
 ------------------------------------------------------------ */
 
 .page-home .home-hero__container {
-    padding-top: calc(var(--header-height) + 62px);
-    padding-bottom: 72px;
+    z-index: 3;
+
+    height: 100%;
+
+    padding-top: calc(var(--header-height) + 55px);
+    padding-bottom: 118px;
+
+    justify-content: flex-start;
 }
 
 
 .page-home .home-hero__content {
-    width: min(650px, 43%);
+    width: min(650px, 41%);
 }
 
 
 .page-home .home-hero__eyebrow {
-    margin-bottom: 30px;
+    margin-bottom: 29px;
+
+    gap: 14px;
 
     font-size: 9px;
     letter-spacing: 0.17em;
@@ -105,7 +153,7 @@
 .page-home .home-hero__eyebrow-location {
     position: relative;
 
-    padding-left: 34px;
+    padding-left: 32px;
 
     border-left: 1px solid rgba(255, 255, 255, 0.16);
 }
@@ -115,70 +163,75 @@
     content: "⌖";
 
     position: absolute;
-    left: 12px;
+    left: 11px;
     top: 50%;
 
-    transform: translateY(-51%);
+    transform: translateY(-52%);
 
     color: var(--color-green);
 
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1;
 }
 
 
 .page-home .home-hero__title {
     max-width: 650px;
 
-    font-size: clamp(4.2rem, 5.15vw, 6.7rem);
-
+    font-size: clamp(4rem, 5.05vw, 6.55rem);
     line-height: 0.92;
     letter-spacing: -0.062em;
 }
 
 
 .page-home .home-hero__description {
-    max-width: 560px;
+    max-width: 555px;
 
-    margin-top: 30px;
+    margin-top: 29px;
 
-    color: rgba(255, 255, 255, 0.59);
+    color: rgba(255, 255, 255, 0.61);
 
     font-size: 14px;
-    line-height: 1.75;
+    line-height: 1.73;
 }
 
 
 .page-home .home-hero__actions {
     margin-top: 30px;
+    gap: 14px;
 }
 
 
 .page-home .button--hero-primary,
 .page-home .button--hero-secondary {
     min-height: 56px;
+
+    padding-inline: 25px;
 }
 
 
-/* Le nouveau visuel contient déjà la carte Split Distribution. */
-.page-home .home-hero__aside {
-    display: none;
+.page-home .button--hero-secondary {
+    background: rgba(4, 8, 5, 0.33);
+    backdrop-filter: blur(10px);
 }
 
 
+/* Le visuel contient déjà le badge Split Distribution / Depuis 2016. */
+.page-home .home-hero__aside,
 .page-home .home-hero__scroll {
     display: none;
 }
 
 
 /* ------------------------------------------------------------
-   BARRE DE RÉASSURANCE
+   BARRE DE RÉASSURANCE — SUPERPOSÉE AU HERO
 ------------------------------------------------------------ */
 
 .page-home .home-trust {
     position: relative;
-    z-index: 5;
+    z-index: 6;
 
-    margin-top: -104px;
+    margin-top: -96px;
 
     background: transparent;
     color: #ffffff;
@@ -192,33 +245,34 @@
 .page-home .home-trust__container {
     width: min(calc(100% - 64px), var(--container-width));
 
-    grid-template-columns: repeat(3, minmax(0, 205px));
+    grid-template-columns:
+        minmax(190px, 215px)
+        minmax(215px, 250px)
+        minmax(205px, 235px);
 
     justify-content: start;
-
-    gap: 0;
 }
 
 
 .page-home .home-trust__item {
-    min-height: 76px;
+    min-height: 78px;
 
-    padding: 13px 24px;
+    padding: 12px 24px;
+
+    gap: 13px;
 
     border-left: 0;
     border-right: 1px solid rgba(255, 255, 255, 0.16);
-
-    gap: 13px;
 }
 
 
 .page-home .home-trust__item:first-child {
     padding-left: 0;
-
     border-left: 0;
 }
 
 
+/* On conserve Stock / Conseil / SAV : Livraison reste disponible ailleurs. */
 .page-home .home-trust__item:nth-child(3) {
     display: none;
 }
@@ -230,108 +284,201 @@
 
 
 .page-home .home-trust__item > span {
-    width: 34px;
-    height: 34px;
+    width: 37px;
+    height: 37px;
 
-    flex: 0 0 34px;
+    flex: 0 0 37px;
 
-    display: grid;
-    place-items: center;
+    display: block;
 
-    border: 1px solid rgba(141, 198, 63, 0.58);
-    border-radius: 50%;
+    border: 0;
+    border-radius: 0;
 
-    color: var(--color-green-light);
+    color: transparent;
+    font-size: 0;
 
-    font-size: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 33px 33px;
+}
+
+
+/* Camion / stock */
+.page-home .home-trust__item:nth-child(1) > span {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%239ed34f' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5h15v12h-15zM18.5 12h5l4 4.5v4h-9z'/%3E%3Ccircle cx='9' cy='22.5' r='2.7'/%3E%3Ccircle cx='23' cy='22.5' r='2.7'/%3E%3Cpath d='M1.5 17h2M6 5.5h9'/%3E%3C/svg%3E");
+}
+
+
+/* Casque / expertise */
+.page-home .home-trust__item:nth-child(2) > span {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%239ed34f' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 17v-2a10 10 0 0 1 20 0v2M6 17H4.5A2.5 2.5 0 0 0 2 19.5v4A2.5 2.5 0 0 0 4.5 26H8v-9zM26 17h1.5a2.5 2.5 0 0 1 2.5 2.5v4a2.5 2.5 0 0 1-2.5 2.5H24v-9zM24 26c-1.5 2-4 3-7 3'/%3E%3C/svg%3E");
+}
+
+
+/* Bouclier / SAV */
+.page-home .home-trust__item:nth-child(4) > span {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none' stroke='%239ed34f' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 3.5 27 8v7.2c0 7-4.3 11.6-11 14.1C9.3 26.8 5 22.2 5 15.2V8z'/%3E%3Cpath d='m11.5 16 3 3 6.5-7'/%3E%3C/svg%3E");
 }
 
 
 .page-home .home-trust__item strong {
+    display: block;
+
+    color: #ffffff;
+
     font-size: 11px;
+    font-weight: 600;
+    line-height: 1.25;
 }
 
 
 .page-home .home-trust__item small {
-    margin-top: 3px;
+    display: block;
 
-    color: rgba(255, 255, 255, 0.42);
+    margin-top: 4px;
 
+    color: rgba(255, 255, 255, 0.43);
+
+    font-size: 9px;
+    line-height: 1.35;
+}
+
+
+/* Libellés alignés sur la maquette, sans modifier le Blade historique. */
+.page-home .home-trust__item:nth-child(1) strong,
+.page-home .home-trust__item:nth-child(1) small,
+.page-home .home-trust__item:nth-child(2) strong,
+.page-home .home-trust__item:nth-child(2) small,
+.page-home .home-trust__item:nth-child(4) strong,
+.page-home .home-trust__item:nth-child(4) small {
+    font-size: 0;
+}
+
+
+.page-home .home-trust__item:nth-child(1) strong::after {
+    content: "Stock local";
+    font-size: 11px;
+}
+
+.page-home .home-trust__item:nth-child(1) small::after {
+    content: "Livraison rapide";
+    font-size: 9px;
+}
+
+.page-home .home-trust__item:nth-child(2) strong::after {
+    content: "Experts à vos côtés";
+    font-size: 11px;
+}
+
+.page-home .home-trust__item:nth-child(2) small::after {
+    content: "Conseil technique";
+    font-size: 9px;
+}
+
+.page-home .home-trust__item:nth-child(4) strong::after {
+    content: "SAV réactif";
+    font-size: 11px;
+}
+
+.page-home .home-trust__item:nth-child(4) small::after {
+    content: "Suivi de vos installations";
     font-size: 9px;
 }
 
 
-/* La section suivante récupère l'espace occupé par la trust bar. */
+/* La section suivante respire sans créer le grand vide de la V2. */
 .page-home .home-intro {
-    padding-top: 185px;
+    padding-top: 135px;
 }
 
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — LAPTOP
 ============================================================ */
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
 
-    .page-home .home-hero__background {
-        inset: 0 0 0 34%;
+    .page-home .home-hero {
+        min-height: 700px;
+        max-height: 740px;
+    }
+
+
+    .page-home .home-hero__container {
+        padding-top: calc(var(--header-height) + 48px);
     }
 
 
     .page-home .home-hero__content {
-        width: 48%;
+        width: min(590px, 45%);
     }
 
 
     .page-home .home-hero__title {
-        font-size: clamp(4rem, 5.3vw, 6.2rem);
+        font-size: clamp(3.8rem, 5vw, 5.7rem);
+    }
+
+
+    .page-home .home-hero__background img {
+        right: -20px;
     }
 
 }
 
 
+/* ============================================================
+   RESPONSIVE — TABLET
+============================================================ */
+
 @media (max-width: 950px) {
 
     .page-home .home-hero {
-        min-height: 880px;
+        min-height: 860px;
         height: auto;
         max-height: none;
     }
 
 
-    .page-home .home-hero__background {
-        inset: 0;
-    }
-
-
     .page-home .home-hero__background img {
-        object-position: 64% center;
+        right: -35%;
+
+        height: 100%;
+
+        opacity: 0.72;
     }
 
 
-    .page-home .home-hero__overlay {
+    .page-home .home-hero__background::before {
+        display: none;
+    }
+
+
+    .page-home .home-hero__background::after {
         background:
             linear-gradient(
                 90deg,
-                rgba(7, 11, 8, 0.97) 0%,
-                rgba(7, 11, 8, 0.9) 48%,
-                rgba(7, 11, 8, 0.48) 100%
+                rgba(5, 9, 6, 0.98) 0%,
+                rgba(5, 9, 6, 0.93) 46%,
+                rgba(5, 9, 6, 0.57) 75%,
+                rgba(5, 9, 6, 0.30) 100%
             ),
             linear-gradient(
                 0deg,
-                rgba(7, 11, 8, 0.86),
-                transparent 60%
+                rgba(5, 9, 6, 0.88) 0%,
+                transparent 48%
             );
     }
 
 
     .page-home .home-hero__container {
-        min-height: 880px;
+        min-height: 860px;
+
+        padding-bottom: 70px;
     }
 
 
     .page-home .home-hero__content {
-        width: min(620px, 78%);
+        width: min(620px, 79%);
     }
 
 
@@ -352,16 +499,20 @@
 
 
     .page-home .home-trust__item {
-        min-height: 95px;
+        min-height: 96px;
     }
 
 
     .page-home .home-intro {
-        padding-top: 120px;
+        padding-top: 115px;
     }
 
 }
 
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+============================================================ */
 
 @media (max-width: 650px) {
 
@@ -371,14 +522,17 @@
 
 
     .page-home .home-hero__background img {
-        object-position: 67% center;
+        right: -82%;
+
+        opacity: 0.56;
     }
 
 
     .page-home .home-hero__container {
         min-height: 810px;
 
-        padding-top: calc(var(--header-height) + 44px);
+        padding-top: calc(var(--header-height) + 42px);
+        padding-bottom: 52px;
     }
 
 
@@ -388,12 +542,17 @@
 
 
     .page-home .home-hero__title {
-        font-size: clamp(3.35rem, 14vw, 5rem);
+        font-size: clamp(3.25rem, 14vw, 4.9rem);
     }
 
 
     .page-home .home-hero__description {
-        max-width: 92%;
+        max-width: 94%;
+    }
+
+
+    .page-home .home-hero__actions {
+        align-items: stretch;
     }
 
 
@@ -403,9 +562,9 @@
 
 
     .page-home .home-trust__item {
-        min-height: 78px;
+        min-height: 76px;
 
-        padding: 14px 0;
+        padding: 13px 0;
 
         border-right: 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
