@@ -1,19 +1,19 @@
 /* ============================================================
    SPLIT DISTRIBUTION
-   HOME HERO V4 — SPLIT LAYOUT
+   HOME HERO V5 — SPLIT LAYOUT
    ------------------------------------------------------------
-   Nouvelle approche :
-   - vrai panneau texte à gauche
-   - visuel maison intact à droite
-   - aucun crop agressif
-   - aucune superposition du texte sur les cartouches produit
+   Ajustements :
+   - hero légèrement descendu
+   - visuel maison abaissé pour libérer le haut
+   - carte "Depuis 2016" masquée dans le visuel
+   - séparation gauche / droite conservée
 ============================================================ */
 
 .page-home .home-hero {
     position: relative;
 
-    min-height: 660px;
-    height: min(710px, calc(100svh - var(--header-height)));
+    min-height: 690px;
+    height: min(740px, calc(100svh - var(--header-height)));
 
     background: #060a07;
     color: #ffffff;
@@ -30,9 +30,9 @@
     position: absolute;
     z-index: 0;
 
-    top: 0;
+    top: 34px;
     right: 0;
-    bottom: 0;
+    bottom: -34px;
     left: 39%;
 
     overflow: hidden;
@@ -43,6 +43,7 @@
 
 .page-home .home-hero__background img {
     position: absolute;
+    z-index: 0;
 
     inset: 0;
 
@@ -63,11 +64,50 @@
 }
 
 
-/* Fondu ultra léger uniquement sur le bord gauche de la photo */
+/*
+   Masque doux en bas à droite.
+   Il recouvre la carte intégrée dans l'image sans créer
+   de bloc rectangulaire visible dans la composition.
+*/
+.page-home .home-hero__background::before {
+    content: "";
+
+    position: absolute;
+    z-index: 2;
+
+    right: 0;
+    bottom: 0;
+
+    width: 66%;
+    height: 23%;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(6, 10, 7, 0) 0%,
+            rgba(6, 10, 7, 0.56) 34%,
+            rgba(6, 10, 7, 0.94) 70%,
+            #060a07 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(6, 10, 7, 0) 0%,
+            rgba(6, 10, 7, 0.14) 30%,
+            rgba(6, 10, 7, 0.62) 72%,
+            rgba(6, 10, 7, 0.88) 100%
+        );
+}
+
+
+/* Fondu léger uniquement sur le raccord avec le panneau gauche */
 .page-home .home-hero__background::after {
     content: "";
 
     position: absolute;
+    z-index: 1;
+
     inset: 0;
 
     pointer-events: none;
@@ -102,8 +142,8 @@
 
     margin-inline: auto;
 
-    padding-top: 64px;
-    padding-bottom: 130px;
+    padding-top: 92px;
+    padding-bottom: 108px;
 
     display: flex;
     align-items: flex-start;
@@ -186,7 +226,7 @@
 }
 
 
-/* Le visuel contient déjà la carte "Depuis 2016" */
+/* L'ancienne carte HTML n'est plus utilisée dans le hero. */
 .page-home .home-hero__aside,
 .page-home .home-hero__scroll {
     display: none;
@@ -201,7 +241,7 @@
     position: relative;
     z-index: 5;
 
-    margin-top: -96px;
+    margin-top: -94px;
 
     background: transparent;
     border-top: 0;
@@ -339,13 +379,13 @@
 @media (max-width: 1000px) {
 
     .page-home .home-hero {
-        min-height: 880px;
+        min-height: 900px;
         height: auto;
     }
 
 
     .page-home .home-hero__background {
-        inset: 0;
+        inset: 28px 0 -28px 0;
     }
 
 
@@ -355,7 +395,15 @@
     }
 
 
+    .page-home .home-hero__background::before {
+        width: 100%;
+        height: 28%;
+    }
+
+
     .page-home .home-hero__background::after {
+        z-index: 1;
+
         background:
             linear-gradient(
                 90deg,
@@ -372,9 +420,9 @@
 
 
     .page-home .home-hero__container {
-        min-height: 880px;
+        min-height: 900px;
 
-        padding-top: 70px;
+        padding-top: 92px;
         padding-bottom: 70px;
     }
 
@@ -419,7 +467,7 @@
 @media (max-width: 650px) {
 
     .page-home .home-hero {
-        min-height: 820px;
+        min-height: 840px;
     }
 
 
@@ -429,11 +477,11 @@
 
 
     .page-home .home-hero__container {
-        min-height: 820px;
+        min-height: 840px;
 
         width: calc(100% - 32px);
 
-        padding-top: 48px;
+        padding-top: 70px;
     }
 
 
