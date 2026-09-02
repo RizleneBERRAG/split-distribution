@@ -1,0 +1,419 @@
+/* ============================================================
+   SPLIT DISTRIBUTION
+   HOME HERO V2 — MAISON / SYSTÈMES CVC
+   ------------------------------------------------------------
+   Surcharge ciblée du hero de l'accueil.
+   Le reste de la page continue d'utiliser home.css.
+============================================================ */
+
+.page-home .home-hero {
+    min-height: 760px;
+    height: 92svh;
+    max-height: 900px;
+
+    background: #070b08;
+}
+
+
+/* ------------------------------------------------------------
+   VISUEL MAISON
+------------------------------------------------------------ */
+
+.page-home .home-hero__background {
+    inset: 0 0 0 38%;
+
+    background: #111813;
+}
+
+
+.page-home .home-hero__background::after {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7, 11, 8, 0.96) 0%,
+            rgba(7, 11, 8, 0.76) 15%,
+            rgba(7, 11, 8, 0.34) 34%,
+            rgba(7, 11, 8, 0.08) 55%,
+            transparent 72%
+        );
+}
+
+
+.page-home .home-hero__background img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center center;
+
+    filter:
+        saturate(0.94)
+        contrast(1.03)
+        brightness(0.9);
+
+    transform: scale(1.015);
+}
+
+
+.page-home .home-hero__overlay {
+    background:
+        radial-gradient(
+            circle at 68% 48%,
+            rgba(141, 198, 63, 0.08),
+            transparent 28%
+        ),
+        linear-gradient(
+            90deg,
+            #070b08 0%,
+            rgba(7, 11, 8, 0.99) 27%,
+            rgba(7, 11, 8, 0.92) 35%,
+            rgba(7, 11, 8, 0.46) 47%,
+            rgba(7, 11, 8, 0.08) 62%,
+            transparent 76%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(5, 8, 6, 0.58) 0%,
+            transparent 34%
+        );
+}
+
+
+/* ------------------------------------------------------------
+   CONTENU
+------------------------------------------------------------ */
+
+.page-home .home-hero__container {
+    padding-top: calc(var(--header-height) + 62px);
+    padding-bottom: 72px;
+}
+
+
+.page-home .home-hero__content {
+    width: min(650px, 43%);
+}
+
+
+.page-home .home-hero__eyebrow {
+    margin-bottom: 30px;
+
+    font-size: 9px;
+    letter-spacing: 0.17em;
+}
+
+
+.page-home .home-hero__eyebrow-location {
+    position: relative;
+
+    padding-left: 34px;
+
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+
+.page-home .home-hero__eyebrow-location::before {
+    content: "⌖";
+
+    position: absolute;
+    left: 12px;
+    top: 50%;
+
+    transform: translateY(-51%);
+
+    color: var(--color-green);
+
+    font-size: 14px;
+}
+
+
+.page-home .home-hero__title {
+    max-width: 650px;
+
+    font-size: clamp(4.2rem, 5.15vw, 6.7rem);
+
+    line-height: 0.92;
+    letter-spacing: -0.062em;
+}
+
+
+.page-home .home-hero__description {
+    max-width: 560px;
+
+    margin-top: 30px;
+
+    color: rgba(255, 255, 255, 0.59);
+
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+
+.page-home .home-hero__actions {
+    margin-top: 30px;
+}
+
+
+.page-home .button--hero-primary,
+.page-home .button--hero-secondary {
+    min-height: 56px;
+}
+
+
+/* Le nouveau visuel contient déjà la carte Split Distribution. */
+.page-home .home-hero__aside {
+    display: none;
+}
+
+
+.page-home .home-hero__scroll {
+    display: none;
+}
+
+
+/* ------------------------------------------------------------
+   BARRE DE RÉASSURANCE
+------------------------------------------------------------ */
+
+.page-home .home-trust {
+    position: relative;
+    z-index: 5;
+
+    margin-top: -104px;
+
+    background: transparent;
+    color: #ffffff;
+
+    border-top: 0;
+
+    pointer-events: none;
+}
+
+
+.page-home .home-trust__container {
+    width: min(calc(100% - 64px), var(--container-width));
+
+    grid-template-columns: repeat(3, minmax(0, 205px));
+
+    justify-content: start;
+
+    gap: 0;
+}
+
+
+.page-home .home-trust__item {
+    min-height: 76px;
+
+    padding: 13px 24px;
+
+    border-left: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+
+    gap: 13px;
+}
+
+
+.page-home .home-trust__item:first-child {
+    padding-left: 0;
+
+    border-left: 0;
+}
+
+
+.page-home .home-trust__item:nth-child(3) {
+    display: none;
+}
+
+
+.page-home .home-trust__item:nth-child(4) {
+    border-right: 0;
+}
+
+
+.page-home .home-trust__item > span {
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(141, 198, 63, 0.58);
+    border-radius: 50%;
+
+    color: var(--color-green-light);
+
+    font-size: 8px;
+}
+
+
+.page-home .home-trust__item strong {
+    font-size: 11px;
+}
+
+
+.page-home .home-trust__item small {
+    margin-top: 3px;
+
+    color: rgba(255, 255, 255, 0.42);
+
+    font-size: 9px;
+}
+
+
+/* La section suivante récupère l'espace occupé par la trust bar. */
+.page-home .home-intro {
+    padding-top: 185px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1200px) {
+
+    .page-home .home-hero__background {
+        inset: 0 0 0 34%;
+    }
+
+
+    .page-home .home-hero__content {
+        width: 48%;
+    }
+
+
+    .page-home .home-hero__title {
+        font-size: clamp(4rem, 5.3vw, 6.2rem);
+    }
+
+}
+
+
+@media (max-width: 950px) {
+
+    .page-home .home-hero {
+        min-height: 880px;
+        height: auto;
+        max-height: none;
+    }
+
+
+    .page-home .home-hero__background {
+        inset: 0;
+    }
+
+
+    .page-home .home-hero__background img {
+        object-position: 64% center;
+    }
+
+
+    .page-home .home-hero__overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(7, 11, 8, 0.97) 0%,
+                rgba(7, 11, 8, 0.9) 48%,
+                rgba(7, 11, 8, 0.48) 100%
+            ),
+            linear-gradient(
+                0deg,
+                rgba(7, 11, 8, 0.86),
+                transparent 60%
+            );
+    }
+
+
+    .page-home .home-hero__container {
+        min-height: 880px;
+    }
+
+
+    .page-home .home-hero__content {
+        width: min(620px, 78%);
+    }
+
+
+    .page-home .home-trust {
+        margin-top: 0;
+
+        background: #0d120e;
+
+        pointer-events: auto;
+    }
+
+
+    .page-home .home-trust__container {
+        width: calc(100% - 48px);
+
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
+    .page-home .home-trust__item {
+        min-height: 95px;
+    }
+
+
+    .page-home .home-intro {
+        padding-top: 120px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .page-home .home-hero {
+        min-height: 810px;
+    }
+
+
+    .page-home .home-hero__background img {
+        object-position: 67% center;
+    }
+
+
+    .page-home .home-hero__container {
+        min-height: 810px;
+
+        padding-top: calc(var(--header-height) + 44px);
+    }
+
+
+    .page-home .home-hero__content {
+        width: 100%;
+    }
+
+
+    .page-home .home-hero__title {
+        font-size: clamp(3.35rem, 14vw, 5rem);
+    }
+
+
+    .page-home .home-hero__description {
+        max-width: 92%;
+    }
+
+
+    .page-home .home-trust__container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .page-home .home-trust__item {
+        min-height: 78px;
+
+        padding: 14px 0;
+
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+
+    .page-home .home-trust__item:nth-child(4) {
+        border-bottom: 0;
+    }
+
+}
