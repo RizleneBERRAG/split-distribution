@@ -1,0 +1,821 @@
+/* ============================================================
+   SPLIT DISTRIBUTION
+   PAGE CLIMATISATION
+============================================================ */
+
+.page-climatisation {
+    background: #f7f8f4;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
+
+.clim-hero {
+    padding-top: var(--header-height);
+
+    background: #f7f8f4;
+}
+
+
+.clim-hero__grid {
+    min-height: calc(
+        100svh - var(--header-height)
+    );
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.92fr)
+        minmax(520px, 1.08fr);
+}
+
+
+/* ------------------------------------------------------------
+   LEFT
+------------------------------------------------------------ */
+
+.clim-hero__content {
+    position: relative;
+
+    padding:
+        75px
+        clamp(45px, 5vw, 100px)
+        65px
+        max(
+            32px,
+            calc(
+                (100vw - var(--container-width))
+                / 2
+            )
+        );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: #f7f8f4;
+}
+
+
+/* ------------------------------------------------------------
+   BREADCRUMB
+------------------------------------------------------------ */
+
+.clim-hero__breadcrumb {
+    margin-bottom: 55px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+
+    color: #91978f;
+}
+
+
+.clim-hero__breadcrumb a {
+    transition:
+        color
+        200ms ease;
+}
+
+
+.clim-hero__breadcrumb a:hover {
+    color: #111611;
+}
+
+
+.clim-hero__breadcrumb strong {
+    color: #4f574d;
+
+    font-weight: 600;
+}
+
+
+/* ------------------------------------------------------------
+   EYEBROW
+------------------------------------------------------------ */
+
+.clim-hero__eyebrow {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+    color: var(--color-green-dark);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+}
+
+
+.clim-hero__eyebrow span {
+    width: 36px;
+    height: 1px;
+
+    background: var(--color-green);
+}
+
+
+/* ------------------------------------------------------------
+   TITLE
+------------------------------------------------------------ */
+
+.clim-hero h1 {
+    max-width: 760px;
+
+    margin: 0;
+
+    color: #101510;
+
+    font-family: var(--font-display);
+
+    font-size: clamp(
+        4.5rem,
+        6vw,
+        7.5rem
+    );
+
+    font-weight: 650;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.065em;
+}
+
+
+.clim-hero h1 span {
+    display: block;
+
+    color: #a3aaa0;
+}
+
+
+/* ------------------------------------------------------------
+   INTRO
+------------------------------------------------------------ */
+
+.clim-hero__intro {
+    max-width: 600px;
+
+    margin:
+        38px
+        0
+        0;
+
+    color: #676f65;
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* ------------------------------------------------------------
+   ACTIONS
+------------------------------------------------------------ */
+
+.clim-hero__actions {
+    margin-top: 38px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+}
+
+
+.clim-hero__secondary {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 20px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+.clim-hero__secondary span {
+    width: 39px;
+    height: 39px;
+
+    display: grid;
+    place-items: center;
+
+    border:
+        1px solid
+        rgba(17, 22, 17, 0.18);
+
+    border-radius: 50%;
+
+    color: var(--color-green-dark);
+
+    transition:
+        background
+        250ms ease,
+        color
+        250ms ease,
+        transform
+        250ms ease;
+}
+
+
+.clim-hero__secondary:hover span {
+    background: #111611;
+    color: white;
+
+    transform:
+        translateY(3px);
+}
+
+
+/* ------------------------------------------------------------
+   META
+------------------------------------------------------------ */
+
+.clim-hero__meta {
+    margin-top: auto;
+    padding-top: 55px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-top:
+        1px solid
+        rgba(17, 22, 17, 0.1);
+}
+
+
+.clim-hero__meta div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.clim-hero__meta span {
+    color: var(--color-green-dark);
+
+    font-size: 8px;
+
+    letter-spacing: 0.16em;
+}
+
+
+.clim-hero__meta strong {
+    color: #545c52;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   HERO VISUAL
+============================================================ */
+
+.clim-hero__visual {
+    position: relative;
+
+    min-height: 700px;
+
+    overflow: hidden;
+
+    background: #101510;
+}
+
+
+.clim-hero__visual > img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        saturate(0.88)
+        contrast(1.02);
+
+    transition:
+        transform
+        1.2s
+        cubic-bezier(
+            0.2,
+            0.65,
+            0.25,
+            1
+        );
+}
+
+
+.clim-hero__visual:hover > img {
+    transform: scale(1.025);
+}
+
+
+.clim-hero__visual-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(6, 9, 7, 0.03),
+            rgba(6, 9, 7, 0.1) 55%,
+            rgba(6, 9, 7, 0.55)
+        );
+}
+
+
+/* ------------------------------------------------------------
+   IMAGE INDEX
+------------------------------------------------------------ */
+
+.clim-hero__visual-index {
+    position: absolute;
+
+    top: 35px;
+    left: 35px;
+    right: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    font-size: 8px;
+
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+}
+
+
+.clim-hero__visual-index strong {
+    color: var(--color-green-light);
+
+    font-weight: 600;
+}
+
+
+/* ------------------------------------------------------------
+   IMAGE CARD
+------------------------------------------------------------ */
+
+.clim-hero__visual-card {
+    position: absolute;
+
+    right: 35px;
+    bottom: 35px;
+
+    width: min(
+        310px,
+        calc(100% - 70px)
+    );
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.13);
+
+    background:
+        rgba(9, 13, 10, 0.76);
+
+    color: white;
+
+    backdrop-filter: blur(18px);
+}
+
+
+.clim-hero__visual-card span {
+    display: block;
+
+    margin-bottom: 13px;
+
+    color: var(--color-green-light);
+
+    font-size: 8px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+}
+
+
+.clim-hero__visual-card p {
+    margin: 0;
+
+    font-family: var(--font-display);
+
+    font-size: 17px;
+    font-weight: 600;
+
+    line-height: 1.45;
+
+    letter-spacing: -0.025em;
+}
+
+
+/* ============================================================
+   SECTION INDEX
+============================================================ */
+
+.clim-section-index {
+    padding-top: 12px;
+
+    display: flex;
+
+    gap: 13px;
+
+    color: #858c82;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+}
+
+
+.clim-section-index span {
+    color: var(--color-green-dark);
+}
+
+
+/* ============================================================
+   INTRO
+============================================================ */
+
+.clim-intro {
+    padding:
+        140px
+        0
+        130px;
+
+    background: #ffffff;
+}
+
+
+.clim-intro__grid {
+    display: grid;
+
+    grid-template-columns:
+        220px
+        minmax(0, 1fr);
+
+    gap: 70px;
+}
+
+
+.clim-intro__content h2 {
+    max-width: 1050px;
+
+    margin: 0;
+
+    color: #111611;
+
+    font-family: var(--font-display);
+
+    font-size: clamp(
+        3.6rem,
+        5.3vw,
+        6.2rem
+    );
+
+    font-weight: 600;
+
+    line-height: 0.96;
+
+    letter-spacing: -0.06em;
+}
+
+
+.clim-intro__content h2 span {
+    display: block;
+
+    color: #a5aaa3;
+}
+
+
+.clim-intro__text {
+    max-width: 900px;
+
+    margin-top: 55px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 60px;
+}
+
+
+.clim-intro__text p {
+    margin: 0;
+
+    color: #70776e;
+
+    font-size: 14px;
+    line-height: 1.85;
+}
+
+
+/* ============================================================
+   USAGES
+============================================================ */
+
+.clim-usages {
+    padding-bottom: 145px;
+
+    background: #ffffff;
+}
+
+
+.clim-usages__grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-top:
+        1px solid
+        rgba(17, 22, 17, 0.12);
+
+    border-left:
+        1px solid
+        rgba(17, 22, 17, 0.12);
+}
+
+
+.clim-usage {
+    min-height: 360px;
+
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-right:
+        1px solid
+        rgba(17, 22, 17, 0.12);
+
+    border-bottom:
+        1px solid
+        rgba(17, 22, 17, 0.12);
+
+    background: #f7f8f4;
+
+    transition:
+        background
+        350ms ease,
+        color
+        350ms ease;
+}
+
+
+.clim-usage:hover {
+    background: #edf0e9;
+}
+
+
+.clim-usage--dark {
+    background: #111611;
+    color: white;
+}
+
+
+.clim-usage--dark:hover {
+    background: #182018;
+}
+
+
+/* ------------------------------------------------------------
+   USAGE TOP
+------------------------------------------------------------ */
+
+.clim-usage__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #81887f;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.17em;
+}
+
+
+.clim-usage__top span:first-child {
+    color: var(--color-green-dark);
+}
+
+
+.clim-usage--dark
+.clim-usage__top {
+    color:
+        rgba(255, 255, 255, 0.38);
+}
+
+
+.clim-usage--dark
+.clim-usage__top span:first-child {
+    color: var(--color-green);
+}
+
+
+/* ------------------------------------------------------------
+   USAGE CONTENT
+------------------------------------------------------------ */
+
+.clim-usage h3 {
+    margin:
+        0
+        0
+        20px;
+
+    font-family: var(--font-display);
+
+    font-size: clamp(
+        2.4rem,
+        3vw,
+        3.8rem
+    );
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+}
+
+
+.clim-usage p {
+    max-width: 400px;
+
+    margin: 0;
+
+    color: #727970;
+
+    font-size: 13px;
+    line-height: 1.75;
+}
+
+
+.clim-usage--dark p {
+    color:
+        rgba(255, 255, 255, 0.42);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 1100px) {
+
+    .clim-hero__grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .clim-hero__content {
+        min-height: 720px;
+
+        padding:
+            70px
+            var(--page-padding);
+    }
+
+
+    .clim-hero__visual {
+        min-height: 650px;
+    }
+
+
+    .clim-intro__grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .clim-intro__text {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+
+    .clim-usages__grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .clim-usage {
+        min-height: 290px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .clim-hero__content {
+        min-height: auto;
+
+        padding:
+            55px
+            var(--page-padding)
+            60px;
+    }
+
+
+    .clim-hero__breadcrumb {
+        margin-bottom: 40px;
+    }
+
+
+    .clim-hero h1 {
+        font-size:
+            clamp(
+                3.5rem,
+                16vw,
+                5.5rem
+            );
+    }
+
+
+    .clim-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .clim-hero__secondary {
+        justify-content: space-between;
+    }
+
+
+    .clim-hero__meta {
+        margin-top: 55px;
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+
+    .clim-hero__visual {
+        min-height: 480px;
+    }
+
+
+    .clim-hero__visual-card {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+
+        width: auto;
+    }
+
+
+    .clim-intro {
+        padding:
+            95px
+            0
+            80px;
+    }
+
+
+    .clim-usages {
+        padding-bottom: 100px;
+    }
+
+}
