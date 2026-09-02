@@ -57,6 +57,13 @@ if (
     document.body.classList.contains('page-home')
 ) {
 
+    /*
+        Le hero V2 reste isolé dans son propre fichier CSS.
+        Il n'est chargé que sur la page d'accueil.
+    */
+    void import('../css/pages/home-hero-v2.css');
+
+
     const timeline = gsap.timeline({
         defaults: {
             ease: 'power3.out'
@@ -69,7 +76,7 @@ if (
             '.home-hero__eyebrow',
             {
                 opacity: 0,
-                y: 20,
+                y: 18,
                 duration: 0.7
             }
         )
@@ -78,21 +85,20 @@ if (
             '.home-hero__title',
             {
                 opacity: 0,
-                y: 45,
-                duration: 1
+                y: 42,
+                duration: 0.95
             },
             '-=0.35'
         )
 
         .from(
             [
-                '.home-hero__intro',
-                '.home-hero__actions',
-                '.home-hero__trust'
+                '.home-hero__description',
+                '.home-hero__actions'
             ],
             {
                 opacity: 0,
-                y: 25,
+                y: 22,
                 stagger: 0.12,
                 duration: 0.7
             },
@@ -100,13 +106,24 @@ if (
         )
 
         .from(
-            '.home-hero__visual',
+            '.home-hero__background',
             {
                 opacity: 0,
-                x: 50,
-                duration: 1.1
+                x: 36,
+                duration: 1.15
             },
-            '-=0.9'
+            '-=0.95'
+        )
+
+        .from(
+            '.home-trust__item',
+            {
+                opacity: 0,
+                y: 14,
+                stagger: 0.08,
+                duration: 0.5
+            },
+            '-=0.45'
         );
 
 }
