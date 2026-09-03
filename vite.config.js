@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/css/pages/home.css',
                 'resources/css/pages/solutions.css',
                 'resources/css/pages/climatisation.css',
+                'resources/css/pages/pompes-a-chaleur.css',
 
                 'resources/js/app.js',
             ],
