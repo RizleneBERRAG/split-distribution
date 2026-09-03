@@ -93,12 +93,17 @@ html body.page-home .home-hero .home-hero__background > img {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .page-home .home-trust__item {
+    html body.page-home .home-trust .home-trust__item {
+        justify-content: center;
+
         padding-inline: 32px;
+
+        border-left: 0;
     }
 
-    .page-home .home-trust__item:first-child {
-        padding-left: 0;
+    html body.page-home .home-trust .home-trust__item:first-child {
+        padding-left: 32px;
+        border-left: 0;
     }
 
 }
@@ -179,9 +184,46 @@ html body.page-home .home-hero .home-hero__background > img {
 
 @media (min-width: 1451px) {
 
+    .page-home .hero-system-hotspot--clim {
+        top: 359px;
+        left: 85.8%;
+    }
+
+    .page-home .hero-system-hotspot--vent {
+        top: 356px;
+        left: 69.5%;
+    }
+
+    .page-home .hero-system-hotspot--pac {
+        top: 478px;
+        left: 92.8%;
+    }
+
     .page-home .hero-system-line--clim {
-        width: 210px;
-        transform: rotate(49.5deg);
+        top: 156px;
+        left: calc(31% + 226px);
+
+        width: 480px;
+
+        transform: rotate(26.5deg);
+    }
+
+    .page-home .hero-system-line--vent {
+        top: 333px;
+        left: calc(13% + 296px);
+
+        width: 383px;
+
+        transform: rotate(5deg);
+    }
+
+    .page-home .hero-system-line--pac {
+        top: 262px;
+        left: calc(95.5% - 121px);
+
+        width: 248px;
+
+        transform: rotate(66deg);
     }
 
 }
