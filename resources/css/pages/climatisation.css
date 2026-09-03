@@ -1,821 +1,311 @@
-/* ============================================================
-   SPLIT DISTRIBUTION
-   PAGE CLIMATISATION
-============================================================ */
+/* Page Climatisation — direction éditoriale et technique */
 
-.page-climatisation {
-    background: #f7f8f4;
+.page-climatisation { background: #f4f5f0; color: #101510; }
+.page-climatisation main { overflow: clip; }
+
+.clim-kicker {
+    display: flex; align-items: center; gap: 14px; margin: 0;
+    color: #506047; font-size: 9px; font-weight: 700;
+    letter-spacing: .22em; text-transform: uppercase;
 }
+.clim-kicker > span { width: 38px; height: 1px; background: var(--color-green); }
+.clim-kicker--dark { color: #35402f; }
+.clim-kicker--light { color: #a8b3a2; }
 
+.clim-section-label {
+    display: flex; align-items: baseline; gap: 16px; color: #727a70;
+    font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+}
+.clim-section-label span { color: var(--color-green-dark); }
+.clim-section-label--dark { color: #6f786d; }
+.clim-section-label--dark span { color: var(--color-green); }
 
-/* ============================================================
-   HERO
-============================================================ */
-
+/* Hero */
 .clim-hero {
-    padding-top: var(--header-height);
-
-    background: #f7f8f4;
+    position: relative; padding-top: var(--header-height);
+    background: linear-gradient(90deg, rgba(16,21,16,.035) 1px, transparent 1px) 0 0 / 12.5% 100%, #f4f5f0;
 }
-
-
+.clim-hero::before {
+    content: "CLIM"; position: absolute;
+    left: max(24px, calc((100vw - var(--container-width)) / 2));
+    top: calc(var(--header-height) + 34px); color: rgba(16,21,16,.027);
+    font-family: var(--font-display); font-size: clamp(9rem, 19vw, 23rem);
+    font-weight: 700; line-height: .8; letter-spacing: -.08em; pointer-events: none;
+}
+.clim-hero__shell { position: relative; padding-top: 34px; }
+.clim-breadcrumb {
+    display: flex; align-items: center; gap: 10px; color: #8b9188;
+    font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+}
+.clim-breadcrumb a { color: #414940; transition: color 180ms ease; }
+.clim-breadcrumb a:hover { color: var(--color-green-dark); }
 .clim-hero__grid {
-    min-height: calc(
-        100svh - var(--header-height)
-    );
-
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 0.92fr)
-        minmax(520px, 1.08fr);
+    display: grid; grid-template-columns: minmax(0,1.02fr) minmax(440px,.98fr);
+    gap: clamp(60px,8vw,140px); min-height: 690px; padding: 58px 0 70px;
 }
-
-
-/* ------------------------------------------------------------
-   LEFT
------------------------------------------------------------- */
-
-.clim-hero__content {
-    position: relative;
-
-    padding:
-        75px
-        clamp(45px, 5vw, 100px)
-        65px
-        max(
-            32px,
-            calc(
-                (100vw - var(--container-width))
-                / 2
-            )
-        );
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    background: #f7f8f4;
-}
-
-
-/* ------------------------------------------------------------
-   BREADCRUMB
------------------------------------------------------------- */
-
-.clim-hero__breadcrumb {
-    margin-bottom: 55px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    font-size: 10px;
-    font-weight: 500;
-
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-
-    color: #91978f;
-}
-
-
-.clim-hero__breadcrumb a {
-    transition:
-        color
-        200ms ease;
-}
-
-
-.clim-hero__breadcrumb a:hover {
-    color: #111611;
-}
-
-
-.clim-hero__breadcrumb strong {
-    color: #4f574d;
-
-    font-weight: 600;
-}
-
-
-/* ------------------------------------------------------------
-   EYEBROW
------------------------------------------------------------- */
-
-.clim-hero__eyebrow {
-    display: flex;
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 25px;
-
-    color: var(--color-green-dark);
-
-    font-size: 9px;
-    font-weight: 700;
-
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-}
-
-
-.clim-hero__eyebrow span {
-    width: 36px;
-    height: 1px;
-
-    background: var(--color-green);
-}
-
-
-/* ------------------------------------------------------------
-   TITLE
------------------------------------------------------------- */
-
+.clim-hero__content { align-self: center; position: relative; z-index: 1; }
 .clim-hero h1 {
-    max-width: 760px;
-
-    margin: 0;
-
-    color: #101510;
-
-    font-family: var(--font-display);
-
-    font-size: clamp(
-        4.5rem,
-        6vw,
-        7.5rem
-    );
-
-    font-weight: 650;
-
-    line-height: 0.9;
-
-    letter-spacing: -0.065em;
+    max-width: 780px; margin: 24px 0 0; font-family: var(--font-display);
+    font-size: clamp(4rem,6.35vw,7.25rem); font-weight: 650;
+    line-height: .91; letter-spacing: -.068em;
 }
-
-
-.clim-hero h1 span {
-    display: block;
-
-    color: #a3aaa0;
-}
-
-
-/* ------------------------------------------------------------
-   INTRO
------------------------------------------------------------- */
-
+.clim-hero h1 span { display: block; color: var(--color-green-dark); }
 .clim-hero__intro {
-    max-width: 600px;
+    max-width: 620px; margin: 34px 0 0; color: #5c655a;
+    font-size: 15px; line-height: 1.8;
+}
+.clim-hero__actions { display: flex; align-items: center; gap: 28px; margin-top: 38px; }
+.clim-text-link {
+    display: inline-flex; align-items: center; gap: 16px; color: #222a21;
+    font-size: 11px; font-weight: 650;
+}
+.clim-text-link span {
+    display: grid; place-items: center; width: 36px; height: 36px;
+    border: 1px solid rgba(16,21,16,.18); border-radius: 50%; color: var(--color-green-dark);
+    transition: transform 200ms ease, background 200ms ease, color 200ms ease;
+}
+.clim-text-link:hover span { transform: translateY(3px); background: #101510; color: #fff; }
+.clim-hero__visual { position: relative; min-height: 580px; }
+.clim-hero__visual::before { content: ""; position: absolute; inset: 8% -9% -4% 21%; background: #dfe5d8; }
+.clim-hero__image-wrap { position: absolute; inset: 0 14% 0 0; overflow: hidden; background: #d9dbd3; }
+.clim-hero__image-wrap > img {
+    width: 100%; height: 100%; object-fit: cover; object-position: 52% 49%;
+    filter: saturate(.86) contrast(1.02); transition: transform 1s cubic-bezier(.2,.75,.2,1);
+}
+.clim-hero__visual:hover .clim-hero__image-wrap > img { transform: scale(1.025); }
+.clim-hero__caption {
+    position: absolute; left: 0; bottom: 0; display: flex; align-items: center; gap: 18px;
+    width: 100%; margin: 0; padding: 20px 24px; background: rgba(9,13,9,.88);
+    color: #fff; font-size: 9px; font-weight: 650; letter-spacing: .15em;
+    text-transform: uppercase; backdrop-filter: blur(8px);
+}
+.clim-hero__caption span { color: var(--color-green); }
+.clim-temperature {
+    position: absolute; z-index: 2; top: 10%; right: -2%; width: 194px;
+    padding: 23px 24px 21px; background: var(--color-green);
+    box-shadow: 0 24px 55px rgba(16,21,16,.16);
+}
+.clim-temperature span, .clim-temperature small {
+    display: block; color: rgba(16,21,16,.68); font-size: 8px;
+    font-weight: 650; line-height: 1.4; letter-spacing: .1em; text-transform: uppercase;
+}
+.clim-temperature strong {
+    display: block; margin: 8px 0 9px; font-family: var(--font-display);
+    font-size: 2rem; line-height: 1; letter-spacing: -.045em;
+}
+.clim-hero__note {
+    position: absolute; z-index: 2; right: -4%; bottom: 10%; display: flex;
+    align-items: flex-start; gap: 12px; width: 220px; padding: 18px 20px;
+    background: #fff; box-shadow: 0 20px 45px rgba(16,21,16,.12);
+}
+.clim-hero__note > span {
+    flex: 0 0 auto; width: 8px; height: 8px; margin-top: 4px; border: 2px solid #fff;
+    border-radius: 50%; background: var(--color-green); box-shadow: 0 0 0 1px var(--color-green-dark);
+}
+.clim-hero__note p { margin: 0; color: #4e574c; font-size: 10px; line-height: 1.55; }
+.clim-hero__contexts {
+    display: grid; grid-template-columns: 1fr 2.25fr; align-items: stretch;
+    border-top: 1px solid rgba(16,21,16,.12);
+}
+.clim-hero__contexts > p {
+    display: flex; align-items: center; margin: 0; color: #737b70;
+    font-size: 9px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+}
+.clim-hero__contexts ul {
+    display: grid; grid-template-columns: repeat(3,1fr); margin: 0; padding: 0; list-style: none;
+}
+.clim-hero__contexts li {
+    display: flex; align-items: center; gap: 14px; min-height: 76px; padding: 0 25px;
+    border-left: 1px solid rgba(16,21,16,.12); color: #30372f; font-size: 11px; font-weight: 650;
+}
+.clim-hero__contexts li span { color: var(--color-green-dark); font-size: 8px; letter-spacing: .1em; }
 
-    margin:
-        38px
-        0
-        0;
-
-    color: #676f65;
-
-    font-size: 15px;
-    line-height: 1.8;
+/* Définition du besoin */
+.clim-definition { padding: 150px 0 155px; background: #fff; }
+.clim-definition__grid { display: grid; grid-template-columns: minmax(170px,.52fr) minmax(0,1.48fr); gap: 70px; }
+.clim-definition__body h2 {
+    max-width: 900px; margin: 28px 0 0; font-family: var(--font-display);
+    font-size: clamp(3.2rem,5.2vw,6.4rem); font-weight: 620;
+    line-height: .97; letter-spacing: -.058em;
+}
+.clim-definition__body h2 em { display: block; color: #a0a79d; font-style: normal; }
+.clim-definition__copy {
+    display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 45px;
+    max-width: 850px; margin: 48px 0 0 auto;
+}
+.clim-definition__copy p { margin: 0; color: #5f675d; font-size: 14px; line-height: 1.82; }
+.clim-criteria {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    margin: 78px 0 0; border-top: 1px solid #dfe2db; border-bottom: 1px solid #dfe2db;
+}
+.clim-criteria div { padding: 25px 24px 27px 0; }
+.clim-criteria div + div { padding-left: 24px; border-left: 1px solid #dfe2db; }
+.clim-criteria dt { color: #20271f; font-size: 12px; font-weight: 700; }
+.clim-criteria dd {
+    margin: 6px 0 0; color: #8b9188; font-size: 9px;
+    line-height: 1.4; letter-spacing: .06em; text-transform: uppercase;
 }
 
+/* Architectures */
+.clim-architectures { padding: 145px 0; background: #0b100c; color: #fff; }
+.clim-architectures__grid {
+    display: grid; grid-template-columns: minmax(300px,.78fr) minmax(0,1.22fr);
+    gap: clamp(70px,9vw,150px);
+}
+.clim-architectures__header { align-self: start; position: sticky; top: calc(var(--header-height) + 40px); }
+.clim-architectures__header .clim-section-label { margin-bottom: 70px; }
+.clim-architectures__header h2 {
+    max-width: 560px; margin: 24px 0 0; font-family: var(--font-display);
+    font-size: clamp(3rem,4.4vw,5.3rem); font-weight: 610; line-height: .98; letter-spacing: -.055em;
+}
+.clim-architectures__header > p:not(.clim-kicker) {
+    max-width: 480px; margin: 30px 0 0; color: #919b8e; font-size: 13px; line-height: 1.75;
+}
+.clim-outline-link {
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 35px;
+    min-width: 270px; margin-top: 38px; padding: 17px 19px; border: 1px solid #364037;
+    color: #fff; font-size: 10px; font-weight: 650;
+    transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+.clim-outline-link span { color: var(--color-green); }
+.clim-outline-link:hover { border-color: var(--color-green); background: var(--color-green); color: #101510; }
+.clim-outline-link:hover span { color: #101510; }
+.clim-system-list { border-top: 1px solid #29302a; }
+.clim-system {
+    display: grid; grid-template-columns: 46px minmax(0,1fr) minmax(120px,.38fr);
+    gap: 25px; padding: 34px 5px 37px; border-bottom: 1px solid #29302a;
+    transition: padding 220ms ease, background 220ms ease;
+}
+.clim-system:hover { padding-right: 22px; padding-left: 22px; background: #121914; }
+.clim-system__number { padding-top: 4px; color: var(--color-green); font-size: 8px; letter-spacing: .12em; }
+.clim-system__type {
+    margin: 0 0 9px; color: #727d70; font-size: 8px;
+    font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+}
+.clim-system h3 {
+    margin: 0; font-family: var(--font-display); font-size: clamp(1.8rem,2.4vw,3rem);
+    font-weight: 580; line-height: 1; letter-spacing: -.035em;
+}
+.clim-system div > p:last-child {
+    max-width: 480px; margin: 16px 0 0; color: #8c9589; font-size: 11px; line-height: 1.65;
+}
+.clim-system ul {
+    align-self: end; margin: 0; padding: 0; color: #b8c0b5;
+    font-size: 9px; line-height: 1.8; list-style: none;
+}
+.clim-system li::before { content: "+"; margin-right: 8px; color: var(--color-green); }
 
-/* ------------------------------------------------------------
-   ACTIONS
------------------------------------------------------------- */
+/* Accompagnement */
+.clim-support { padding: 145px 0 150px; background: #eef1e9; }
+.clim-support__heading {
+    display: grid; grid-template-columns: minmax(190px,.48fr) minmax(0,1.52fr);
+    gap: 60px; align-items: start;
+}
+.clim-support__heading h2 {
+    max-width: 850px; margin: 0; font-family: var(--font-display);
+    font-size: clamp(3.2rem,5.3vw,6.4rem); font-weight: 620; line-height: .95; letter-spacing: -.058em;
+}
+.clim-support__heading h2 span { display: block; color: #9ba296; }
+.clim-support__steps {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    margin: 90px 0 0; padding: 0; border-top: 1px solid #cdd3c8; list-style: none;
+}
+.clim-support__steps li { position: relative; min-height: 245px; padding: 34px 34px 20px 0; }
+.clim-support__steps li + li { padding-left: 34px; border-left: 1px solid #cdd3c8; }
+.clim-support__steps li::before {
+    content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px;
+    border: 2px solid #eef1e9; border-radius: 50%; background: var(--color-green);
+    box-shadow: 0 0 0 1px var(--color-green-dark);
+}
+.clim-support__steps li + li::before { left: 34px; }
+.clim-support__steps li > span { color: var(--color-green-dark); font-size: 8px; letter-spacing: .14em; }
+.clim-support__steps h3 {
+    margin: 50px 0 0; font-family: var(--font-display); font-size: 1.75rem;
+    font-weight: 630; letter-spacing: -.03em;
+}
+.clim-support__steps p { max-width: 235px; margin: 14px 0 0; color: #687066; font-size: 11px; line-height: 1.7; }
 
-.clim-hero__actions {
-    margin-top: 38px;
+/* Appel à l'action */
+.clim-cta { padding: 110px 0; background: var(--color-green); }
+.clim-cta__grid {
+    display: grid; grid-template-columns: minmax(0,1.25fr) minmax(300px,.75fr);
+    gap: clamp(70px,10vw,170px); align-items: end;
+}
+.clim-cta h2 {
+    max-width: 900px; margin: 23px 0 0; font-family: var(--font-display);
+    font-size: clamp(3rem,5vw,6rem); font-weight: 650; line-height: .95; letter-spacing: -.06em;
+}
+.clim-cta__action > p { margin: 0; color: rgba(16,21,16,.68); font-size: 12px; line-height: 1.7; }
+.clim-cta__button {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    margin-top: 28px; padding: 20px 22px; background: #101510; color: #fff;
+    font-size: 11px; font-weight: 700; transition: transform 180ms ease, background 180ms ease;
+}
+.clim-cta__button span { color: var(--color-green); }
+.clim-cta__button:hover { transform: translateY(-2px); background: #1d251d; }
 
-    display: flex;
-    align-items: center;
-
-    gap: 28px;
+@media (max-width: 1180px) {
+    .clim-hero__grid { grid-template-columns: minmax(0,1fr) minmax(390px,.82fr); gap: 55px; }
+    .clim-temperature, .clim-hero__note { right: 0; }
+    .clim-architectures__grid { gap: 70px; }
 }
 
-
-.clim-hero__secondary {
-    display: inline-flex;
-    align-items: center;
-
-    gap: 20px;
-
-    font-size: 11px;
-    font-weight: 600;
+@media (max-width: 960px) {
+    .clim-hero__grid { grid-template-columns: 1fr; gap: 55px; min-height: 0; padding-top: 70px; }
+    .clim-hero__visual { min-height: 680px; }
+    .clim-hero__image-wrap { right: 10%; }
+    .clim-hero__contexts, .clim-definition__grid, .clim-support__heading { grid-template-columns: 1fr; }
+    .clim-hero__contexts > p { min-height: 52px; }
+    .clim-hero__contexts li:first-child { border-left: 0; }
+    .clim-definition__grid, .clim-support__heading { gap: 48px; }
+    .clim-architectures__grid { grid-template-columns: 1fr; }
+    .clim-architectures__header { position: static; }
+    .clim-architectures__header .clim-section-label { margin-bottom: 48px; }
+    .clim-support__steps { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .clim-support__steps li:nth-child(3) { border-left: 0; }
+    .clim-support__steps li:nth-child(n+3) { border-top: 1px solid #cdd3c8; }
+    .clim-cta__grid { grid-template-columns: 1fr; gap: 55px; }
+    .clim-cta__action { max-width: 520px; }
 }
 
-
-.clim-hero__secondary span {
-    width: 39px;
-    height: 39px;
-
-    display: grid;
-    place-items: center;
-
-    border:
-        1px solid
-        rgba(17, 22, 17, 0.18);
-
-    border-radius: 50%;
-
-    color: var(--color-green-dark);
-
-    transition:
-        background
-        250ms ease,
-        color
-        250ms ease,
-        transform
-        250ms ease;
-}
-
-
-.clim-hero__secondary:hover span {
-    background: #111611;
-    color: white;
-
-    transform:
-        translateY(3px);
-}
-
-
-/* ------------------------------------------------------------
-   META
------------------------------------------------------------- */
-
-.clim-hero__meta {
-    margin-top: auto;
-    padding-top: 55px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    border-top:
-        1px solid
-        rgba(17, 22, 17, 0.1);
-}
-
-
-.clim-hero__meta div {
-    display: flex;
-    flex-direction: column;
-
-    gap: 7px;
-}
-
-
-.clim-hero__meta span {
-    color: var(--color-green-dark);
-
-    font-size: 8px;
-
-    letter-spacing: 0.16em;
-}
-
-
-.clim-hero__meta strong {
-    color: #545c52;
-
-    font-size: 11px;
-    font-weight: 600;
-}
-
-
-/* ============================================================
-   HERO VISUAL
-============================================================ */
-
-.clim-hero__visual {
-    position: relative;
-
-    min-height: 700px;
-
-    overflow: hidden;
-
-    background: #101510;
-}
-
-
-.clim-hero__visual > img {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    filter:
-        saturate(0.88)
-        contrast(1.02);
-
-    transition:
-        transform
-        1.2s
-        cubic-bezier(
-            0.2,
-            0.65,
-            0.25,
-            1
-        );
-}
-
-
-.clim-hero__visual:hover > img {
-    transform: scale(1.025);
-}
-
-
-.clim-hero__visual-overlay {
-    position: absolute;
-    inset: 0;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(6, 9, 7, 0.03),
-            rgba(6, 9, 7, 0.1) 55%,
-            rgba(6, 9, 7, 0.55)
-        );
-}
-
-
-/* ------------------------------------------------------------
-   IMAGE INDEX
------------------------------------------------------------- */
-
-.clim-hero__visual-index {
-    position: absolute;
-
-    top: 35px;
-    left: 35px;
-    right: 35px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    color:
-        rgba(255, 255, 255, 0.65);
-
-    font-size: 8px;
-
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-}
-
-
-.clim-hero__visual-index strong {
-    color: var(--color-green-light);
-
-    font-weight: 600;
-}
-
-
-/* ------------------------------------------------------------
-   IMAGE CARD
------------------------------------------------------------- */
-
-.clim-hero__visual-card {
-    position: absolute;
-
-    right: 35px;
-    bottom: 35px;
-
-    width: min(
-        310px,
-        calc(100% - 70px)
-    );
-
-    padding: 25px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.13);
-
-    background:
-        rgba(9, 13, 10, 0.76);
-
-    color: white;
-
-    backdrop-filter: blur(18px);
-}
-
-
-.clim-hero__visual-card span {
-    display: block;
-
-    margin-bottom: 13px;
-
-    color: var(--color-green-light);
-
-    font-size: 8px;
-    font-weight: 700;
-
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-}
-
-
-.clim-hero__visual-card p {
-    margin: 0;
-
-    font-family: var(--font-display);
-
-    font-size: 17px;
-    font-weight: 600;
-
-    line-height: 1.45;
-
-    letter-spacing: -0.025em;
-}
-
-
-/* ============================================================
-   SECTION INDEX
-============================================================ */
-
-.clim-section-index {
-    padding-top: 12px;
-
-    display: flex;
-
-    gap: 13px;
-
-    color: #858c82;
-
-    font-size: 9px;
-    font-weight: 600;
-
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-}
-
-
-.clim-section-index span {
-    color: var(--color-green-dark);
-}
-
-
-/* ============================================================
-   INTRO
-============================================================ */
-
-.clim-intro {
-    padding:
-        140px
-        0
-        130px;
-
-    background: #ffffff;
-}
-
-
-.clim-intro__grid {
-    display: grid;
-
-    grid-template-columns:
-        220px
-        minmax(0, 1fr);
-
-    gap: 70px;
-}
-
-
-.clim-intro__content h2 {
-    max-width: 1050px;
-
-    margin: 0;
-
-    color: #111611;
-
-    font-family: var(--font-display);
-
-    font-size: clamp(
-        3.6rem,
-        5.3vw,
-        6.2rem
-    );
-
-    font-weight: 600;
-
-    line-height: 0.96;
-
-    letter-spacing: -0.06em;
-}
-
-
-.clim-intro__content h2 span {
-    display: block;
-
-    color: #a5aaa3;
-}
-
-
-.clim-intro__text {
-    max-width: 900px;
-
-    margin-top: 55px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 60px;
-}
-
-
-.clim-intro__text p {
-    margin: 0;
-
-    color: #70776e;
-
-    font-size: 14px;
-    line-height: 1.85;
-}
-
-
-/* ============================================================
-   USAGES
-============================================================ */
-
-.clim-usages {
-    padding-bottom: 145px;
-
-    background: #ffffff;
-}
-
-
-.clim-usages__grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    border-top:
-        1px solid
-        rgba(17, 22, 17, 0.12);
-
-    border-left:
-        1px solid
-        rgba(17, 22, 17, 0.12);
-}
-
-
-.clim-usage {
-    min-height: 360px;
-
-    padding: 32px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    border-right:
-        1px solid
-        rgba(17, 22, 17, 0.12);
-
-    border-bottom:
-        1px solid
-        rgba(17, 22, 17, 0.12);
-
-    background: #f7f8f4;
-
-    transition:
-        background
-        350ms ease,
-        color
-        350ms ease;
-}
-
-
-.clim-usage:hover {
-    background: #edf0e9;
-}
-
-
-.clim-usage--dark {
-    background: #111611;
-    color: white;
-}
-
-
-.clim-usage--dark:hover {
-    background: #182018;
-}
-
-
-/* ------------------------------------------------------------
-   USAGE TOP
------------------------------------------------------------- */
-
-.clim-usage__top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    color: #81887f;
-
-    font-size: 8px;
-    font-weight: 600;
-
-    text-transform: uppercase;
-    letter-spacing: 0.17em;
-}
-
-
-.clim-usage__top span:first-child {
-    color: var(--color-green-dark);
-}
-
-
-.clim-usage--dark
-.clim-usage__top {
-    color:
-        rgba(255, 255, 255, 0.38);
-}
-
-
-.clim-usage--dark
-.clim-usage__top span:first-child {
-    color: var(--color-green);
-}
-
-
-/* ------------------------------------------------------------
-   USAGE CONTENT
------------------------------------------------------------- */
-
-.clim-usage h3 {
-    margin:
-        0
-        0
-        20px;
-
-    font-family: var(--font-display);
-
-    font-size: clamp(
-        2.4rem,
-        3vw,
-        3.8rem
-    );
-
-    font-weight: 600;
-
-    line-height: 1;
-
-    letter-spacing: -0.05em;
-}
-
-
-.clim-usage p {
-    max-width: 400px;
-
-    margin: 0;
-
-    color: #727970;
-
-    font-size: 13px;
-    line-height: 1.75;
-}
-
-
-.clim-usage--dark p {
-    color:
-        rgba(255, 255, 255, 0.42);
-}
-
-
-/* ============================================================
-   RESPONSIVE
-============================================================ */
-
-@media (max-width: 1100px) {
-
-    .clim-hero__grid {
-        grid-template-columns: 1fr;
+@media (max-width: 700px) {
+    .clim-hero { background: #f4f5f0; }
+    .clim-hero::before { display: none; }
+    .clim-hero__shell { padding-top: 24px; }
+    .clim-hero__grid { gap: 42px; padding: 50px 0 55px; }
+    .clim-hero h1 { font-size: clamp(3.4rem,16vw,5rem); }
+    .clim-hero__intro { font-size: 13px; }
+    .clim-hero__actions { align-items: flex-start; flex-direction: column; }
+    .clim-hero__visual { min-height: 520px; }
+    .clim-hero__visual::before { inset: 7% 0 -3% 14%; }
+    .clim-hero__image-wrap { right: 8%; }
+    .clim-temperature { top: 8%; width: 160px; padding: 18px; }
+    .clim-temperature strong { font-size: 1.6rem; }
+    .clim-hero__note { right: 0; bottom: 9%; width: 180px; }
+    .clim-hero__contexts ul { grid-template-columns: 1fr; }
+    .clim-hero__contexts li {
+        min-height: 58px; padding: 0; border-top: 1px solid rgba(16,21,16,.12); border-left: 0;
     }
-
-
-    .clim-hero__content {
-        min-height: 720px;
-
-        padding:
-            70px
-            var(--page-padding);
+    .clim-definition, .clim-architectures, .clim-support { padding: 95px 0; }
+    .clim-definition__body h2, .clim-support__heading h2 { font-size: clamp(2.75rem,13vw,4.2rem); }
+    .clim-definition__copy { grid-template-columns: 1fr; gap: 20px; margin-top: 38px; }
+    .clim-criteria { grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: 52px; }
+    .clim-criteria div:nth-child(3) { padding-left: 0; border-top: 1px solid #dfe2db; border-left: 0; }
+    .clim-criteria div:nth-child(4) { border-top: 1px solid #dfe2db; }
+    .clim-architectures__header h2 { font-size: clamp(2.7rem,12vw,4rem); }
+    .clim-system { grid-template-columns: 34px minmax(0,1fr); }
+    .clim-system > ul { grid-column: 2; margin-top: 4px; }
+    .clim-support__steps { grid-template-columns: 1fr; }
+    .clim-support__steps li, .clim-support__steps li + li {
+        min-height: 0; padding: 30px 0 34px 28px; border-top: 0;
+        border-bottom: 1px solid #cdd3c8; border-left: 0;
     }
-
-
-    .clim-hero__visual {
-        min-height: 650px;
-    }
-
-
-    .clim-intro__grid {
-        grid-template-columns: 1fr;
-    }
-
+    .clim-support__steps li::before, .clim-support__steps li + li::before { top: 35px; left: 0; }
+    .clim-support__steps h3 { margin-top: 22px; }
+    .clim-cta { padding: 80px 0; }
+    .clim-cta h2 { font-size: clamp(2.7rem,13vw,4.1rem); }
 }
 
-
-@media (max-width: 800px) {
-
-    .clim-intro__text {
-        grid-template-columns: 1fr;
-
-        gap: 25px;
-    }
-
-
-    .clim-usages__grid {
-        grid-template-columns: 1fr;
-    }
-
-
-    .clim-usage {
-        min-height: 290px;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .clim-hero__content {
-        min-height: auto;
-
-        padding:
-            55px
-            var(--page-padding)
-            60px;
-    }
-
-
-    .clim-hero__breadcrumb {
-        margin-bottom: 40px;
-    }
-
-
-    .clim-hero h1 {
-        font-size:
-            clamp(
-                3.5rem,
-                16vw,
-                5.5rem
-            );
-    }
-
-
-    .clim-hero__actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-
-    .clim-hero__secondary {
-        justify-content: space-between;
-    }
-
-
-    .clim-hero__meta {
-        margin-top: 55px;
-
-        grid-template-columns: 1fr;
-
-        gap: 18px;
-    }
-
-
-    .clim-hero__visual {
-        min-height: 480px;
-    }
-
-
-    .clim-hero__visual-card {
-        left: 20px;
-        right: 20px;
-        bottom: 20px;
-
-        width: auto;
-    }
-
-
-    .clim-intro {
-        padding:
-            95px
-            0
-            80px;
-    }
-
-
-    .clim-usages {
-        padding-bottom: 100px;
-    }
-
+@media (prefers-reduced-motion: reduce) {
+    .clim-hero__image-wrap > img, .clim-text-link span, .clim-system, .clim-cta__button { transition: none; }
 }
