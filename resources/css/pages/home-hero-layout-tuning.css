@@ -1,18 +1,39 @@
 /* ============================================================
    SPLIT DISTRIBUTION
-   HOME HERO — AJUSTEMENTS DE COMPOSITION AVANT VISUEL
-   ------------------------------------------------------------
-   Cette couche ne contient volontairement AUCUNE image.
-   Elle sert uniquement à figer la composition finale du hero
-   avant de générer le visuel maison sur mesure.
+   HOME HERO — AJUSTEMENTS DE COMPOSITION
 ============================================================ */
+
+/*
+   IMPORTANT : on utilise désormais la vraie balise <img> du Blade.
+   Le chemin Laravel {{ asset(...) }} reste donc fiable en local
+   même quand Vite sert les CSS/JS depuis un autre port.
+*/
+.page-home .home-hero__background img {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center center;
+    filter: saturate(0.96) contrast(1.02) brightness(0.98);
+}
+
+/* Retire le repère quadrillé utilisé pendant la phase de maquette. */
+.page-home .home-hero__background::before {
+    content: none !important;
+}
+
+/* Le fond CSS ne sert plus qu'en fallback derrière la photo. */
+.page-home .home-hero__background {
+    background: #08100b !important;
+}
 
 @media (min-width: 1001px) {
 
     /* --------------------------------------------------------
        CONTENU GAUCHE
-       Un peu plus bas + titre légèrement réduit pour laisser
-       davantage de respiration à la future image.
     -------------------------------------------------------- */
 
     .page-home .home-hero__container {
@@ -45,7 +66,6 @@
 
     /* --------------------------------------------------------
        CARTOUCHE VENTILATION
-       Décalé vers la droite afin de libérer clairement le titre.
     -------------------------------------------------------- */
 
     .page-home .hero-system-card--vent {
@@ -61,8 +81,6 @@
 
     /* --------------------------------------------------------
        CARTOUCHE PAC
-       Très légèrement plus bas pour équilibrer le triangle des
-       trois cartouches autour de la future maison.
     -------------------------------------------------------- */
 
     .page-home .hero-system-card--pac {
@@ -76,8 +94,6 @@
 
     /* --------------------------------------------------------
        TRUST BAR
-       Étendue à environ la moitié du hero pour une présence plus
-       assumée, sans empiéter sur la future zone visuelle.
     -------------------------------------------------------- */
 
     .page-home .home-trust__container {
@@ -132,4 +148,21 @@
             minmax(0, 220px);
     }
 
+}
+
+
+/* ============================================================
+   TABLETTE / MOBILE : recadrage photo
+============================================================ */
+
+@media (max-width: 1000px) {
+    .page-home .home-hero__background img {
+        object-position: 68% center;
+    }
+}
+
+@media (max-width: 650px) {
+    .page-home .home-hero__background img {
+        object-position: 72% center;
+    }
 }
