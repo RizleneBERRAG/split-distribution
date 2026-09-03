@@ -3,32 +3,33 @@
    HOME HERO — AJUSTEMENTS DE COMPOSITION
 ============================================================ */
 
-/*
-   IMPORTANT : on utilise désormais la vraie balise <img> du Blade.
-   Le chemin Laravel {{ asset(...) }} reste donc fiable en local
-   même quand Vite sert les CSS/JS depuis un autre port.
-*/
-.page-home .home-hero__background img {
-    display: block !important;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    object-fit: cover;
-    object-position: center center;
-    filter: saturate(0.96) contrast(1.02) brightness(0.98);
+/* ============================================================
+   VISUEL FINAL
+   ------------------------------------------------------------
+   On force ici UNE seule méthode d'affichage : background-image.
+   Cela supprime le conflit entre l'ancien <img> masqué dans
+   home-hero-v2.css et les anciennes règles de fallback.
+============================================================ */
+
+html body.page-home .home-hero .home-hero__background {
+    background-color: #08100b !important;
+    background-image: url('/images/home/hero-hvac.jpg') !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
 }
 
-/* Retire le repère quadrillé utilisé pendant la phase de maquette. */
-.page-home .home-hero__background::before {
+/* Le visuel est géré uniquement par background-image. */
+html body.page-home .home-hero .home-hero__background > img {
+    display: none !important;
+}
+
+/* Retire définitivement le quadrillage de maquettage. */
+html body.page-home .home-hero .home-hero__background::before {
     content: none !important;
+    display: none !important;
 }
 
-/* Le fond CSS ne sert plus qu'en fallback derrière la photo. */
-.page-home .home-hero__background {
-    background: #08100b !important;
-}
 
 @media (min-width: 1001px) {
 
@@ -156,13 +157,13 @@
 ============================================================ */
 
 @media (max-width: 1000px) {
-    .page-home .home-hero__background img {
-        object-position: 68% center;
+    html body.page-home .home-hero .home-hero__background {
+        background-position: 68% center !important;
     }
 }
 
 @media (max-width: 650px) {
-    .page-home .home-hero__background img {
-        object-position: 72% center;
+    html body.page-home .home-hero .home-hero__background {
+        background-position: 72% center !important;
     }
 }
