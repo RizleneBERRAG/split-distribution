@@ -14,6 +14,11 @@ html body.page-home .home-hero .home-hero__background::after {
     z-index: 1;
 }
 
+/* Conserve entièrement l'unité extérieure sur les grands écrans. */
+html body.page-home .home-hero .home-hero__background > img {
+    object-position: 66% center;
+}
+
 
 @media (min-width: 1001px) {
 
@@ -59,8 +64,8 @@ html body.page-home .home-hero .home-hero__background::after {
 
     .page-home .hero-system-line--vent {
         left: calc(32% + 62px);
-        width: 105px;
-        transform: rotate(63deg);
+        width: 136px;
+        transform: rotate(54deg);
     }
 
 
@@ -73,7 +78,10 @@ html body.page-home .home-hero .home-hero__background::after {
     }
 
     .page-home .hero-system-line--pac {
-        top: 292px;
+        top: 262px;
+        left: 87%;
+        width: 230px;
+        transform: rotate(99.5deg);
     }
 
 
@@ -82,10 +90,7 @@ html body.page-home .home-hero .home-hero__background::after {
     -------------------------------------------------------- */
 
     .page-home .home-trust__container {
-        grid-template-columns:
-            minmax(0, 250px)
-            minmax(0, 285px)
-            minmax(0, 250px);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .page-home .home-trust__item {
@@ -126,11 +131,57 @@ html body.page-home .home-hero .home-hero__background::after {
         right: 3%;
     }
 
+    .page-home .hero-system-line--clim {
+        width: 183px;
+        transform: rotate(62deg);
+    }
+
+    .page-home .hero-system-line--vent {
+        width: 113px;
+        transform: rotate(78deg);
+    }
+
+    .page-home .hero-system-line--pac {
+        width: 228px;
+        transform: rotate(95deg);
+    }
+
     .page-home .home-trust__container {
-        grid-template-columns:
-            minmax(0, 220px)
-            minmax(0, 250px)
-            minmax(0, 220px);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (min-width: 1301px) and (max-width: 1450px) {
+
+    .page-home .hero-system-line--clim {
+        width: 187px;
+        transform: rotate(59deg);
+    }
+
+    .page-home .hero-system-line--vent {
+        width: 118px;
+        transform: rotate(71deg);
+    }
+
+    .page-home .hero-system-line--pac {
+        width: 229px;
+        transform: rotate(95.5deg);
+    }
+
+}
+
+
+/* ============================================================
+   GRAND ÉCRAN : RACCORDEMENTS DES CARTOUCHES
+============================================================ */
+
+@media (min-width: 1451px) {
+
+    .page-home .hero-system-line--clim {
+        width: 210px;
+        transform: rotate(49.5deg);
     }
 
 }
