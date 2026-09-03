@@ -1,12 +1,14 @@
 /* ============================================================
    SPLIT DISTRIBUTION
-   HOME HERO V6 — REPRISE PROPRE
+   HOME HERO V7 — MAQUETTE VALIDÉE
    ------------------------------------------------------------
-   - Hero réellement sous le header fixe
-   - Titre lisible sur 3 lignes
-   - Visuel large et immersif à droite
-   - Aucun chevauchement texte / trust bar
-   - Badge "Depuis 2016" supprimé par le cadrage naturel
+   Hero pensé comme une vraie composition :
+   - header fixe au-dessus
+   - panneau texte sombre à gauche
+   - maison immersive à droite
+   - cartouches CVC conservés
+   - badge bas-droite éliminé par le cadrage de l'image
+   - trust bar indépendante sous le hero
 ============================================================ */
 
 .page-home .home-hero {
@@ -14,18 +16,18 @@
 
     margin-top: var(--header-height);
 
-    min-height: 690px;
-    height: 690px;
+    height: 700px;
+    min-height: 700px;
 
     overflow: hidden;
 
-    background: #060a07;
+    background: #050907;
     color: #ffffff;
 }
 
 
 /* ============================================================
-   VISUEL
+   VISUEL MAISON
 ============================================================ */
 
 .page-home .home-hero__background {
@@ -51,8 +53,13 @@
     height: 100%;
     max-width: none;
 
+    /*
+       Important : le fichier source contient la carte "Depuis 2016"
+       tout en bas. Le cover + top permet de garder les cartouches CVC
+       du haut et de sortir naturellement le badge du cadrage.
+    */
     object-fit: cover;
-    object-position: center top;
+    object-position: 58% top;
 
     filter:
         saturate(0.96)
@@ -63,13 +70,10 @@
 }
 
 
-/* Le ratio du panneau force un crop vertical :
-   le badge bas-droite de l'image source sort naturellement du cadre. */
 .page-home .home-hero__background::after {
     content: "";
 
     position: absolute;
-    z-index: 2;
     inset: 0;
 
     pointer-events: none;
@@ -77,23 +81,39 @@
     background:
         linear-gradient(
             90deg,
-            #060a07 0%,
-            rgba(6, 10, 7, 0.98) 7%,
-            rgba(6, 10, 7, 0.84) 16%,
-            rgba(6, 10, 7, 0.46) 27%,
-            rgba(6, 10, 7, 0.13) 38%,
-            transparent 50%
+            #050907 0%,
+            rgba(5, 9, 7, 0.98) 7%,
+            rgba(5, 9, 7, 0.90) 13%,
+            rgba(5, 9, 7, 0.66) 21%,
+            rgba(5, 9, 7, 0.32) 30%,
+            rgba(5, 9, 7, 0.08) 39%,
+            transparent 48%
         ),
         linear-gradient(
             0deg,
-            rgba(5, 8, 6, 0.20) 0%,
-            transparent 26%
+            rgba(4, 7, 5, 0.20) 0%,
+            transparent 34%
         );
 }
 
 
 .page-home .home-hero__overlay {
-    display: none;
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            #050907 0%,
+            #050907 27%,
+            rgba(5, 9, 7, 0.96) 33%,
+            rgba(5, 9, 7, 0.70) 39%,
+            rgba(5, 9, 7, 0.28) 46%,
+            transparent 55%
+        );
 }
 
 
@@ -103,19 +123,15 @@
 
 .page-home .home-hero__container {
     position: relative;
-    z-index: 5;
+    z-index: 3;
 
-    width: min(
-        calc(100% - 64px),
-        var(--container-width)
-    );
-
+    width: min(calc(100% - 72px), var(--container-width));
     height: 100%;
 
     margin-inline: auto;
 
-    padding-top: 55px;
-    padding-bottom: 48px;
+    padding-top: 68px;
+    padding-bottom: 54px;
 
     display: flex;
     align-items: flex-start;
@@ -123,7 +139,7 @@
 
 
 .page-home .home-hero__content {
-    width: min(760px, 44vw);
+    width: min(700px, 43vw);
 }
 
 
@@ -132,23 +148,39 @@
 ------------------------------------------------------------ */
 
 .page-home .home-hero__eyebrow {
-    margin-bottom: 28px;
+    margin-bottom: 34px;
+
+    display: flex;
+    align-items: center;
 
     gap: 14px;
 
     color: rgba(255, 255, 255, 0.58);
 
     font-size: 9px;
-    letter-spacing: 0.17em;
+    font-weight: 600;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+
+.page-home .home-hero__eyebrow-line {
+    width: 36px;
+    height: 1px;
+
+    flex: 0 0 36px;
+
+    background: var(--color-green);
 }
 
 
 .page-home .home-hero__eyebrow-location {
     position: relative;
 
-    padding-left: 30px;
+    padding-left: 31px;
 
-    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
 
     color: rgba(255, 255, 255, 0.34);
 }
@@ -161,7 +193,7 @@
     left: 11px;
     top: 50%;
 
-    transform: translateY(-50%);
+    transform: translateY(-51%);
 
     color: var(--color-green);
 
@@ -174,23 +206,19 @@
 ------------------------------------------------------------ */
 
 .page-home .home-hero__title {
-    width: 760px;
+    width: 700px;
     max-width: 100%;
 
     margin: 0;
 
-    font-size: clamp(
-        4rem,
-        4.15vw,
-        5.1rem
-    );
-
+    font-family: var(--font-display);
+    font-size: clamp(4.5rem, 5.25vw, 6.55rem);
     font-weight: 700;
 
-    line-height: 0.96;
-    letter-spacing: -0.058em;
+    line-height: 0.91;
+    letter-spacing: -0.064em;
 
-    text-wrap: initial;
+    color: #ffffff;
 }
 
 
@@ -198,8 +226,16 @@
     display: block;
 
     color: var(--color-green);
+}
 
-    white-space: nowrap;
+
+/* Le premier et le dernier morceau restent sur une seule ligne sur desktop. */
+@media (min-width: 1001px) {
+
+    .page-home .home-hero__title {
+        white-space: nowrap;
+    }
+
 }
 
 
@@ -208,14 +244,14 @@
 ------------------------------------------------------------ */
 
 .page-home .home-hero__description {
-    max-width: 580px;
+    max-width: 560px;
 
-    margin: 28px 0 0;
+    margin: 34px 0 0;
 
     color: rgba(255, 255, 255, 0.60);
 
     font-size: 14px;
-    line-height: 1.72;
+    line-height: 1.75;
 }
 
 
@@ -224,7 +260,10 @@
 ------------------------------------------------------------ */
 
 .page-home .home-hero__actions {
-    margin-top: 28px;
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
 
     gap: 14px;
 }
@@ -238,6 +277,21 @@
 }
 
 
+.page-home .button--hero-primary {
+    min-width: 255px;
+
+    justify-content: space-between;
+}
+
+
+.page-home .button--hero-secondary {
+    min-width: 230px;
+
+    justify-content: space-between;
+}
+
+
+/* Le badge HTML historique et le scroll ne font plus partie du hero. */
 .page-home .home-hero__aside,
 .page-home .home-hero__scroll {
     display: none !important;
@@ -245,34 +299,29 @@
 
 
 /* ============================================================
-   TRUST BAR
-   ------------------------------------------------------------
-   Bande distincte sous le hero. Plus aucun margin négatif.
+   TRUST BAR — SECTION INDÉPENDANTE
 ============================================================ */
 
 .page-home .home-trust {
     position: relative;
-    z-index: 6;
+    z-index: 5;
 
-    margin-top: 0;
+    margin: 0;
 
-    min-height: 92px;
+    height: 104px;
 
-    background: #080d09;
+    background: #050907;
     color: #ffffff;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 
 .page-home .home-trust__container {
-    width: min(
-        calc(100% - 64px),
-        var(--container-width)
-    );
+    width: min(calc(100% - 72px), var(--container-width));
+    height: 100%;
 
-    min-height: 92px;
+    margin-inline: auto;
 
     display: grid;
     grid-template-columns:
@@ -285,14 +334,17 @@
 
 
 .page-home .home-trust__item {
-    min-height: 92px;
+    min-height: 104px;
 
-    padding: 17px 26px;
+    padding: 20px 30px;
 
-    gap: 14px;
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
 
     border-left: 0;
-    border-right: 1px solid rgba(255, 255, 255, 0.13);
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 
@@ -301,6 +353,7 @@
 }
 
 
+/* Livraison existe encore dans le Blade mais n'est pas affichée dans la maquette. */
 .page-home .home-trust__item:nth-child(3) {
     display: none;
 }
@@ -312,28 +365,53 @@
 
 
 .page-home .home-trust__item > span {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
 
-    flex: 0 0 38px;
+    flex: 0 0 40px;
 
-    display: grid;
-    place-items: center;
+    display: block;
 
-    border: 1px solid rgba(141, 198, 63, 0.50);
-    border-radius: 50%;
+    color: transparent;
+    font-size: 0;
 
-    color: var(--color-green-light);
+    border: 0;
+    border-radius: 0;
 
-    font-size: 8px;
-    letter-spacing: 0.08em;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 34px 34px;
+}
+
+
+/* Camion */
+.page-home .home-trust__item:nth-child(1) > span {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 24 24' fill='none' stroke='%239dcc4f' stroke-width='1.65' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 17h4V5H2v12h3'/%3E%3Cpath d='M14 9h4l4 4v4h-3'/%3E%3Ccircle cx='7.5' cy='17.5' r='2.5'/%3E%3Ccircle cx='16.5' cy='17.5' r='2.5'/%3E%3C/svg%3E");
+}
+
+
+/* Casque */
+.page-home .home-trust__item:nth-child(2) > span {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 24 24' fill='none' stroke='%239dcc4f' stroke-width='1.65' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 14v-2a8 8 0 0 1 16 0v2'/%3E%3Cpath d='M18 19c0 1.1-.9 2-2 2h-1'/%3E%3Cpath d='M4 14a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2z'/%3E%3Cpath d='M20 14a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2z'/%3E%3C/svg%3E");
+}
+
+
+/* Bouclier */
+.page-home .home-trust__item:nth-child(4) > span {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 24 24' fill='none' stroke='%239dcc4f' stroke-width='1.65' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E");
+}
+
+
+.page-home .home-trust__item div {
+    display: flex;
+    flex-direction: column;
 }
 
 
 .page-home .home-trust__item strong {
     color: #ffffff;
 
-    font-size: 11px;
+    font-size: 0;
     font-weight: 600;
 }
 
@@ -341,13 +419,46 @@
 .page-home .home-trust__item small {
     margin-top: 4px;
 
-    color: rgba(255, 255, 255, 0.42);
+    color: rgba(255, 255, 255, 0.46);
 
-    font-size: 9px;
-    line-height: 1.45;
+    font-size: 0;
+    line-height: 1.35;
 }
 
 
+/* Libellés exacts de la maquette, sans toucher au Blade historique. */
+.page-home .home-trust__item:nth-child(1) strong::before {
+    content: "Stock local";
+    font-size: 12px;
+}
+
+.page-home .home-trust__item:nth-child(1) small::before {
+    content: "Livraison rapide";
+    font-size: 10px;
+}
+
+.page-home .home-trust__item:nth-child(2) strong::before {
+    content: "Experts à vos côtés";
+    font-size: 12px;
+}
+
+.page-home .home-trust__item:nth-child(2) small::before {
+    content: "Conseil technique";
+    font-size: 10px;
+}
+
+.page-home .home-trust__item:nth-child(4) strong::before {
+    content: "SAV réactif";
+    font-size: 12px;
+}
+
+.page-home .home-trust__item:nth-child(4) small::before {
+    content: "Suivi de vos installations";
+    font-size: 10px;
+}
+
+
+/* La suite commence immédiatement après la trust bar, sans chevauchement. */
 .page-home .home-intro {
     padding-top: 125px;
 }
@@ -360,23 +471,43 @@
 @media (max-width: 1450px) {
 
     .page-home .home-hero__background {
-        left: 36%;
+        left: 37%;
     }
 
 
     .page-home .home-hero__content {
-        width: min(690px, 46vw);
+        width: min(650px, 45vw);
     }
 
 
     .page-home .home-hero__title {
-        width: 690px;
+        width: 650px;
+        font-size: clamp(4.1rem, 5vw, 5.9rem);
+    }
 
-        font-size: clamp(
-            3.75rem,
-            4.2vw,
-            4.75rem
-        );
+}
+
+
+@media (max-width: 1200px) {
+
+    .page-home .home-hero__background {
+        left: 42%;
+    }
+
+
+    .page-home .home-hero__content {
+        width: min(570px, 48vw);
+    }
+
+
+    .page-home .home-hero__title {
+        width: 570px;
+        font-size: clamp(3.7rem, 5.15vw, 5.2rem);
+    }
+
+
+    .page-home .home-hero__description {
+        max-width: 500px;
     }
 
 }
@@ -389,8 +520,8 @@
 @media (max-width: 1000px) {
 
     .page-home .home-hero {
+        height: 820px;
         min-height: 820px;
-        height: auto;
     }
 
 
@@ -401,46 +532,52 @@
 
     .page-home .home-hero__background img {
         object-fit: cover;
-        object-position: 70% top;
+        object-position: 68% top;
     }
 
 
-    .page-home .home-hero__background::after {
+    .page-home .home-hero__background::after,
+    .page-home .home-hero__overlay {
         background:
             linear-gradient(
                 90deg,
-                rgba(6, 10, 7, 0.98) 0%,
-                rgba(6, 10, 7, 0.93) 48%,
-                rgba(6, 10, 7, 0.50) 100%
+                rgba(5, 9, 7, 0.98) 0%,
+                rgba(5, 9, 7, 0.94) 46%,
+                rgba(5, 9, 7, 0.60) 72%,
+                rgba(5, 9, 7, 0.26) 100%
             ),
             linear-gradient(
                 0deg,
-                rgba(6, 10, 7, 0.82),
+                rgba(5, 9, 7, 0.72),
                 transparent 58%
             );
     }
 
 
     .page-home .home-hero__container {
-        min-height: 820px;
+        width: calc(100% - 48px);
 
-        padding-top: 60px;
+        padding-top: 64px;
         padding-bottom: 60px;
     }
 
 
     .page-home .home-hero__content {
-        width: min(650px, 82%);
+        width: min(640px, 82%);
     }
 
 
     .page-home .home-hero__title {
         width: auto;
+
+        font-size: clamp(3.7rem, 8vw, 5.6rem);
+
+        white-space: normal;
     }
 
 
-    .page-home .home-hero__title span {
-        white-space: normal;
+    .page-home .home-trust {
+        height: auto;
     }
 
 
@@ -451,8 +588,8 @@
     }
 
 
-    .page-home .home-intro {
-        padding-top: 110px;
+    .page-home .home-trust__item {
+        min-height: 96px;
     }
 
 }
@@ -465,16 +602,16 @@
 @media (max-width: 650px) {
 
     .page-home .home-hero {
+        height: 780px;
         min-height: 780px;
     }
 
 
     .page-home .home-hero__container {
-        min-height: 780px;
-
         width: calc(100% - 32px);
 
-        padding-top: 44px;
+        padding-top: 48px;
+        padding-bottom: 50px;
     }
 
 
@@ -489,18 +626,19 @@
 
 
     .page-home .home-hero__title {
-        width: 100%;
+        width: auto;
 
-        font-size: clamp(
-            3.05rem,
-            14vw,
-            4.55rem
-        );
+        font-size: clamp(3.15rem, 14vw, 4.8rem);
+        line-height: 0.94;
     }
 
 
     .page-home .home-hero__description {
-        max-width: 95%;
+        max-width: 94%;
+
+        margin-top: 28px;
+
+        font-size: 13px;
     }
 
 
@@ -513,6 +651,7 @@
     .page-home .button--hero-primary,
     .page-home .button--hero-secondary {
         width: 100%;
+        min-width: 0;
     }
 
 
@@ -535,6 +674,11 @@
 
     .page-home .home-trust__item:nth-child(4) {
         border-bottom: 0;
+    }
+
+
+    .page-home .home-intro {
+        padding-top: 95px;
     }
 
 }
