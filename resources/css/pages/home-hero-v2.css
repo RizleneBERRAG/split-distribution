@@ -1,39 +1,42 @@
 /* ============================================================
    SPLIT DISTRIBUTION
-   HOME HERO V5 — SPLIT LAYOUT
+   HOME HERO V5 — COMPOSITION STABLE
    ------------------------------------------------------------
-   Ajustements :
-   - hero légèrement descendu
-   - visuel maison abaissé pour libérer le haut
-   - carte "Depuis 2016" masquée dans le visuel
-   - séparation gauche / droite conservée
+   Objectifs :
+   - retrouver la composition validée visuellement
+   - hero réellement dégagé sous le header fixe
+   - titre sur 3 lignes, sans cassure parasite
+   - maison lisible à droite
+   - cartouches CVC conservés
+   - badge bas-droite masqué par le cadrage, pas par un cache grossier
+   - barre de réassurance propre et indépendante
 ============================================================ */
 
 .page-home .home-hero {
     position: relative;
 
-    min-height: 690px;
-    height: min(740px, calc(100svh - var(--header-height)));
+    min-height: 760px;
+    height: min(820px, 94svh);
+
+    overflow: hidden;
 
     background: #060a07;
     color: #ffffff;
-
-    overflow: hidden;
 }
 
 
 /* ============================================================
-   VISUEL — PANNEAU DROIT
+   VISUEL MAISON
 ============================================================ */
 
 .page-home .home-hero__background {
     position: absolute;
     z-index: 0;
 
-    top: 34px;
+    top: 0;
     right: 0;
-    bottom: -34px;
-    left: 39%;
+    bottom: 92px;
+    left: 33%;
 
     overflow: hidden;
 
@@ -43,71 +46,29 @@
 
 .page-home .home-hero__background img {
     position: absolute;
-    z-index: 0;
-
     inset: 0;
 
     width: 100%;
     height: 100%;
-
     max-width: none;
 
-    object-fit: contain;
-    object-position: right center;
+    object-fit: cover;
+    object-position: center top;
 
     filter:
-        saturate(0.96)
-        contrast(1.02)
-        brightness(0.98);
+        saturate(0.95)
+        contrast(1.025)
+        brightness(0.97);
 
     transform: none;
 }
 
 
-/*
-   Masque doux en bas à droite.
-   Il recouvre la carte intégrée dans l'image sans créer
-   de bloc rectangulaire visible dans la composition.
-*/
-.page-home .home-hero__background::before {
-    content: "";
-
-    position: absolute;
-    z-index: 2;
-
-    right: 0;
-    bottom: 0;
-
-    width: 66%;
-    height: 23%;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            180deg,
-            rgba(6, 10, 7, 0) 0%,
-            rgba(6, 10, 7, 0.56) 34%,
-            rgba(6, 10, 7, 0.94) 70%,
-            #060a07 100%
-        ),
-        linear-gradient(
-            90deg,
-            rgba(6, 10, 7, 0) 0%,
-            rgba(6, 10, 7, 0.14) 30%,
-            rgba(6, 10, 7, 0.62) 72%,
-            rgba(6, 10, 7, 0.88) 100%
-        );
-}
-
-
-/* Fondu léger uniquement sur le raccord avec le panneau gauche */
+/* Fondu côté texte : progressif, sans voile sur toute la maison. */
 .page-home .home-hero__background::after {
     content: "";
 
     position: absolute;
-    z-index: 1;
-
     inset: 0;
 
     pointer-events: none;
@@ -116,34 +77,74 @@
         linear-gradient(
             90deg,
             #060a07 0%,
-            rgba(6, 10, 7, 0.94) 5%,
-            rgba(6, 10, 7, 0.52) 11%,
-            rgba(6, 10, 7, 0.12) 18%,
-            transparent 25%
+            rgba(6, 10, 7, 0.98) 5%,
+            rgba(6, 10, 7, 0.88) 11%,
+            rgba(6, 10, 7, 0.58) 18%,
+            rgba(6, 10, 7, 0.18) 27%,
+            transparent 37%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(5, 8, 6, 0.22) 0%,
+            transparent 28%
         );
 }
 
 
+/* Le badge présent dans le fichier source est hors du cadre :
+   on réserve 92px en bas du hero et on ne masque donc plus la photo. */
+.page-home .home-hero::after {
+    content: "";
+
+    position: absolute;
+    z-index: 1;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 92px;
+
+    background: #060a07;
+
+    pointer-events: none;
+}
+
+
 .page-home .home-hero__overlay {
-    display: none;
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #060a07 0%,
+            rgba(6, 10, 7, 0.98) 28%,
+            rgba(6, 10, 7, 0.82) 35%,
+            rgba(6, 10, 7, 0.24) 44%,
+            transparent 54%
+        );
+
+    pointer-events: none;
 }
 
 
 /* ============================================================
-   CONTENU — PANNEAU GAUCHE
+   CONTENU
 ============================================================ */
 
 .page-home .home-hero__container {
     position: relative;
-    z-index: 2;
+    z-index: 3;
 
     width: min(calc(100% - 64px), var(--container-width));
     height: 100%;
 
     margin-inline: auto;
 
-    padding-top: 92px;
-    padding-bottom: 108px;
+    padding-top: calc(var(--header-height) + 68px);
+    padding-bottom: 122px;
 
     display: flex;
     align-items: flex-start;
@@ -151,30 +152,50 @@
 
 
 .page-home .home-hero__content {
-    width: min(610px, 37vw);
+    width: min(760px, 44vw);
 }
 
 
+/* ------------------------------------------------------------
+   EYEBROW
+------------------------------------------------------------ */
+
 .page-home .home-hero__eyebrow {
-    margin-bottom: 30px;
+    margin-bottom: 31px;
+
+    display: flex;
+    align-items: center;
 
     gap: 14px;
 
-    font-size: 9px;
-    letter-spacing: 0.17em;
-
     color: rgba(255, 255, 255, 0.58);
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+
+.page-home .home-hero__eyebrow-line {
+    width: 34px;
+    height: 1px;
+
+    flex: 0 0 34px;
+
+    background: var(--color-green);
 }
 
 
 .page-home .home-hero__eyebrow-location {
     position: relative;
 
-    padding-left: 30px;
+    padding-left: 31px;
 
     border-left: 1px solid rgba(255, 255, 255, 0.15);
 
-    color: rgba(255, 255, 255, 0.32);
+    color: rgba(255, 255, 255, 0.34);
 }
 
 
@@ -185,7 +206,7 @@
     left: 11px;
     top: 50%;
 
-    transform: translateY(-50%);
+    transform: translateY(-51%);
 
     color: var(--color-green);
 
@@ -193,84 +214,125 @@
 }
 
 
-.page-home .home-hero__title {
-    max-width: 610px;
+/* ------------------------------------------------------------
+   TITRE
+------------------------------------------------------------ */
 
-    font-size: clamp(4rem, 4.95vw, 6.35rem);
+.page-home .home-hero__title {
+    width: 760px;
+    max-width: 100%;
+
+    margin: 0;
+
+    font-size: clamp(4.35rem, 5.15vw, 6.55rem);
+    font-weight: 700;
 
     line-height: 0.92;
-    letter-spacing: -0.061em;
+    letter-spacing: -0.063em;
+
+    text-wrap: nowrap;
 }
 
+
+.page-home .home-hero__title span {
+    display: block;
+
+    color: var(--color-green);
+}
+
+
+/* ------------------------------------------------------------
+   DESCRIPTION
+------------------------------------------------------------ */
 
 .page-home .home-hero__description {
-    max-width: 540px;
+    max-width: 565px;
 
-    margin-top: 28px;
+    margin: 30px 0 0;
 
-    color: rgba(255, 255, 255, 0.58);
+    color: rgba(255, 255, 255, 0.60);
 
     font-size: 14px;
-    line-height: 1.72;
+    line-height: 1.76;
 }
 
 
+/* ------------------------------------------------------------
+   ACTIONS
+------------------------------------------------------------ */
+
 .page-home .home-hero__actions {
-    margin-top: 28px;
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
 }
 
 
 .page-home .button--hero-primary,
 .page-home .button--hero-secondary {
     min-height: 56px;
+
+    padding-inline: 26px;
 }
 
 
-/* L'ancienne carte HTML n'est plus utilisée dans le hero. */
+/* Les deux éléments historiques ne font plus partie du hero. */
 .page-home .home-hero__aside,
 .page-home .home-hero__scroll {
-    display: none;
+    display: none !important;
 }
 
 
 /* ============================================================
-   TRUST BAR — 3 ITEMS SOUS LE TEXTE
+   TRUST BAR — DANS LA BANDE BASSE DU HERO
 ============================================================ */
 
 .page-home .home-trust {
     position: relative;
-    z-index: 5;
+    z-index: 6;
 
-    margin-top: -94px;
+    margin-top: -92px;
+
+    height: 92px;
 
     background: transparent;
-    border-top: 0;
+    border: 0;
 
-    pointer-events: none;
+    color: #ffffff;
 }
 
 
 .page-home .home-trust__container {
     width: min(calc(100% - 64px), var(--container-width));
+    height: 100%;
 
+    margin-inline: auto;
+
+    display: grid;
     grid-template-columns:
-        minmax(0, 190px)
-        minmax(0, 215px)
-        minmax(0, 190px);
+        minmax(0, 205px)
+        minmax(0, 235px)
+        minmax(0, 205px);
 
     justify-content: start;
 }
 
 
 .page-home .home-trust__item {
-    min-height: 76px;
+    min-height: 92px;
 
-    padding: 12px 22px;
+    padding: 18px 25px;
 
-    gap: 13px;
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
 
     border-left: 0;
-    border-right: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 
@@ -290,90 +352,98 @@
 
 
 .page-home .home-trust__item > span {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
 
-    flex: 0 0 36px;
+    flex: 0 0 38px;
 
-    display: grid;
-    place-items: center;
+    display: block;
 
     border: 0;
     border-radius: 0;
 
-    color: var(--color-green-light);
-
+    color: transparent;
     font-size: 0;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 31px 31px;
 }
 
 
-.page-home .home-trust__item:nth-child(1) > span::before {
-    content: "▰";
-
-    font-size: 22px;
+/* Camion */
+.page-home .home-trust__item:nth-child(1) > span {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23a9d866' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 17h4V5H2v12h3'/%3E%3Cpath d='M14 9h4l4 4v4h-3'/%3E%3Ccircle cx='7.5' cy='17.5' r='2.5'/%3E%3Ccircle cx='16.5' cy='17.5' r='2.5'/%3E%3C/svg%3E");
 }
 
 
-.page-home .home-trust__item:nth-child(2) > span::before {
-    content: "◖◗";
-
-    font-size: 18px;
-    letter-spacing: -5px;
+/* Casque */
+.page-home .home-trust__item:nth-child(2) > span {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23a9d866' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 14v-2a8 8 0 0 1 16 0v2'/%3E%3Cpath d='M18 19c0 1.1-.9 2-2 2h-1'/%3E%3Cpath d='M4 14a2 2 0 0 1 2-2h1v6H6a2 2 0 0 1-2-2z'/%3E%3Cpath d='M20 14a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2z'/%3E%3C/svg%3E");
 }
 
 
-.page-home .home-trust__item:nth-child(4) > span::before {
-    content: "◇";
+/* Bouclier */
+.page-home .home-trust__item:nth-child(4) > span {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23a9d866' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E");
+}
 
-    font-size: 27px;
+
+.page-home .home-trust__item div {
+    display: flex;
+    flex-direction: column;
 }
 
 
 .page-home .home-trust__item strong {
+    color: #ffffff;
+
     font-size: 11px;
     font-weight: 600;
 }
 
 
 .page-home .home-trust__item small {
-    margin-top: 3px;
+    margin-top: 4px;
 
     color: rgba(255, 255, 255, 0.42);
 
     font-size: 9px;
+    line-height: 1.35;
 }
 
 
 .page-home .home-intro {
-    padding-top: 145px;
+    padding-top: 138px;
 }
 
 
 /* ============================================================
-   RESPONSIVE — DESKTOP COMPACT
+   DESKTOP INTERMÉDIAIRE
 ============================================================ */
 
-@media (max-width: 1350px) {
+@media (max-width: 1450px) {
 
     .page-home .home-hero__background {
-        left: 43%;
+        left: 36%;
     }
 
 
     .page-home .home-hero__content {
-        width: min(540px, 40vw);
+        width: min(690px, 47vw);
     }
 
 
     .page-home .home-hero__title {
-        font-size: clamp(3.8rem, 5vw, 5.7rem);
+        width: 690px;
+        font-size: clamp(4rem, 5vw, 5.95rem);
     }
 
 }
 
 
 /* ============================================================
-   RESPONSIVE — TABLET
+   TABLETTE
 ============================================================ */
 
 @media (max-width: 1000px) {
@@ -385,36 +455,30 @@
 
 
     .page-home .home-hero__background {
-        inset: 28px 0 -28px 0;
+        inset: 0 0 92px 0;
     }
 
 
     .page-home .home-hero__background img {
         object-fit: cover;
-        object-position: 69% center;
+        object-position: 70% top;
     }
 
 
-    .page-home .home-hero__background::before {
-        width: 100%;
-        height: 28%;
-    }
-
-
-    .page-home .home-hero__background::after {
-        z-index: 1;
-
+    .page-home .home-hero__background::after,
+    .page-home .home-hero__overlay {
         background:
             linear-gradient(
                 90deg,
-                rgba(6, 10, 7, 0.97) 0%,
-                rgba(6, 10, 7, 0.90) 42%,
-                rgba(6, 10, 7, 0.42) 100%
+                rgba(6, 10, 7, 0.98) 0%,
+                rgba(6, 10, 7, 0.94) 44%,
+                rgba(6, 10, 7, 0.58) 72%,
+                rgba(6, 10, 7, 0.25) 100%
             ),
             linear-gradient(
                 0deg,
                 rgba(6, 10, 7, 0.82),
-                transparent 55%
+                transparent 58%
             );
     }
 
@@ -422,22 +486,22 @@
     .page-home .home-hero__container {
         min-height: 900px;
 
-        padding-top: 92px;
-        padding-bottom: 70px;
+        padding-top: calc(var(--header-height) + 62px);
+        padding-bottom: 130px;
     }
 
 
     .page-home .home-hero__content {
-        width: min(610px, 78%);
+        width: min(680px, 82%);
     }
 
 
-    .page-home .home-trust {
-        margin-top: 0;
+    .page-home .home-hero__title {
+        width: auto;
 
-        background: #0d120e;
+        font-size: clamp(3.8rem, 8vw, 5.8rem);
 
-        pointer-events: auto;
+        text-wrap: balance;
     }
 
 
@@ -448,40 +512,46 @@
     }
 
 
-    .page-home .home-trust__item {
-        min-height: 92px;
-    }
-
-
     .page-home .home-intro {
-        padding-top: 120px;
+        padding-top: 115px;
     }
 
 }
 
 
 /* ============================================================
-   RESPONSIVE — MOBILE
+   MOBILE
 ============================================================ */
 
 @media (max-width: 650px) {
 
     .page-home .home-hero {
-        min-height: 840px;
+        min-height: 850px;
+    }
+
+
+    .page-home .home-hero__background {
+        bottom: 0;
+    }
+
+
+    .page-home .home-hero::after {
+        height: 0;
     }
 
 
     .page-home .home-hero__background img {
-        object-position: 72% center;
+        object-position: 72% top;
     }
 
 
     .page-home .home-hero__container {
-        min-height: 840px;
-
         width: calc(100% - 32px);
 
-        padding-top: 70px;
+        min-height: 850px;
+
+        padding-top: calc(var(--header-height) + 48px);
+        padding-bottom: 70px;
     }
 
 
@@ -496,12 +566,36 @@
 
 
     .page-home .home-hero__title {
-        font-size: clamp(3.25rem, 14vw, 4.8rem);
+        width: auto;
+
+        font-size: clamp(3.3rem, 14vw, 4.9rem);
+
+        text-wrap: balance;
     }
 
 
     .page-home .home-hero__description {
         max-width: 94%;
+    }
+
+
+    .page-home .home-hero__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    .page-home .button--hero-primary,
+    .page-home .button--hero-secondary {
+        width: 100%;
+    }
+
+
+    .page-home .home-trust {
+        height: auto;
+        margin-top: 0;
+
+        background: #0d120e;
     }
 
 
@@ -513,7 +607,7 @@
 
 
     .page-home .home-trust__item {
-        min-height: 76px;
+        min-height: 78px;
 
         padding: 14px 0;
 
