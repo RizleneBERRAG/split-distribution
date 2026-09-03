@@ -22,42 +22,44 @@
                 <span>Pompes à chaleur</span>
             </nav>
 
-            <div class="pac-hero__heading">
-                <div>
-                    <p class="pac-kicker"><span aria-hidden="true"></span> Pompes à chaleur</p>
-                    <h1>La chaleur de l’air, <em>au service du bâtiment.</em></h1>
+            <div class="pac-hero__stage">
+                <div class="pac-hero__media">
+                    <img
+                        src="{{ asset('images/solutions/pompes-a-chaleur/hero-pac.webp') }}"
+                        alt="Pompe à chaleur installée à proximité d’une maison contemporaine"
+                        width="1536"
+                        height="1024"
+                        fetchpriority="high"
+                        decoding="async"
+                    >
+
+                    <div class="pac-hero__index" aria-hidden="true">
+                        <span>PAC</span>
+                        <strong>02</strong>
+                    </div>
                 </div>
 
-                <div class="pac-hero__intro">
-                    <p>
-                        Des solutions Air/Air et Air/Eau pour répondre aux besoins de
-                        chauffage, de confort d’été et, selon les équipements, d’eau chaude sanitaire.
-                    </p>
-                    <a href="{{ route('contact') }}" class="pac-button">
-                        Étudier mon projet <span aria-hidden="true">↗</span>
-                    </a>
-                </div>
-            </div>
+                <div class="pac-hero__heading">
+                    <div>
+                        <p class="pac-kicker"><span aria-hidden="true"></span> Pompes à chaleur</p>
+                        <h1>La chaleur de l’air, <em>au service du bâtiment.</em></h1>
+                    </div>
 
-            <div class="pac-hero__media">
-                <img
-                    src="{{ asset('images/solutions/pompes-a-chaleur/hero-pac.webp') }}"
-                    alt="Pompe à chaleur installée à proximité d’une maison contemporaine"
-                    width="1536"
-                    height="1024"
-                    fetchpriority="high"
-                    decoding="async"
-                >
+                    <div class="pac-hero__intro">
+                        <p>
+                            Des solutions Air/Air et Air/Eau pour répondre aux besoins de
+                            chauffage, de confort d’été et, selon les équipements, d’eau chaude sanitaire.
+                        </p>
+                        <a href="{{ route('contact') }}" class="pac-button">
+                            Étudier mon projet <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </div>
 
                 <div class="pac-hero__badge">
                     <span>Énergie disponible</span>
                     <strong>Air extérieur</strong>
                     <small>Valorisée pour le confort intérieur</small>
-                </div>
-
-                <div class="pac-hero__index" aria-hidden="true">
-                    <span>PAC</span>
-                    <strong>02</strong>
                 </div>
             </div>
 
@@ -111,38 +113,40 @@
                 </div>
             </header>
 
-            <div class="pac-family pac-family--air">
-                <div class="pac-family__number">A</div>
-                <div class="pac-family__title">
-                    <span>Air diffusé</span>
-                    <h3>Air / Air</h3>
+            <div class="pac-families__grid">
+                <div class="pac-family pac-family--air">
+                    <div class="pac-family__number">A</div>
+                    <div class="pac-family__title">
+                        <span>Air diffusé</span>
+                        <h3>Air / Air</h3>
+                    </div>
+                    <p>
+                        La chaleur est diffusée directement dans les espaces par les unités
+                        intérieures. Une réponse flexible pour chauffer et rafraîchir les zones.
+                    </p>
+                    <ul>
+                        <li>Mono ou multi-zone</li>
+                        <li>Chauffage &amp; rafraîchissement</li>
+                        <li>Résidentiel et commerces</li>
+                    </ul>
                 </div>
-                <p>
-                    La chaleur est diffusée directement dans les espaces par les unités
-                    intérieures. Une réponse flexible pour chauffer et rafraîchir les zones.
-                </p>
-                <ul>
-                    <li>Mono ou multi-zone</li>
-                    <li>Chauffage &amp; rafraîchissement</li>
-                    <li>Résidentiel et commerces</li>
-                </ul>
-            </div>
 
-            <div class="pac-family pac-family--water">
-                <div class="pac-family__number">E</div>
-                <div class="pac-family__title">
-                    <span>Eau chauffée</span>
-                    <h3>Air / Eau</h3>
+                <div class="pac-family pac-family--water">
+                    <div class="pac-family__number">E</div>
+                    <div class="pac-family__title">
+                        <span>Eau chauffée</span>
+                        <h3>Air / Eau</h3>
+                    </div>
+                    <p>
+                        Les calories alimentent un réseau hydraulique compatible avec les
+                        émetteurs du projet et, selon la configuration, l’eau chaude sanitaire.
+                    </p>
+                    <ul>
+                        <li>Plancher chauffant</li>
+                        <li>Radiateurs compatibles</li>
+                        <li>Neuf ou rénovation étudiée</li>
+                    </ul>
                 </div>
-                <p>
-                    Les calories alimentent un réseau hydraulique compatible avec les
-                    émetteurs du projet et, selon la configuration, l’eau chaude sanitaire.
-                </p>
-                <ul>
-                    <li>Plancher chauffant</li>
-                    <li>Radiateurs compatibles</li>
-                    <li>Neuf ou rénovation étudiée</li>
-                </ul>
             </div>
         </div>
     </section>
