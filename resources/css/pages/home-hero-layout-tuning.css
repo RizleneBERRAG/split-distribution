@@ -1,0 +1,135 @@
+/* ============================================================
+   SPLIT DISTRIBUTION
+   HOME HERO — AJUSTEMENTS DE COMPOSITION AVANT VISUEL
+   ------------------------------------------------------------
+   Cette couche ne contient volontairement AUCUNE image.
+   Elle sert uniquement à figer la composition finale du hero
+   avant de générer le visuel maison sur mesure.
+============================================================ */
+
+@media (min-width: 1001px) {
+
+    /* --------------------------------------------------------
+       CONTENU GAUCHE
+       Un peu plus bas + titre légèrement réduit pour laisser
+       davantage de respiration à la future image.
+    -------------------------------------------------------- */
+
+    .page-home .home-hero__container {
+        padding-top: 90px;
+        padding-bottom: 50px;
+    }
+
+    .page-home .home-hero__content {
+        width: min(690px, 42vw);
+    }
+
+    .page-home .home-hero__title {
+        width: 690px;
+        max-width: 100%;
+
+        font-size: clamp(4.15rem, 4.9vw, 6.1rem);
+        line-height: 0.92;
+        letter-spacing: -0.061em;
+    }
+
+    .page-home .home-hero__description {
+        max-width: 550px;
+        margin-top: 30px;
+    }
+
+    .page-home .home-hero__actions {
+        margin-top: 28px;
+    }
+
+
+    /* --------------------------------------------------------
+       CARTOUCHE VENTILATION
+       Décalé vers la droite afin de libérer clairement le titre.
+    -------------------------------------------------------- */
+
+    .page-home .hero-system-card--vent {
+        left: calc(13% + 70px);
+    }
+
+    .page-home .hero-system-line--vent {
+        left: calc(32% + 62px);
+        width: 105px;
+        transform: rotate(63deg);
+    }
+
+
+    /* --------------------------------------------------------
+       CARTOUCHE PAC
+       Très légèrement plus bas pour équilibrer le triangle des
+       trois cartouches autour de la future maison.
+    -------------------------------------------------------- */
+
+    .page-home .hero-system-card--pac {
+        top: 184px;
+    }
+
+    .page-home .hero-system-line--pac {
+        top: 292px;
+    }
+
+
+    /* --------------------------------------------------------
+       TRUST BAR
+       Étendue à environ la moitié du hero pour une présence plus
+       assumée, sans empiéter sur la future zone visuelle.
+    -------------------------------------------------------- */
+
+    .page-home .home-trust__container {
+        grid-template-columns:
+            minmax(0, 250px)
+            minmax(0, 285px)
+            minmax(0, 250px);
+    }
+
+    .page-home .home-trust__item {
+        padding-inline: 32px;
+    }
+
+    .page-home .home-trust__item:first-child {
+        padding-left: 0;
+    }
+
+}
+
+
+/* ============================================================
+   DESKTOP INTERMÉDIAIRE
+============================================================ */
+
+@media (min-width: 1001px) and (max-width: 1300px) {
+
+    .page-home .home-hero__container {
+        padding-top: 82px;
+    }
+
+    .page-home .home-hero__content {
+        width: min(600px, 45vw);
+    }
+
+    .page-home .home-hero__title {
+        width: 600px;
+        font-size: clamp(3.7rem, 4.8vw, 5.25rem);
+    }
+
+    .page-home .hero-system-card--vent {
+        left: calc(10% + 45px);
+    }
+
+    .page-home .hero-system-card--pac {
+        right: 3%;
+    }
+
+    .page-home .home-trust__container {
+        grid-template-columns:
+            minmax(0, 220px)
+            minmax(0, 250px)
+            minmax(0, 220px);
+    }
+
+}
