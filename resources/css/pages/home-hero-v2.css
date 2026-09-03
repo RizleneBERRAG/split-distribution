@@ -1,14 +1,10 @@
 /* ============================================================
    SPLIT DISTRIBUTION
-   HOME HERO V8 — STRUCTURE AVANT VISUEL
+   HOME HERO
    ------------------------------------------------------------
-   Objectif de cette étape : valider TOUTE la composition avant
-   d'intégrer l'image finale.
-
-   - aucune image de fond affichée
-   - espace visuel réservé à droite
+   - visuel de fond servi par Laravel
    - cartouches CVC codés en HTML / CSS
-   - texte parfaitement dimensionné à gauche
+   - texte dimensionné à gauche
    - CTA alignés
    - réassurance séparée sous le hero
 ============================================================ */
@@ -30,7 +26,7 @@
 
 
 /* ============================================================
-   ZONE RÉSERVÉE À LA FUTURE IMAGE
+   ZONE VISUELLE
 ============================================================ */
 
 .page-home .home-hero__background {
@@ -41,10 +37,6 @@
 
     overflow: hidden;
 
-    /*
-       Ce fond n'est qu'un repère temporaire.
-       La future maison viendra ici en background-image.
-    */
     background:
         radial-gradient(
             circle at 66% 42%,
@@ -60,9 +52,18 @@
 }
 
 
-/* L'ancienne image est volontairement coupée pendant la validation. */
 .page-home .home-hero__background img {
-    display: none !important;
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    max-width: none;
+
+    object-fit: cover;
+    object-position: center center;
+
+    filter: saturate(0.96) contrast(1.02) brightness(0.78);
 }
 
 

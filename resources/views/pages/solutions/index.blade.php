@@ -18,11 +18,6 @@
 @endpush
 
 
-@push('scripts')
-    @vite('resources/js/pages/solutions.js')
-@endpush
-
-
 @section('body-class', 'page-solutions')
 
 
@@ -176,8 +171,12 @@
                     <div class="solution-row__visual">
 
                         <img
-                            src="{{ asset('images/home/climatisation.jpg') }}"
+                            src="{{ asset('images/home/climatisation.webp') }}"
                             alt="Solutions de climatisation professionnelles"
+                            width="832"
+                            height="1248"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
@@ -227,8 +226,12 @@
                     <div class="solution-row__visual">
 
                         <img
-                            src="{{ asset('images/home/pac.jpg') }}"
+                            src="{{ asset('images/home/pac.webp') }}"
                             alt="Pompes à chaleur"
+                            width="735"
+                            height="495"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
@@ -278,8 +281,12 @@
                     <div class="solution-row__visual">
 
                         <img
-                            src="{{ asset('images/home/ventilation.jpg') }}"
+                            src="{{ asset('images/home/ventilation.webp') }}"
                             alt="Solutions professionnelles de ventilation"
+                            width="735"
+                            height="554"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
@@ -329,8 +336,12 @@
                     <div class="solution-row__visual">
 
                         <img
-                            src="{{ asset('images/home/tertiaire.jpg') }}"
+                            src="{{ asset('images/home/tertiaire.webp') }}"
                             alt="Solutions CVC tertiaires"
+                            width="638"
+                            height="480"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
@@ -380,8 +391,12 @@
                     <div class="solution-row__visual">
 
                         <img
-                            src="{{ asset('images/home/energies.jpg') }}"
+                            src="{{ asset('images/home/energies.webp') }}"
                             alt="Solutions énergétiques"
+                            width="992"
+                            height="1504"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>
@@ -431,8 +446,12 @@
                     <div class="solution-row__visual">
 
                         <img
-                            src="{{ asset('images/home/accessoires.jpg') }}"
+                            src="{{ asset('images/home/accessoires.webp') }}"
                             alt="Accessoires et composants pour installations CVC"
+                            width="1535"
+                            height="1024"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>

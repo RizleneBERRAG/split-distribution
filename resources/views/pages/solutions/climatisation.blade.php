@@ -128,8 +128,12 @@
             <div class="clim-hero__visual">
 
                 <img
-                    src="{{ asset('images/solutions/climatisation-hero.jpg') }}"
+                    src="{{ asset('images/home/climatisation.webp') }}"
                     alt="Solution professionnelle de climatisation"
+                    width="832"
+                    height="1248"
+                    fetchpriority="high"
+                    decoding="async"
                 >
 
 

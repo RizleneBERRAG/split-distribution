@@ -13,7 +13,6 @@ export default defineConfig({
                 'resources/css/pages/climatisation.css',
 
                 'resources/js/app.js',
-                'resources/js/pages/solutions.js',
             ],
 
             refresh: true,
