@@ -1,8 +1,3 @@
-import './bootstrap';
-
-import '../css/pages/home-hero-v2.css';
-import '../css/pages/home-hero-layout-tuning.css';
-
 import { gsap } from 'gsap';
 
 
@@ -13,6 +8,27 @@ const mobileMenuButton =
 
 const mobileMenu =
     document.querySelector('#mobile-menu');
+
+const closeMobileMenu = () => {
+
+    mobileMenu?.classList.remove('is-open');
+    mobileMenu?.setAttribute('aria-hidden', 'true');
+
+    mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    mobileMenuButton?.setAttribute('aria-label', 'Ouvrir le menu');
+
+};
+
+
+const openMobileMenu = () => {
+
+    mobileMenu?.classList.add('is-open');
+    mobileMenu?.setAttribute('aria-hidden', 'false');
+
+    mobileMenuButton?.setAttribute('aria-expanded', 'true');
+    mobileMenuButton?.setAttribute('aria-label', 'Fermer le menu');
+
+};
 
 
 const updateHeader = () => {
@@ -44,16 +60,49 @@ mobileMenuButton?.addEventListener(
     'click',
     () => {
 
-        const isOpen =
-            mobileMenu.classList.toggle('is-open');
+        if (mobileMenu?.classList.contains('is-open')) {
+            closeMobileMenu();
 
-        mobileMenuButton.setAttribute(
-            'aria-expanded',
-            String(isOpen)
-        );
+            return;
+        }
+
+        openMobileMenu();
 
     }
 );
+
+
+mobileMenu?.querySelectorAll('a').forEach((link) => {
+
+    link.addEventListener('click', closeMobileMenu);
+
+});
+
+
+document.addEventListener('keydown', (event) => {
+
+    if (event.key !== 'Escape') {
+        return;
+    }
+
+    const wasOpen = mobileMenu?.classList.contains('is-open');
+
+    closeMobileMenu();
+
+    if (wasOpen) {
+        mobileMenuButton?.focus();
+    }
+
+});
+
+
+window.addEventListener('resize', () => {
+
+    if (window.innerWidth > 1100) {
+        closeMobileMenu();
+    }
+
+});
 
 
 if (
@@ -182,81 +231,86 @@ if (
     }
 
 
-    const timeline = gsap.timeline({
-        defaults: {
-            ease: 'power3.out'
-        }
-    });
+    const reducedMotion =
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    if (!reducedMotion) {
 
-    timeline
-        .from(
-            '.home-hero__eyebrow',
-            {
-                opacity: 0,
-                y: 18,
-                duration: 0.7
+        const timeline = gsap.timeline({
+            defaults: {
+                ease: 'power3.out'
             }
-        )
+        });
 
-        .from(
-            '.home-hero__title',
-            {
-                opacity: 0,
-                y: 42,
-                duration: 0.95
-            },
-            '-=0.35'
-        )
+        timeline
+            .from(
+                '.home-hero__eyebrow',
+                {
+                    opacity: 0,
+                    y: 18,
+                    duration: 0.7
+                }
+            )
 
-        .from(
-            [
-                '.home-hero__description',
-                '.home-hero__actions'
-            ],
-            {
-                opacity: 0,
-                y: 22,
-                stagger: 0.12,
-                duration: 0.7
-            },
-            '-=0.5'
-        )
+            .from(
+                '.home-hero__title',
+                {
+                    opacity: 0,
+                    y: 42,
+                    duration: 0.95
+                },
+                '-=0.35'
+            )
 
-        .from(
-            '.hero-system-card',
-            {
-                opacity: 0,
-                y: 16,
-                scale: 0.985,
-                stagger: 0.10,
-                duration: 0.65
-            },
-            '-=0.75'
-        )
+            .from(
+                [
+                    '.home-hero__description',
+                    '.home-hero__actions'
+                ],
+                {
+                    opacity: 0,
+                    y: 22,
+                    stagger: 0.12,
+                    duration: 0.7
+                },
+                '-=0.5'
+            )
 
-        .from(
-            [
-                '.hero-system-line',
-                '.hero-system-hotspot'
-            ],
-            {
-                opacity: 0,
-                stagger: 0.05,
-                duration: 0.4
-            },
-            '-=0.45'
-        )
+            .from(
+                '.hero-system-card',
+                {
+                    opacity: 0,
+                    y: 16,
+                    scale: 0.985,
+                    stagger: 0.10,
+                    duration: 0.65
+                },
+                '-=0.75'
+            )
 
-        .from(
-            '.home-trust__item',
-            {
-                opacity: 0,
-                y: 14,
-                stagger: 0.08,
-                duration: 0.5
-            },
-            '-=0.35'
-        );
+            .from(
+                [
+                    '.hero-system-line',
+                    '.hero-system-hotspot'
+                ],
+                {
+                    opacity: 0,
+                    stagger: 0.05,
+                    duration: 0.4
+                },
+                '-=0.45'
+            )
 
+            .from(
+                '.home-trust__item',
+                {
+                    opacity: 0,
+                    y: 14,
+                    stagger: 0.08,
+                    duration: 0.5
+                },
+                '-=0.35'
+            );
+
+    }
 }

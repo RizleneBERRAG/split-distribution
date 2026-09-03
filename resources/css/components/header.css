@@ -212,6 +212,24 @@
         height: 1px;
 
         background: white;
+
+        transition:
+            transform 200ms ease,
+            opacity 200ms ease;
+    }
+
+
+    .mobile-menu-button[aria-expanded="true"] span:first-child {
+        transform:
+            translateY(4px)
+            rotate(45deg);
+    }
+
+
+    .mobile-menu-button[aria-expanded="true"] span:last-child {
+        transform:
+            translateY(-4px)
+            rotate(-45deg);
     }
 
 

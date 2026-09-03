@@ -31,8 +31,12 @@
 
         <div class="home-hero__background">
             <img
-                src="{{ asset('images/home/hero-hvac.jpg') }}"
+                src="{{ asset('images/home/pac.webp') }}"
                 alt="Équipements CVC professionnels"
+                width="735"
+                height="495"
+                fetchpriority="high"
+                decoding="async"
             >
         </div>
 
@@ -318,8 +322,12 @@
                 >
 
                     <img
-                        src="{{ asset('images/home/climatisation.jpg') }}"
+                        src="{{ asset('images/home/climatisation.webp') }}"
                         alt="Solutions professionnelles de climatisation"
+                        width="832"
+                        height="1248"
+                        loading="lazy"
+                        decoding="async"
                     >
 
                     <div class="expertise-card__overlay"></div>
@@ -364,8 +372,12 @@
                 >
 
                     <img
-                        src="{{ asset('images/home/pac.jpg') }}"
+                        src="{{ asset('images/home/pac.webp') }}"
                         alt="Pompes à chaleur professionnelles"
+                        width="735"
+                        height="495"
+                        loading="lazy"
+                        decoding="async"
                     >
 
                     <div class="expertise-card__overlay"></div>
@@ -407,8 +419,12 @@
                 >
 
                     <img
-                        src="{{ asset('images/home/ventilation.jpg') }}"
+                        src="{{ asset('images/home/ventilation.webp') }}"
                         alt="Solutions professionnelles de ventilation"
+                        width="735"
+                        height="554"
+                        loading="lazy"
+                        decoding="async"
                     >
 
                     <div class="expertise-card__overlay"></div>
@@ -453,8 +469,12 @@
                 >
 
                     <img
-                        src="{{ asset('images/home/tertiaire.jpg') }}"
+                        src="{{ asset('images/home/tertiaire.webp') }}"
                         alt="Solutions CVC tertiaires"
+                        width="638"
+                        height="480"
+                        loading="lazy"
+                        decoding="async"
                     >
 
                     <div class="expertise-card__overlay"></div>
@@ -504,8 +524,12 @@
                 >
 
                     <img
-                        src="{{ asset('images/home/energies.jpg') }}"
+                        src="{{ asset('images/home/energies.webp') }}"
                         alt="Solutions en énergies renouvelables"
+                        width="992"
+                        height="1504"
+                        loading="lazy"
+                        decoding="async"
                     >
 
                     <div class="expertise-card__overlay"></div>
@@ -555,8 +579,12 @@
                 >
 
                     <img
-                        src="{{ asset('images/home/accessoires.jpg') }}"
+                        src="{{ asset('images/home/accessoires.webp') }}"
                         alt="Accessoires et composants pour installations CVC"
+                        width="1535"
+                        height="1024"
+                        loading="lazy"
+                        decoding="async"
                     >
 
                     <div class="expertise-card__overlay"></div>
@@ -608,9 +636,13 @@
                         ></div>
 
                         <img
-                            src="{{ asset('images/brand/chameleon-signature.png') }}"
+                            src="{{ asset('images/brand/chameleon-signature.webp') }}"
                             alt=""
                             aria-hidden="true"
+                            width="1536"
+                            height="1024"
+                            loading="lazy"
+                            decoding="async"
                         >
 
                     </div>

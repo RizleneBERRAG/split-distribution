@@ -102,6 +102,7 @@
             id="mobile-menu-button"
             aria-label="Ouvrir le menu"
             aria-expanded="false"
+            aria-controls="mobile-menu"
         >
             <span></span>
             <span></span>
@@ -110,7 +111,12 @@
     </div>
 
 
-    <div class="mobile-menu" id="mobile-menu">
+    <nav
+        class="mobile-menu"
+        id="mobile-menu"
+        aria-label="Navigation mobile"
+        aria-hidden="true"
+    >
 
         <a href="{{ route('home') }}">
             Accueil
@@ -136,6 +142,6 @@
             Contact
         </a>
 
-    </div>
+    </nav>
 
 </header>

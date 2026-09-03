@@ -96,13 +96,13 @@
         </span>
 
         <div>
-            <a href="#">
+            <span>
                 Mentions légales
-            </a>
+            </span>
 
-            <a href="#">
+            <span>
                 Confidentialité
-            </a>
+            </span>
         </div>
 
     </div>
