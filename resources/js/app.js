@@ -1,5 +1,8 @@
 import './bootstrap';
 
+import '../css/pages/home-hero-v2.css';
+import '../css/pages/home-hero-layout-tuning.css';
+
 import { gsap } from 'gsap';
 
 
@@ -57,15 +60,10 @@ if (
     document.body.classList.contains('page-home')
 ) {
 
-    void import('../css/pages/home-hero-v2.css');
-    void import('../css/pages/home-hero-layout-tuning.css');
-
-
     /* =========================================================
        HERO CVC
        ---------------------------------------------------------
-       Les cartouches restent indépendants du futur visuel.
-       On pourra donc changer l'image sans refaire la composition.
+       Les cartouches restent indépendants du visuel de fond.
     ========================================================= */
 
     const hero =
