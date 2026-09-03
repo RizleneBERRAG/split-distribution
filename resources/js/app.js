@@ -57,11 +57,130 @@ if (
     document.body.classList.contains('page-home')
 ) {
 
-    /*
-        Le hero V2 reste isolé dans son propre fichier CSS.
-        Il n'est chargé que sur la page d'accueil.
-    */
     void import('../css/pages/home-hero-v2.css');
+
+
+    /* =========================================================
+       HERO CVC
+       ---------------------------------------------------------
+       Les cartouches restent indépendants du futur visuel.
+       On pourra donc changer l'image sans refaire la composition.
+    ========================================================= */
+
+    const hero =
+        document.querySelector('.home-hero');
+
+
+    if (
+        hero &&
+        !hero.querySelector('.home-hero__systems')
+    ) {
+
+        hero.insertAdjacentHTML(
+            'beforeend',
+            `
+                <div
+                    class="home-hero__systems"
+                    aria-label="Solutions CVC présentées"
+                >
+
+                    <article
+                        class="hero-system-card hero-system-card--clim"
+                    >
+                        <div
+                            class="hero-system-card__icon hero-system-card__icon--clim"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="hero-system-card__copy">
+                            <strong>
+                                Climatisation
+                            </strong>
+
+                            <span>
+                                Mono / Multi-split
+                            </span>
+                        </div>
+                    </article>
+
+
+                    <span
+                        class="hero-system-line hero-system-line--clim"
+                        aria-hidden="true"
+                    ></span>
+
+                    <span
+                        class="hero-system-hotspot hero-system-hotspot--clim"
+                        aria-hidden="true"
+                    ></span>
+
+
+                    <article
+                        class="hero-system-card hero-system-card--vent"
+                    >
+                        <div
+                            class="hero-system-card__icon hero-system-card__icon--vent"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="hero-system-card__copy">
+                            <strong>
+                                Ventilation
+                            </strong>
+
+                            <span>
+                                VMC / CTA
+                            </span>
+                        </div>
+                    </article>
+
+
+                    <span
+                        class="hero-system-line hero-system-line--vent"
+                        aria-hidden="true"
+                    ></span>
+
+                    <span
+                        class="hero-system-hotspot hero-system-hotspot--vent"
+                        aria-hidden="true"
+                    ></span>
+
+
+                    <article
+                        class="hero-system-card hero-system-card--pac"
+                    >
+                        <div
+                            class="hero-system-card__icon hero-system-card__icon--pac"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="hero-system-card__copy">
+                            <strong>
+                                Pompes à chaleur
+                            </strong>
+
+                            <span>
+                                Air / Air · Air / Eau
+                            </span>
+                        </div>
+                    </article>
+
+
+                    <span
+                        class="hero-system-line hero-system-line--pac"
+                        aria-hidden="true"
+                    ></span>
+
+                    <span
+                        class="hero-system-hotspot hero-system-hotspot--pac"
+                        aria-hidden="true"
+                    ></span>
+
+                </div>
+            `
+        );
+
+    }
 
 
     const timeline = gsap.timeline({
@@ -106,13 +225,28 @@ if (
         )
 
         .from(
-            '.home-hero__background',
+            '.hero-system-card',
             {
                 opacity: 0,
-                x: 36,
-                duration: 1.15
+                y: 16,
+                scale: 0.985,
+                stagger: 0.10,
+                duration: 0.65
             },
-            '-=0.95'
+            '-=0.75'
+        )
+
+        .from(
+            [
+                '.hero-system-line',
+                '.hero-system-hotspot'
+            ],
+            {
+                opacity: 0,
+                stagger: 0.05,
+                duration: 0.4
+            },
+            '-=0.45'
         )
 
         .from(
@@ -123,7 +257,7 @@ if (
                 stagger: 0.08,
                 duration: 0.5
             },
-            '-=0.45'
+            '-=0.35'
         );
 
 }
