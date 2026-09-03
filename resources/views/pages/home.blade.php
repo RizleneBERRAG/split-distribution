@@ -31,10 +31,10 @@
 
         <div class="home-hero__background">
             <img
-                src="{{ asset('images/home/pac.webp') }}"
+                src="{{ asset('images/home/hero-hvac.webp') }}"
                 alt="Équipements CVC professionnels"
-                width="735"
-                height="495"
+                width="1916"
+                height="821"
                 fetchpriority="high"
                 decoding="async"
             >

@@ -67,33 +67,12 @@
 }
 
 
-/* Grille discrète pour matérialiser la zone du futur visuel. */
 .page-home .home-hero__background::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    opacity: 0.18;
-
-    background-image:
-        linear-gradient(
-            rgba(255, 255, 255, 0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.035) 1px,
-            transparent 1px
-        );
-
-    background-size: 76px 76px;
-
-    pointer-events: none;
+    content: none;
 }
 
 
-/* Transition entre le texte et la future photo. */
+/* Transition entre le texte et la photo. */
 .page-home .home-hero__background::after {
     content: "";
 
@@ -103,12 +82,12 @@
     background:
         linear-gradient(
             90deg,
-            #050907 0%,
-            rgba(5, 9, 7, 0.98) 5%,
-            rgba(5, 9, 7, 0.84) 12%,
-            rgba(5, 9, 7, 0.46) 22%,
-            rgba(5, 9, 7, 0.12) 34%,
-            transparent 45%
+            rgba(5, 9, 7, 1) 0%,
+            rgba(5, 9, 7, 0.96) 6%,
+            rgba(5, 9, 7, 0.72) 14%,
+            rgba(5, 9, 7, 0.30) 24%,
+            rgba(5, 9, 7, 0.08) 34%,
+            transparent 44%
         );
 
     pointer-events: none;
