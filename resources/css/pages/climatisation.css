@@ -2,6 +2,10 @@
 
 .page-climatisation { background: #f4f5f0; color: #101510; }
 .page-climatisation main { overflow: clip; }
+.page-climatisation .site-header {
+    background: rgba(8,11,9,.96);
+    backdrop-filter: blur(18px);
+}
 
 .clim-kicker {
     display: flex; align-items: center; gap: 14px; margin: 0;
@@ -41,13 +45,13 @@
 .clim-breadcrumb a:hover { color: var(--color-green-dark); }
 .clim-hero__grid {
     display: grid; grid-template-columns: minmax(0,1.02fr) minmax(440px,.98fr);
-    gap: clamp(60px,8vw,140px); min-height: 690px; padding: 58px 0 70px;
+    gap: clamp(60px,8vw,140px); min-height: 650px; padding: 52px 0 62px;
 }
 .clim-hero__content { align-self: center; position: relative; z-index: 1; }
 .clim-hero h1 {
     max-width: 780px; margin: 24px 0 0; font-family: var(--font-display);
-    font-size: clamp(4rem,6.35vw,7.25rem); font-weight: 650;
-    line-height: .91; letter-spacing: -.068em;
+    font-size: clamp(4rem,5.35vw,6.35rem); font-weight: 650;
+    line-height: .93; letter-spacing: -.064em;
 }
 .clim-hero h1 span { display: block; color: var(--color-green-dark); }
 .clim-hero__intro {
@@ -121,7 +125,7 @@
 .clim-hero__contexts li span { color: var(--color-green-dark); font-size: 8px; letter-spacing: .1em; }
 
 /* Définition du besoin */
-.clim-definition { padding: 150px 0 155px; background: #fff; }
+.clim-definition { padding: 125px 0 130px; background: #fff; }
 .clim-definition__grid { display: grid; grid-template-columns: minmax(170px,.52fr) minmax(0,1.48fr); gap: 70px; }
 .clim-definition__body h2 {
     max-width: 900px; margin: 28px 0 0; font-family: var(--font-display);
@@ -147,7 +151,7 @@
 }
 
 /* Architectures */
-.clim-architectures { padding: 145px 0; background: #0b100c; color: #fff; }
+.clim-architectures { padding: 125px 0; background: #0b100c; color: #fff; }
 .clim-architectures__grid {
     display: grid; grid-template-columns: minmax(300px,.78fr) minmax(0,1.22fr);
     gap: clamp(70px,9vw,150px);
@@ -196,7 +200,7 @@
 .clim-system li::before { content: "+"; margin-right: 8px; color: var(--color-green); }
 
 /* Accompagnement */
-.clim-support { padding: 145px 0 150px; background: #eef1e9; }
+.clim-support { padding: 125px 0 130px; background: #eef1e9; }
 .clim-support__heading {
     display: grid; grid-template-columns: minmax(190px,.48fr) minmax(0,1.52fr);
     gap: 60px; align-items: start;
@@ -208,9 +212,9 @@
 .clim-support__heading h2 span { display: block; color: #9ba296; }
 .clim-support__steps {
     display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
-    margin: 90px 0 0; padding: 0; border-top: 1px solid #cdd3c8; list-style: none;
+    margin: 72px 0 0; padding: 0; border-top: 1px solid #cdd3c8; list-style: none;
 }
-.clim-support__steps li { position: relative; min-height: 245px; padding: 34px 34px 20px 0; }
+.clim-support__steps li { position: relative; min-height: 215px; padding: 34px 34px 20px 0; }
 .clim-support__steps li + li { padding-left: 34px; border-left: 1px solid #cdd3c8; }
 .clim-support__steps li::before {
     content: ""; position: absolute; top: -5px; left: 0; width: 9px; height: 9px;
@@ -226,7 +230,7 @@
 .clim-support__steps p { max-width: 235px; margin: 14px 0 0; color: #687066; font-size: 11px; line-height: 1.7; }
 
 /* Appel à l'action */
-.clim-cta { padding: 110px 0; background: var(--color-green); }
+.clim-cta { padding: 95px 0; background: var(--color-green); }
 .clim-cta__grid {
     display: grid; grid-template-columns: minmax(0,1.25fr) minmax(300px,.75fr);
     gap: clamp(70px,10vw,170px); align-items: end;
