@@ -57,9 +57,6 @@ if (
     document.body.classList.contains('page-home')
 ) {
 
-    void import('../css/pages/home-hero-v2.css');
-    void import('../css/pages/home-hero-layout-tuning.css');
-
 
     /* =========================================================
        HERO CVC

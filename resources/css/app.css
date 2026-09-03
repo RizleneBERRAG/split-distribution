@@ -15,7 +15,8 @@
    resources/css/pages/home.css
    resources/css/pages/...
 ============================================================ */
-
+@import './pages/home-hero-v2.css';
+@import './pages/home-hero-layout-tuning.css';
 
 /* ============================================================
    FONTS

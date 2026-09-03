@@ -41,22 +41,20 @@
 
     overflow: hidden;
 
-    /*
-       Ce fond n'est qu'un repère temporaire.
-       La future maison viendra ici en background-image.
-    */
-    background:
-        radial-gradient(
-            circle at 66% 42%,
-            rgba(157, 204, 79, 0.085),
-            transparent 24%
-        ),
+    background-image:
         linear-gradient(
-            135deg,
-            #101913 0%,
-            #0b120e 48%,
-            #07100b 100%
-        );
+            90deg,
+            rgba(5, 9, 7, 0.96) 0%,
+            rgba(5, 9, 7, 0.82) 8%,
+            rgba(5, 9, 7, 0.42) 20%,
+            rgba(5, 9, 7, 0.10) 34%,
+            rgba(5, 9, 7, 0.00) 48%
+        ),
+        url('/images/home/hero-hvac.jpg');
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
 
 
@@ -66,29 +64,8 @@
 }
 
 
-/* Grille discrète pour matérialiser la zone du futur visuel. */
 .page-home .home-hero__background::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    opacity: 0.18;
-
-    background-image:
-        linear-gradient(
-            rgba(255, 255, 255, 0.035) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.035) 1px,
-            transparent 1px
-        );
-
-    background-size: 76px 76px;
-
-    pointer-events: none;
+    content: none;
 }
 
 
@@ -102,12 +79,12 @@
     background:
         linear-gradient(
             90deg,
-            #050907 0%,
-            rgba(5, 9, 7, 0.98) 5%,
-            rgba(5, 9, 7, 0.84) 12%,
-            rgba(5, 9, 7, 0.46) 22%,
-            rgba(5, 9, 7, 0.12) 34%,
-            transparent 45%
+            rgba(5, 9, 7, 1) 0%,
+            rgba(5, 9, 7, 0.96) 6%,
+            rgba(5, 9, 7, 0.72) 14%,
+            rgba(5, 9, 7, 0.30) 24%,
+            rgba(5, 9, 7, 0.08) 34%,
+            transparent 44%
         );
 
     pointer-events: none;
