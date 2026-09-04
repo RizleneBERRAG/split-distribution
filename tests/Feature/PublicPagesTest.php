@@ -19,7 +19,12 @@ dataset('completed public pages', [
     'contact' => [
         '/contact',
         'pages.contact',
-        'Vous avez le chantier.',
+        'Parlons de votre projet.',
+    ],
+    'services' => [
+        '/services',
+        'pages.services',
+        'Plus qu’un fournisseur.',
     ],
 ]);
 
@@ -43,6 +48,7 @@ it('ships every image used as a completed page hero', function () {
         public_path('images/home/pac.webp'),
         public_path('images/home/climatisation.webp'),
         public_path('images/contact/technical-advice.webp'),
+        public_path('images/services/order-preparation.webp'),
     ])->each->toBeFile();
 });
 

@@ -57,10 +57,6 @@
                 Services
             </a>
 
-            <a href="{{ route('marques') }}">
-                Nos marques
-            </a>
-
             <a href="{{ route('entreprise') }}">
                 L'entreprise
             </a>

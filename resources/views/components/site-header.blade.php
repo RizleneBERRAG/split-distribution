@@ -54,16 +54,6 @@
             </a>
 
             <a
-                href="{{ route('marques') }}"
-                @class([
-                    'site-nav__link',
-                    'is-active' => request()->routeIs('marques')
-                ])
-            >
-                Marques
-            </a>
-
-            <a
                 href="{{ route('entreprise') }}"
                 @class([
                     'site-nav__link',
@@ -128,10 +118,6 @@
 
         <a href="{{ route('services') }}">
             Services
-        </a>
-
-        <a href="{{ route('marques') }}">
-            Marques
         </a>
 
         <a href="{{ route('entreprise') }}">
