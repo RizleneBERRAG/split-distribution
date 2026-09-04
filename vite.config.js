@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/css/pages/solutions.css',
                 'resources/css/pages/climatisation.css',
                 'resources/css/pages/pompes-a-chaleur.css',
+                'resources/css/pages/ventilation.css',
                 'resources/css/pages/contact.css',
                 'resources/css/pages/services.css',
                 'resources/css/pages/entreprise.css',
