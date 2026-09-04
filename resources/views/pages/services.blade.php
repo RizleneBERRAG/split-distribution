@@ -22,10 +22,13 @@
                 <span>Services</span>
             </nav>
 
-            <div class="services-hero__grid">
-                <div class="services-hero__copy">
+            <div class="services-hero__heading">
+                <div>
                     <p class="services-kicker"><span aria-hidden="true"></span> Services aux professionnels</p>
-                    <h1>Plus qu’un fournisseur. <em>Un appui terrain.</em></h1>
+                    <h1>Plus qu’un fournisseur.<br><em>Un appui à chaque étape.</em></h1>
+                </div>
+
+                <div class="services-hero__summary">
                     <p>
                         De la première question à l’après-vente, nous vous aidons
                         à sécuriser vos choix, votre commande et l’avancement du chantier.
@@ -40,8 +43,10 @@
                         </a>
                     </div>
                 </div>
+            </div>
 
-                <figure class="services-hero__visual">
+            <div class="services-stage">
+                <figure class="services-stage__image">
                     <img
                         src="{{ asset('images/services/order-preparation.webp') }}"
                         alt="Préparation d’une commande de matériel CVC dans un entrepôt"
@@ -49,19 +54,39 @@
                         height="1024"
                         fetchpriority="high"
                     >
-                    <figcaption><span>Stock local</span> Saint-Priest · Rhône-Alpes</figcaption>
-                    <div class="services-hero__badge" aria-hidden="true">
-                        <small>Préparation</small>
-                        <strong>Précise.</strong>
-                    </div>
+                    <figcaption><span>En action</span> Préparation d’une commande CVC</figcaption>
                 </figure>
-            </div>
 
-            <div class="services-hero__rail" aria-label="Les quatre étapes de notre accompagnement">
-                <div><span>01</span><strong>Étudier</strong></div>
-                <div><span>02</span><strong>Sélectionner</strong></div>
-                <div><span>03</span><strong>Préparer</strong></div>
-                <div><span>04</span><strong>Accompagner</strong></div>
+                <div class="services-stage__count">
+                    <span>Notre accompagnement</span>
+                    <strong>04</strong>
+                    <p>services reliés par un même interlocuteur.</p>
+                </div>
+
+                <div class="services-stage__carousel" aria-label="Les quatre étapes de notre accompagnement">
+                    <div class="services-stage__carousel-label" aria-hidden="true">
+                        <span>En continu</span>
+                        <strong>Notre méthode</strong>
+                    </div>
+
+                    <div class="services-stage__carousel-window">
+                        <div class="services-stage__carousel-track">
+                            <div class="services-stage__carousel-set">
+                                <a href="#methode"><span>01</span><strong>Étudier</strong><small>Comprendre le besoin</small></a>
+                                <a href="#methode"><span>02</span><strong>Sélectionner</strong><small>Choisir la solution</small></a>
+                                <a href="#methode"><span>03</span><strong>Préparer</strong><small>Organiser la commande</small></a>
+                                <a href="#methode"><span>04</span><strong>Accompagner</strong><small>Rester disponible</small></a>
+                            </div>
+
+                            <div class="services-stage__carousel-set" aria-hidden="true">
+                                <a href="#methode" tabindex="-1"><span>01</span><strong>Étudier</strong><small>Comprendre le besoin</small></a>
+                                <a href="#methode" tabindex="-1"><span>02</span><strong>Sélectionner</strong><small>Choisir la solution</small></a>
+                                <a href="#methode" tabindex="-1"><span>03</span><strong>Préparer</strong><small>Organiser la commande</small></a>
+                                <a href="#methode" tabindex="-1"><span>04</span><strong>Accompagner</strong><small>Rester disponible</small></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
