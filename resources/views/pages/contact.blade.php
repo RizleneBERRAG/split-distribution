@@ -37,16 +37,22 @@
                     </a>
                 </div>
 
-                <div class="contact-intro__direct">
-                    <p>Contact direct</p>
-                    <a href="tel:+33472230140">04 72 23 01 40</a>
-                    <span>Du lundi au vendredi</span>
+                <div class="contact-intro__visual">
+                    <img
+                        src="{{ asset('images/contact/technical-advice.webp') }}"
+                        alt="Deux professionnels préparant un projet CVC autour d’un plan"
+                        width="1536"
+                        height="1024"
+                        fetchpriority="high"
+                    >
 
-                    <div class="contact-intro__direct-footer">
-                        <span>Conseil</span>
-                        <span>Disponibilité</span>
-                        <span>SAV</span>
+                    <div class="contact-intro__direct">
+                        <p>Contact direct</p>
+                        <a href="tel:+33472230140">04 72 23 01 40</a>
+                        <span>Du lundi au vendredi</span>
                     </div>
+
+                    <p class="contact-intro__visual-caption"><span>01</span> Conseil technique</p>
                 </div>
             </div>
 
