@@ -1102,13 +1102,9 @@
         </span>
 
 
-        <a href="{{ route('marques') }}">
-            Toutes nos marques
-
-            <strong>
-                ↗
-            </strong>
-        </a>
+        <span>
+            Une sélection pensée pour les besoins du terrain.
+        </span>
 
     </div>
 
