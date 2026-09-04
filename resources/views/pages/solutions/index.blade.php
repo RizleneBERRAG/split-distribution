@@ -38,7 +38,8 @@
             'width' => 735,
             'height' => 495,
             'class' => 'solution-card--compact solution-card--pac',
-            'available' => false,
+            'route' => 'solutions.pompes-a-chaleur',
+            'available' => true,
         ],
         [
             'number' => '03',
@@ -50,7 +51,8 @@
             'width' => 735,
             'height' => 554,
             'class' => 'solution-card--compact solution-card--ventilation',
-            'available' => false,
+            'route' => 'solutions.ventilation',
+            'available' => true,
         ],
         [
             'number' => '04',
