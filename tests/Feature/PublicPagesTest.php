@@ -26,6 +26,11 @@ dataset('completed public pages', [
         'pages.services',
         'Plus qu’un fournisseur.',
     ],
+    'entreprise' => [
+        '/entreprise',
+        'pages.entreprise',
+        'La technique compte.',
+    ],
 ]);
 
 it('renders a completed public page', function (
@@ -49,6 +54,7 @@ it('ships every image used as a completed page hero', function () {
         public_path('images/home/climatisation.webp'),
         public_path('images/contact/technical-advice.webp'),
         public_path('images/services/order-preparation.webp'),
+        public_path('images/entreprise/team-work.webp'),
     ])->each->toBeFile();
 });
 
