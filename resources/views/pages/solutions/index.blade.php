@@ -64,7 +64,8 @@
             'width' => 638,
             'height' => 480,
             'class' => 'solution-card--wide solution-card--tertiaire',
-            'available' => false,
+            'route' => 'solutions.tertiaire',
+            'available' => true,
         ],
         [
             'number' => '05',
