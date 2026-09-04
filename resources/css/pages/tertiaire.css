@@ -1,0 +1,254 @@
+/* Tertiaire — lecture architecturale et composition modulaire */
+
+.page-tertiaire { background: #ebe9e1; color: #10130f; }
+.page-tertiaire main { overflow: clip; }
+.page-tertiaire .site-header { background: rgba(9, 13, 10, .98); backdrop-filter: blur(18px); }
+
+.tert-kicker,
+.tert-section-index {
+    display: flex; align-items: center; gap: 13px; margin: 0;
+    color: #687067; font-size: 8px; font-weight: 750; letter-spacing: .17em; text-transform: uppercase;
+}
+.tert-kicker > span { width: 34px; height: 1px; background: var(--color-green-dark); }
+.tert-kicker--light { color: rgba(255, 255, 255, .46); }
+.tert-kicker--light > span { background: var(--color-green); }
+.tert-section-index span { color: var(--color-green-dark); }
+.tert-section-index--light { color: rgba(255, 255, 255, .42); }
+.tert-section-index--light span { color: var(--color-green); }
+
+/* Hero / dossier */
+.tert-hero { padding: var(--header-height) 0 102px; background: #eeece4; }
+.tert-breadcrumb {
+    display: flex; align-items: center; gap: 10px; padding-top: 30px;
+    color: #8a8d85; font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+}
+.tert-breadcrumb a { color: #40463e; transition: color 180ms ease; }
+.tert-breadcrumb a:hover { color: var(--color-green-dark); }
+.tert-hero__heading {
+    display: grid; grid-template-columns: minmax(170px, .26fr) minmax(540px, 1fr) minmax(300px, .46fr);
+    gap: clamp(42px, 6vw, 96px); align-items: end; padding: 55px 0 54px;
+}
+.tert-hero__heading h1 {
+    max-width: 890px; margin: 21px 0 0; font-family: var(--font-display);
+    font-size: clamp(4rem, 5.55vw, 6.65rem); font-weight: 630; line-height: .89; letter-spacing: -.07em;
+}
+.tert-hero__heading h1 em { display: block; color: #648f34; font-style: normal; }
+.tert-hero__intro > p { margin: 0; color: #62685f; font-size: 11px; line-height: 1.82; }
+.tert-hero__intro > a {
+    display: flex; align-items: center; justify-content: space-between; min-height: 57px; margin-top: 26px;
+    padding: 0 20px; background: #111610; color: #fff; font-size: 9px; font-weight: 750;
+    transition: background 180ms ease, transform 180ms ease;
+}
+.tert-hero__intro > a span { color: var(--color-green); }
+.tert-hero__intro > a:hover { background: #263026; transform: translateY(-2px); }
+.tert-hero__dossier { position: relative; display: grid; grid-template-columns: minmax(0, 1.47fr) minmax(335px, .53fr); min-height: 500px; }
+.tert-hero__media { position: relative; min-width: 0; margin: 0; overflow: hidden; background: #282d29; }
+.tert-hero__media::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(8, 12, 9, .02) 50%, rgba(8, 12, 9, .62));
+}
+.tert-hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: center 54%; filter: saturate(.78) contrast(1.02); }
+.tert-hero__media figcaption {
+    position: absolute; z-index: 2; right: 26px; bottom: 23px; display: flex; gap: 14px;
+    color: rgba(255, 255, 255, .7); font-size: 8px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+}
+.tert-hero__media figcaption span { color: var(--color-green); }
+.tert-hero__sheet { display: flex; flex-direction: column; min-width: 0; padding: 28px 30px 25px; background: #111711; color: #fff; }
+.tert-hero__sheet-top { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 23px; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+.tert-hero__sheet-top span { color: rgba(255, 255, 255, .42); font-size: 7px; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; }
+.tert-hero__sheet-top strong { color: var(--color-green); font-family: var(--font-display); font-size: 18px; letter-spacing: -.04em; }
+.tert-hero__sheet-main { margin: auto 0; }
+.tert-hero__sheet-main small { color: var(--color-green); font-size: 7px; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+.tert-hero__sheet-main h2 { max-width: 320px; margin: 14px 0 0; font-family: var(--font-display); font-size: 34px; font-weight: 620; line-height: 1.02; letter-spacing: -.055em; }
+.tert-hero__sheet-main p { max-width: 310px; margin: 19px 0 0; color: rgba(255, 255, 255, .47); font-size: 9px; line-height: 1.7; }
+.tert-hero__sheet dl { display: grid; grid-template-columns: 1fr 1fr; margin: 0; border-top: 1px solid rgba(255, 255, 255, .12); }
+.tert-hero__sheet dl div { display: flex; gap: 12px; padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, .12); }
+.tert-hero__sheet dl div:nth-child(even) { padding-left: 18px; border-left: 1px solid rgba(255, 255, 255, .12); }
+.tert-hero__sheet dt { color: var(--color-green); font-size: 7px; }
+.tert-hero__sheet dd { margin: 0; color: rgba(255, 255, 255, .68); font-size: 8px; }
+.tert-hero__stamp {
+    position: absolute; z-index: 3; top: -26px; left: 39%; width: 125px; min-height: 86px; padding: 16px 18px;
+    background: var(--color-green); color: #111610; box-shadow: 0 15px 40px rgba(39, 49, 33, .16);
+}
+.tert-hero__stamp span { display: block; font-size: 7px; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+.tert-hero__stamp strong { display: block; margin-top: 10px; font-family: var(--font-display); font-size: 25px; line-height: 1; letter-spacing: -.06em; }
+
+/* Lecture du bâtiment */
+.tert-reading { padding: 112px 0 122px; background: #111711; color: #fff; }
+.tert-reading__heading {
+    display: grid; grid-template-columns: minmax(175px, .25fr) minmax(500px, .88fr) minmax(300px, .43fr);
+    gap: clamp(45px, 6.5vw, 105px); align-items: end;
+}
+.tert-reading__heading h2 {
+    max-width: 770px; margin: 23px 0 0; font-family: var(--font-display);
+    font-size: clamp(3.5rem, 4.65vw, 5.5rem); font-weight: 620; line-height: .92; letter-spacing: -.064em;
+}
+.tert-reading__heading h2 em { display: block; color: var(--color-green); font-style: normal; }
+.tert-reading__heading > p { margin: 0 0 3px; color: rgba(255, 255, 255, .46); font-size: 10px; line-height: 1.8; }
+.tert-reading__matrix { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 67px 0 0; padding: 0; list-style: none; }
+.tert-reading__matrix li {
+    min-height: 305px; padding: 25px 25px 23px; border: 1px solid rgba(255, 255, 255, .12);
+    background: #161e17; transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+.tert-reading__matrix li:nth-child(even) { transform: translateY(28px); }
+.tert-reading__matrix li:hover { transform: translateY(-5px); border-color: rgba(141, 198, 63, .55); background: #1b261c; }
+.tert-reading__matrix li:nth-child(even):hover { transform: translateY(20px); }
+.tert-reading__matrix li > span { color: var(--color-green); font-size: 7px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.tert-reading__matrix strong { display: block; margin-top: 73px; font-family: var(--font-display); font-size: 30px; font-weight: 620; letter-spacing: -.045em; }
+.tert-reading__matrix p { max-width: 245px; margin: 15px 0 0; color: rgba(255, 255, 255, .48); font-size: 9px; line-height: 1.7; }
+.tert-reading__matrix small { display: block; margin-top: 34px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, .1); color: rgba(255, 255, 255, .32); font-size: 7px; letter-spacing: .08em; text-transform: uppercase; }
+
+/* Architectures */
+.tert-architectures { padding: 120px 0 128px; background: #ebe9e1; }
+.tert-architectures__layout { display: grid; grid-template-columns: minmax(360px, .52fr) minmax(650px, 1fr); gap: clamp(70px, 9vw, 145px); align-items: start; }
+.tert-architectures__layout > header { position: sticky; top: calc(var(--header-height) + 45px); }
+.tert-architectures__layout > header .tert-kicker { margin-top: 58px; }
+.tert-architectures__layout > header h2 {
+    max-width: 600px; margin: 23px 0 0; font-family: var(--font-display);
+    font-size: clamp(3.55rem, 4.55vw, 5.4rem); font-weight: 630; line-height: .91; letter-spacing: -.066em;
+}
+.tert-architectures__layout > header h2 em { display: block; color: #6a913c; font-style: normal; }
+.tert-architectures__layout > header > p { max-width: 525px; margin: 27px 0 0; color: #656b63; font-size: 10px; line-height: 1.8; }
+.tert-architectures__layout > header > a {
+    display: flex; align-items: center; justify-content: space-between; width: min(100%, 285px); min-height: 57px;
+    margin-top: 30px; padding: 0 20px; border: 1px solid #c4c4bb; color: #171b16; font-size: 9px; font-weight: 750;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+.tert-architectures__layout > header > a span { color: var(--color-green-dark); }
+.tert-architectures__layout > header > a:hover { background: #111711; color: #fff; transform: translateY(-2px); }
+.tert-architectures__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tert-architecture {
+    display: flex; flex-direction: column; min-height: 355px; padding: 24px; border: 1px solid #c9c8bf;
+    background: #f3f1ea; transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
+}
+.tert-architecture:hover { transform: translateY(-5px); border-color: #93b866; background: #f8f6ef; }
+.tert-architecture--lead { grid-row: span 2; min-height: 722px; background: #151b15; color: #fff; }
+.tert-architecture--lead:hover { background: #1a231a; }
+.tert-architecture--accent { background: #8dc63f; border-color: #8dc63f; }
+.tert-architecture--accent:hover { background: #98cf4f; }
+.tert-architecture__meta { display: flex; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid currentColor; border-color: rgba(21, 27, 21, .15); }
+.tert-architecture--lead .tert-architecture__meta { border-color: rgba(255, 255, 255, .13); }
+.tert-architecture__meta span { color: var(--color-green-dark); font-size: 7px; letter-spacing: .1em; }
+.tert-architecture--lead .tert-architecture__meta span { color: var(--color-green); }
+.tert-architecture__meta small { color: #747a71; font-size: 7px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.tert-architecture--lead .tert-architecture__meta small { color: rgba(255, 255, 255, .37); }
+.tert-architecture--accent .tert-architecture__meta small { color: rgba(15, 20, 14, .55); }
+.tert-architecture > div:nth-child(2) { margin: auto 0; }
+.tert-architecture > div:nth-child(2) > p { margin: 0 0 10px; color: #6d756b; font-size: 7px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.tert-architecture--lead > div:nth-child(2) > p { color: var(--color-green); }
+.tert-architecture--accent > div:nth-child(2) > p { color: rgba(15, 20, 14, .58); }
+.tert-architecture h3 { margin: 0; font-family: var(--font-display); font-size: clamp(2.35rem, 3.35vw, 4.05rem); font-weight: 620; line-height: .96; letter-spacing: -.06em; }
+.tert-architecture--lead h3 { font-size: clamp(4.6rem, 6.3vw, 7.7rem); }
+.tert-architecture footer { padding-top: 20px; border-top: 1px solid rgba(21, 27, 21, .15); }
+.tert-architecture--lead footer { border-color: rgba(255, 255, 255, .13); }
+.tert-architecture footer p { max-width: 390px; margin: 0; color: #656d63; font-size: 9px; line-height: 1.68; }
+.tert-architecture--lead footer p { color: rgba(255, 255, 255, .48); }
+.tert-architecture--accent footer p { color: rgba(15, 20, 14, .62); }
+.tert-architecture footer span { display: block; margin-top: 17px; color: var(--color-green-dark); font-size: 7px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.tert-architecture--lead footer span { color: var(--color-green); }
+.tert-architecture--accent footer span { color: #1c2916; }
+
+/* Contextes */
+.tert-contexts { padding: 115px 0 124px; background: #f5f3ec; }
+.tert-contexts__heading { display: grid; grid-template-columns: minmax(190px, .28fr) minmax(0, 1fr); gap: clamp(55px, 8vw, 130px); }
+.tert-contexts__heading h2 {
+    max-width: 850px; margin: 23px 0 0; font-family: var(--font-display);
+    font-size: clamp(3.5rem, 4.7vw, 5.6rem); font-weight: 630; line-height: .92; letter-spacing: -.065em;
+}
+.tert-contexts__heading h2 em { display: block; color: #9ea39a; font-style: normal; }
+.tert-contexts__list { margin-top: 67px; border-top: 1px solid #cbcbc2; }
+.tert-contexts__list article {
+    display: grid; grid-template-columns: 85px minmax(200px, .55fr) minmax(300px, 1fr) 135px;
+    gap: 30px; align-items: center; min-height: 125px; border-bottom: 1px solid #cbcbc2;
+    transition: padding 200ms ease, background 200ms ease;
+}
+.tert-contexts__list article:hover { padding: 0 20px; background: #e9eee2; }
+.tert-contexts__list article > span { color: var(--color-green-dark); font-size: 8px; letter-spacing: .1em; }
+.tert-contexts__list h3 { margin: 0; font-family: var(--font-display); font-size: 29px; font-weight: 620; letter-spacing: -.045em; }
+.tert-contexts__list p { max-width: 600px; margin: 0; color: #666e64; font-size: 10px; line-height: 1.7; }
+.tert-contexts__list small { color: #858b81; font-size: 7px; font-weight: 750; letter-spacing: .16em; text-align: right; }
+
+/* Accompagnement */
+.tert-support { padding: 110px 0 115px; background: #202820; color: #fff; }
+.tert-support__grid { display: grid; grid-template-columns: minmax(550px, 1fr) minmax(360px, .52fr); gap: clamp(90px, 13vw, 210px); align-items: end; }
+.tert-support__grid > div:first-child .tert-kicker { margin-top: 58px; }
+.tert-support h2 {
+    max-width: 900px; margin: 23px 0 0; font-family: var(--font-display);
+    font-size: clamp(3.7rem, 5vw, 5.95rem); font-weight: 630; line-height: .91; letter-spacing: -.066em;
+}
+.tert-support h2 em { display: block; color: var(--color-green); font-style: normal; }
+.tert-support__aside > p { margin: 0; color: rgba(255, 255, 255, .49); font-size: 10px; line-height: 1.8; }
+.tert-support__aside > a {
+    display: flex; align-items: center; justify-content: space-between; min-height: 59px; margin-top: 26px;
+    padding: 0 21px; background: var(--color-green); color: #111610; font-size: 9px; font-weight: 750;
+    transition: transform 180ms ease, background 180ms ease;
+}
+.tert-support__aside > a:hover { background: var(--color-green-light); transform: translateY(-2px); }
+.tert-support__aside dl { display: grid; grid-template-columns: repeat(3, 1fr); margin: 17px 0 0; }
+.tert-support__aside dl div { padding: 15px 12px; border-left: 1px solid rgba(255, 255, 255, .12); }
+.tert-support__aside dl div:first-child { padding-left: 0; border-left: 0; }
+.tert-support__aside dt { color: var(--color-green); font-size: 7px; }
+.tert-support__aside dd { margin: 5px 0 0; color: rgba(255, 255, 255, .46); font-size: 7px; }
+
+@media (max-width: 1160px) {
+    .tert-hero__heading { grid-template-columns: minmax(145px, .22fr) minmax(460px, 1fr) minmax(270px, .45fr); gap: 45px; }
+    .tert-reading__heading { grid-template-columns: minmax(145px, .22fr) minmax(430px, 1fr) minmax(270px, .45fr); gap: 45px; }
+    .tert-architectures__layout { grid-template-columns: minmax(330px, .48fr) minmax(560px, 1fr); gap: 55px; }
+    .tert-architecture--lead { min-height: 680px; }
+}
+
+@media (max-width: 900px) {
+    .tert-hero__heading { grid-template-columns: 1fr; gap: 32px; }
+    .tert-hero__heading > .tert-section-index { order: -1; }
+    .tert-hero__intro { max-width: 550px; }
+    .tert-hero__intro > a { width: min(100%, 300px); }
+    .tert-hero__dossier { grid-template-columns: 1fr; }
+    .tert-hero__media { min-height: 470px; }
+    .tert-hero__sheet { min-height: 430px; }
+    .tert-hero__stamp { left: auto; right: 25px; }
+    .tert-reading__heading { grid-template-columns: 1fr; gap: 32px; }
+    .tert-reading__heading > p { max-width: 560px; }
+    .tert-reading__matrix { grid-template-columns: 1fr 1fr; }
+    .tert-reading__matrix li:nth-child(even) { transform: none; }
+    .tert-reading__matrix li:nth-child(even):hover { transform: translateY(-5px); }
+    .tert-architectures__layout { grid-template-columns: 1fr; gap: 58px; }
+    .tert-architectures__layout > header { position: static; }
+    .tert-contexts__heading { grid-template-columns: 1fr; gap: 35px; }
+    .tert-contexts__list article { grid-template-columns: 60px minmax(180px, .5fr) minmax(270px, 1fr); }
+    .tert-contexts__list small { display: none; }
+    .tert-support__grid { grid-template-columns: 1fr; gap: 55px; }
+    .tert-support__aside { max-width: 560px; }
+}
+
+@media (max-width: 640px) {
+    .tert-hero { padding-bottom: 80px; }
+    .tert-breadcrumb { padding-top: 24px; }
+    .tert-hero__heading { padding: 42px 0 45px; }
+    .tert-hero__heading h1 { font-size: clamp(3.3rem, 15vw, 4.65rem); }
+    .tert-hero__media { min-height: 355px; }
+    .tert-hero__sheet { min-height: 410px; padding: 24px 22px; }
+    .tert-hero__stamp { top: -18px; right: 14px; width: 108px; min-height: 75px; }
+    .tert-reading, .tert-architectures, .tert-contexts, .tert-support { padding: 84px 0 92px; }
+    .tert-reading__heading h2,
+    .tert-architectures__layout > header h2,
+    .tert-contexts__heading h2,
+    .tert-support h2 { font-size: clamp(3rem, 13vw, 4.25rem); }
+    .tert-reading__matrix { grid-template-columns: 1fr; }
+    .tert-reading__matrix li { min-height: 270px; }
+    .tert-reading__matrix strong { margin-top: 58px; }
+    .tert-architectures__cards { grid-template-columns: 1fr; }
+    .tert-architecture, .tert-architecture--lead { grid-row: auto; min-height: 365px; }
+    .tert-architecture--lead { min-height: 470px; }
+    .tert-architecture--lead h3 { font-size: clamp(4.4rem, 21vw, 6rem); }
+    .tert-contexts__list article { grid-template-columns: 42px 1fr; gap: 14px; padding: 26px 0; }
+    .tert-contexts__list article:hover { padding: 26px 14px; }
+    .tert-contexts__list p { grid-column: 2; }
+    .tert-support__aside dl { grid-template-columns: 1fr; }
+    .tert-support__aside dl div { border-top: 1px solid rgba(255, 255, 255, .12); border-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tert-reading__matrix li,
+    .tert-architecture,
+    .tert-contexts__list article { transition: none; }
+}
