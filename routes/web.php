@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
@@ -30,3 +31,6 @@ Route::view('/marques', 'pages.marques')->name('marques');
 Route::view('/services', 'pages.services')->name('services');
 Route::view('/entreprise', 'pages.entreprise')->name('entreprise');
 Route::view('/contact', 'pages.contact')->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('contact.submit');
