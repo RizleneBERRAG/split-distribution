@@ -64,19 +64,26 @@
                 </div>
 
                 <div class="services-stage__carousel" aria-label="Les quatre étapes de notre accompagnement">
-                    <div class="services-stage__carousel-track">
-                        <div class="services-stage__carousel-set">
-                            <a href="#methode"><span>01</span><strong>Étudier</strong><small>Comprendre le besoin</small></a>
-                            <a href="#methode"><span>02</span><strong>Sélectionner</strong><small>Choisir la solution</small></a>
-                            <a href="#methode"><span>03</span><strong>Préparer</strong><small>Organiser la commande</small></a>
-                            <a href="#methode"><span>04</span><strong>Accompagner</strong><small>Rester disponible</small></a>
-                        </div>
+                    <div class="services-stage__carousel-label" aria-hidden="true">
+                        <span>En continu</span>
+                        <strong>Notre méthode</strong>
+                    </div>
 
-                        <div class="services-stage__carousel-set" aria-hidden="true">
-                            <a href="#methode" tabindex="-1"><span>01</span><strong>Étudier</strong><small>Comprendre le besoin</small></a>
-                            <a href="#methode" tabindex="-1"><span>02</span><strong>Sélectionner</strong><small>Choisir la solution</small></a>
-                            <a href="#methode" tabindex="-1"><span>03</span><strong>Préparer</strong><small>Organiser la commande</small></a>
-                            <a href="#methode" tabindex="-1"><span>04</span><strong>Accompagner</strong><small>Rester disponible</small></a>
+                    <div class="services-stage__carousel-window">
+                        <div class="services-stage__carousel-track">
+                            <div class="services-stage__carousel-set">
+                                <a href="#methode"><span>01</span><strong>Étudier</strong><small>Comprendre le besoin</small></a>
+                                <a href="#methode"><span>02</span><strong>Sélectionner</strong><small>Choisir la solution</small></a>
+                                <a href="#methode"><span>03</span><strong>Préparer</strong><small>Organiser la commande</small></a>
+                                <a href="#methode"><span>04</span><strong>Accompagner</strong><small>Rester disponible</small></a>
+                            </div>
+
+                            <div class="services-stage__carousel-set" aria-hidden="true">
+                                <a href="#methode" tabindex="-1"><span>01</span><strong>Étudier</strong><small>Comprendre le besoin</small></a>
+                                <a href="#methode" tabindex="-1"><span>02</span><strong>Sélectionner</strong><small>Choisir la solution</small></a>
+                                <a href="#methode" tabindex="-1"><span>03</span><strong>Préparer</strong><small>Organiser la commande</small></a>
+                                <a href="#methode" tabindex="-1"><span>04</span><strong>Accompagner</strong><small>Rester disponible</small></a>
+                            </div>
                         </div>
                     </div>
                 </div>
