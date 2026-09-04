@@ -19,7 +19,7 @@
 .contact-section-label { color: #747d70; }
 .contact-section-label span { color: var(--color-green-dark); }
 
-/* Hero */
+/* Hero — expertise terrain */
 .contact-intro {
     position: relative; min-height: 720px; padding-top: var(--header-height);
     overflow: hidden; background: #090e0a; color: #fff;
