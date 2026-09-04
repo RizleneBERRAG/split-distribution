@@ -42,6 +42,7 @@ it('ships every image used as a completed page hero', function () {
     expect([
         public_path('images/home/pac.webp'),
         public_path('images/home/climatisation.webp'),
+        public_path('images/contact/technical-advice.webp'),
     ])->each->toBeFile();
 });
 
