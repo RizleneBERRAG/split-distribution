@@ -23,206 +23,148 @@
             </nav>
 
             <div class="tert-hero__heading">
-                <div class="tert-section-index"><span>04</span> Solutions tertiaires</div>
+                <p class="tert-label"><span>04</span> Solutions tertiaires</p>
 
-                <div>
-                    <p class="tert-kicker"><span aria-hidden="true"></span> Voir plus large que l’équipement</p>
-                    <h1>Penser à l’échelle <em>du bâtiment.</em></h1>
+                <div class="tert-hero__title">
+                    <p class="tert-kicker"><span aria-hidden="true"></span> Penser le système dans son ensemble</p>
+                    <h1>Le confort change <em>d’échelle.</em></h1>
                 </div>
 
                 <div class="tert-hero__intro">
                     <p>
-                        Bureaux, commerces ou locaux d’activité : nous aidons les professionnels
-                        à mettre en cohérence les usages, les volumes et l’architecture CVC du projet.
+                        Pour un bureau, un commerce ou un local d’activité, le bon équipement
+                        commence par une lecture juste du bâtiment, de ses usages et de son rythme.
                     </p>
                     <a href="{{ route('contact') }}">Étudier mon projet <span aria-hidden="true">↗</span></a>
                 </div>
             </div>
 
-            <div class="tert-hero__dossier">
-                <figure class="tert-hero__media">
-                    <img
-                        src="{{ asset('images/home/tertiaire.webp') }}"
-                        alt="Local technique d’une installation CVC tertiaire"
-                        width="638"
-                        height="480"
-                        fetchpriority="high"
-                        decoding="async"
-                    >
-                    <figcaption><span>Projet 04</span> Installation technique</figcaption>
-                </figure>
+            <figure class="tert-hero__visual">
+                <img
+                    src="{{ asset('images/solutions/tertiaire-local-technique-premium.webp') }}"
+                    alt="Local technique CVC contemporain dans un bâtiment tertiaire"
+                    width="1672"
+                    height="941"
+                    fetchpriority="high"
+                    decoding="async"
+                >
 
-                <aside class="tert-hero__sheet" aria-label="Périmètre d’étude">
-                    <div class="tert-hero__sheet-top">
-                        <span>Dossier bâtiment</span>
-                        <strong>CVC</strong>
+                <figcaption>
+                    <div>
+                        <span>Local technique</span>
+                        <strong>Une architecture maîtrisée.</strong>
                     </div>
+                    <p>Production · distribution · régulation</p>
+                </figcaption>
 
-                    <div class="tert-hero__sheet-main">
-                        <small>Notre point de départ</small>
-                        <h2>Comprendre l’exploitation.</h2>
-                        <p>Avant de comparer une référence, nous regardons ce que le bâtiment doit réellement assurer.</p>
-                    </div>
-
-                    <dl>
-                        <div><dt>01</dt><dd>Usage</dd></div>
-                        <div><dt>02</dt><dd>Puissance</dd></div>
-                        <div><dt>03</dt><dd>Implantation</dd></div>
-                        <div><dt>04</dt><dd>Régulation</dd></div>
-                    </dl>
-                </aside>
-
-                <div class="tert-hero__stamp" aria-hidden="true">
-                    <span>Échelle</span>
-                    <strong>BÂT.</strong>
+                <div class="tert-hero__number" aria-hidden="true">
+                    <span>Tertiaire</span>
+                    <strong>04</strong>
                 </div>
-            </div>
+            </figure>
+
+            <dl class="tert-hero__rail" aria-label="Principes d’une solution tertiaire cohérente">
+                <div><dt>01</dt><dd>Comprendre l’usage</dd></div>
+                <div><dt>02</dt><dd>Dimensionner la réponse</dd></div>
+                <div><dt>03</dt><dd>Intégrer les équipements</dd></div>
+                <div><dt>04</dt><dd>Préparer l’exploitation</dd></div>
+            </dl>
         </div>
     </section>
 
     <section class="tert-reading" id="lecture-batiment">
-        <div class="container">
-            <header class="tert-reading__heading">
-                <div class="tert-section-index tert-section-index--light"><span>01</span> Lire le bâtiment</div>
-                <div>
-                    <p class="tert-kicker tert-kicker--light"><span aria-hidden="true"></span> Le besoin avant le produit</p>
-                    <h2>Quatre données. <em>Une seule cohérence.</em></h2>
-                </div>
-                <p>
-                    Un projet tertiaire se dimensionne dans son ensemble. Chaque choix influe
-                    sur le confort, l’exploitation et la manière d’intégrer les équipements.
+        <div class="container tert-reading__grid">
+            <header>
+                <p class="tert-label"><span>01</span> Lire le bâtiment</p>
+                <p class="tert-kicker"><span aria-hidden="true"></span> Avant le matériel</p>
+                <h2>Tout part de <em>la réalité du lieu.</em></h2>
+                <p class="tert-reading__intro">
+                    Deux surfaces identiques peuvent demander des réponses très différentes.
+                    Nous mettons les données du projet en regard avant de parler référence.
                 </p>
             </header>
 
-            <ol class="tert-reading__matrix">
+            <ol class="tert-reading__list">
                 <li>
-                    <span>01 / Programme</span>
-                    <strong>Usage</strong>
-                    <p>Fonction du lieu, horaires d’ouverture et niveau de confort attendu.</p>
-                    <small>Bureaux · commerce · activité</small>
+                    <span>01</span>
+                    <div><strong>Usage</strong><small>Fonction du lieu et horaires</small></div>
+                    <p>Occupation, activité et niveau de confort attendu structurent le besoin.</p>
                 </li>
                 <li>
-                    <span>02 / Enveloppe</span>
-                    <strong>Charges</strong>
-                    <p>Volumes, apports, déperditions et variations d’occupation.</p>
-                    <small>Puissance · saison · exposition</small>
+                    <span>02</span>
+                    <div><strong>Charges</strong><small>Volume et enveloppe</small></div>
+                    <p>Apports, déperditions et exposition orientent la puissance nécessaire.</p>
                 </li>
                 <li>
-                    <span>03 / Architecture</span>
-                    <strong>Implantation</strong>
-                    <p>Locaux techniques, distribution, accès et contraintes acoustiques.</p>
-                    <small>Place · réseau · voisinage</small>
+                    <span>03</span>
+                    <div><strong>Implantation</strong><small>Technique et acoustique</small></div>
+                    <p>Place disponible, réseaux, accès et voisinage encadrent l’intégration.</p>
                 </li>
                 <li>
-                    <span>04 / Exploitation</span>
-                    <strong>Pilotage</strong>
-                    <p>Zonage, régulation et simplicité d’usage pour les occupants.</p>
-                    <small>Zones · consignes · suivi</small>
+                    <span>04</span>
+                    <div><strong>Pilotage</strong><small>Zonage et régulation</small></div>
+                    <p>La solution doit rester simple à exploiter et adaptée aux rythmes réels.</p>
                 </li>
             </ol>
         </div>
     </section>
 
-    <section class="tert-architectures" id="architectures-tertiaires">
-        <div class="container tert-architectures__layout">
-            <header>
-                <div class="tert-section-index"><span>02</span> Les architectures</div>
-                <p class="tert-kicker"><span aria-hidden="true"></span> Une réponse selon le projet</p>
-                <h2>Pas une recette. <em>Une architecture adaptée.</em></h2>
+    <section class="tert-systems" id="architectures-tertiaires">
+        <div class="container">
+            <header class="tert-systems__heading">
+                <p class="tert-label tert-label--light"><span>02</span> Les architectures</p>
+                <div>
+                    <p class="tert-kicker tert-kicker--light"><span aria-hidden="true"></span> Choisir une logique de système</p>
+                    <h2>Une réponse technique, <em>jamais automatique.</em></h2>
+                </div>
                 <p>
-                    Nous comparons les familles d’équipements en fonction de la puissance,
-                    de la diffusion souhaitée et des contraintes propres au site.
+                    Nous comparons les familles d’équipements selon la puissance,
+                    la diffusion attendue et les contraintes propres au projet.
                 </p>
-                <a href="{{ route('contact') }}">Comparer les solutions <span aria-hidden="true">↗</span></a>
             </header>
 
-            <div class="tert-architectures__cards">
-                <article class="tert-architecture tert-architecture--lead">
-                    <div class="tert-architecture__meta"><span>01</span><small>Système direct</small></div>
-                    <div>
-                        <p>Toiture &amp; grand volume</p>
-                        <h3>Rooftop</h3>
-                    </div>
-                    <footer>
-                        <p>Une unité compacte pour traiter et diffuser l’air dans des volumes professionnels.</p>
-                        <span>Commerce · activité</span>
-                    </footer>
+            <div class="tert-systems__list">
+                <article>
+                    <span>01</span>
+                    <div><small>Toiture &amp; grand volume</small><h3>Rooftop</h3></div>
+                    <p>Une unité compacte pour traiter et diffuser l’air dans des volumes professionnels.</p>
+                    <strong>Commerce · activité</strong>
                 </article>
-
-                <article class="tert-architecture">
-                    <div class="tert-architecture__meta"><span>02</span><small>Zonage</small></div>
-                    <div>
-                        <p>Débit de réfrigérant variable</p>
-                        <h3>DRV / VRV</h3>
-                    </div>
-                    <footer>
-                        <p>Une réponse modulable pour gérer plusieurs espaces et rythmes d’occupation.</p>
-                        <span>Bureaux · hôtellerie</span>
-                    </footer>
+                <article>
+                    <span>02</span>
+                    <div><small>Modularité &amp; zonage</small><h3>DRV / VRV</h3></div>
+                    <p>Une réponse souple pour gérer plusieurs espaces et différents rythmes d’occupation.</p>
+                    <strong>Bureaux · hôtellerie</strong>
                 </article>
-
-                <article class="tert-architecture">
-                    <div class="tert-architecture__meta"><span>03</span><small>Réseau hydraulique</small></div>
-                    <div>
-                        <p>Production centralisée</p>
-                        <h3>Groupe d’eau glacée</h3>
-                    </div>
-                    <footer>
-                        <p>Une production d’eau tempérée à associer aux émetteurs et au schéma hydraulique du projet.</p>
-                        <span>Ensembles tertiaires</span>
-                    </footer>
+                <article>
+                    <span>03</span>
+                    <div><small>Production centralisée</small><h3>Groupe d’eau glacée</h3></div>
+                    <p>Une production à associer aux émetteurs et au schéma hydraulique du bâtiment.</p>
+                    <strong>Ensembles tertiaires</strong>
                 </article>
-
-                <article class="tert-architecture tert-architecture--accent">
-                    <div class="tert-architecture__meta"><span>04</span><small>Traitement d’air</small></div>
-                    <div>
-                        <p>Débits &amp; qualité d’air</p>
-                        <h3>CTA</h3>
-                    </div>
-                    <footer>
-                        <p>Une solution à configurer selon les besoins de renouvellement, filtration et confort.</p>
-                        <span>Débits · filtration</span>
-                    </footer>
+                <article>
+                    <span>04</span>
+                    <div><small>Débits &amp; qualité d’air</small><h3>CTA</h3></div>
+                    <p>Une configuration liée aux besoins de renouvellement, de filtration et de confort.</p>
+                    <strong>Traitement de l’air</strong>
                 </article>
             </div>
         </div>
     </section>
 
     <section class="tert-contexts">
-        <div class="container">
-            <header class="tert-contexts__heading">
-                <div class="tert-section-index"><span>03</span> Les contextes</div>
-                <div>
-                    <p class="tert-kicker"><span aria-hidden="true"></span> Même technique, réalités différentes</p>
-                    <h2>Chaque bâtiment impose <em>son propre rythme.</em></h2>
-                </div>
-            </header>
+        <div class="container tert-contexts__grid">
+            <div class="tert-contexts__statement">
+                <p class="tert-label"><span>03</span> Les usages</p>
+                <p class="tert-kicker"><span aria-hidden="true"></span> Le bâtiment est vivant</p>
+                <h2>Le système suit <em>le rythme des lieux.</em></h2>
+            </div>
 
-            <div class="tert-contexts__list">
-                <article>
-                    <span>01</span>
-                    <h3>Bureaux</h3>
-                    <p>Zonage, variation d’occupation et confort acoustique au quotidien.</p>
-                    <small>TRAVAILLER</small>
-                </article>
-                <article>
-                    <span>02</span>
-                    <h3>Commerces</h3>
-                    <p>Apports variables, amplitude horaire et traitement de grands volumes.</p>
-                    <small>ACCUEILLIR</small>
-                </article>
-                <article>
-                    <span>03</span>
-                    <h3>Hôtellerie</h3>
-                    <p>Confort individualisé, discrétion des équipements et disponibilité.</p>
-                    <small>RECEVOIR</small>
-                </article>
-                <article>
-                    <span>04</span>
-                    <h3>Locaux d’activité</h3>
-                    <p>Robustesse, accès technique et réponse adaptée au process du site.</p>
-                    <small>PRODUIRE</small>
-                </article>
+            <div class="tert-contexts__items">
+                <article><span>01</span><h3>Bureaux</h3><p>Confort acoustique et occupation variable.</p></article>
+                <article><span>02</span><h3>Commerces</h3><p>Amplitude horaire et apports changeants.</p></article>
+                <article><span>03</span><h3>Hôtellerie</h3><p>Discrétion et confort individualisé.</p></article>
+                <article><span>04</span><h3>Locaux d’activité</h3><p>Robustesse et contraintes de process.</p></article>
             </div>
         </div>
     </section>
@@ -230,22 +172,17 @@
     <section class="tert-support">
         <div class="container tert-support__grid">
             <div>
-                <div class="tert-section-index tert-section-index--light"><span>04</span> Notre accompagnement</div>
-                <p class="tert-kicker tert-kicker--light"><span aria-hidden="true"></span> Du schéma à la commande</p>
-                <h2>Un projet lisible. <em>Une sélection défendable.</em></h2>
+                <p class="tert-label"><span>04</span> Notre accompagnement</p>
+                <p class="tert-kicker"><span aria-hidden="true"></span> Du besoin à la commande</p>
+                <h2>Mettons le bâtiment <em>au centre du choix.</em></h2>
             </div>
 
-            <div class="tert-support__aside">
+            <div class="tert-support__action">
                 <p>
-                    Partagez les plans, les usages et les premières contraintes du projet.
-                    Nous vous aidons à identifier les familles de solutions et les références cohérentes.
+                    Partagez les plans, les usages et les premières contraintes.
+                    Notre équipe vous aide à identifier une architecture et des références cohérentes.
                 </p>
-                <a href="{{ route('contact') }}">Parler du bâtiment <span aria-hidden="true">↗</span></a>
-                <dl>
-                    <div><dt>01</dt><dd>Cadrer</dd></div>
-                    <div><dt>02</dt><dd>Comparer</dd></div>
-                    <div><dt>03</dt><dd>Approvisionner</dd></div>
-                </dl>
+                <a href="{{ route('contact') }}">Parler du projet <span aria-hidden="true">↗</span></a>
             </div>
         </div>
     </section>
