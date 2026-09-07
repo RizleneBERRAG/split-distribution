@@ -90,7 +90,8 @@
             'width' => 1535,
             'height' => 1024,
             'class' => 'solution-card--compact solution-card--accessoires',
-            'available' => false,
+            'route' => 'solutions.accessoires',
+            'available' => true,
         ],
     ];
 @endphp
