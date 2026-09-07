@@ -90,6 +90,9 @@ jobs:
           contact/index.html|/contact
           PAGES
 
+          find _site -type f -name '*.html' -exec \
+            sed -i 's#http://127.0.0.1:8000#https://rizleneberrag.github.io/split-distribution#g' {} +
+
           cp -R public/build _site/build
           cp -R public/images _site/images
           cp public/favicon.ico _site/favicon.ico
