@@ -101,7 +101,7 @@ jobs:
         run: |
           cp -a _site /tmp/split-pages
           git switch --orphan pages-deploy
-          git rm -rf .
+          git rm -rf . 2>/dev/null || true
           cp -a /tmp/split-pages/. .
           git add --all
           git config user.name github-actions[bot]
