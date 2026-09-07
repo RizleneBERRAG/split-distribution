@@ -77,7 +77,8 @@
             'width' => 992,
             'height' => 1504,
             'class' => 'solution-card--wide solution-card--energies',
-            'available' => false,
+            'route' => 'solutions.energies-renouvelables',
+            'available' => true,
         ],
         [
             'number' => '06',
