@@ -20,6 +20,7 @@ export default defineConfig({
                 'resources/css/pages/contact.css',
                 'resources/css/pages/services.css',
                 'resources/css/pages/entreprise.css',
+                'resources/css/pages/legal.css',
 
                 'resources/js/app.js',
             ],

@@ -88,6 +88,8 @@ jobs:
           services/index.html|/services
           entreprise/index.html|/entreprise
           contact/index.html|/contact
+          mentions-legales/index.html|/mentions-legales
+          confidentialite/index.html|/confidentialite
           PAGES
 
           find _site -type f -name '*.html' -exec \

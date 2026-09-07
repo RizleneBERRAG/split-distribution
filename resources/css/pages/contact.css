@@ -148,6 +148,9 @@
 }
 .contact-consent { display: flex; align-items: flex-start; gap: 11px; max-width: 465px; color: #667063; font-size: 9px; line-height: 1.55; cursor: pointer; }
 .contact-consent input { flex: 0 0 auto; width: 16px; height: 16px; margin: 0; accent-color: var(--color-green-dark); }
+.contact-consent a { color: inherit; text-decoration-color: var(--color-green-dark); text-underline-offset: 2px; }
+.contact-consent a:hover,
+.contact-consent a:focus-visible { color: var(--color-text); }
 .contact-submit {
     flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: space-between;
     gap: 42px; min-width: 218px; min-height: 55px; padding: 0 18px; border: 0;
