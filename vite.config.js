@@ -15,6 +15,7 @@ export default defineConfig({
                 'resources/css/pages/ventilation.css',
                 'resources/css/pages/tertiaire.css',
                 'resources/css/pages/energies-renouvelables.css',
+                'resources/css/pages/accessoires.css',
                 'resources/css/pages/contact.css',
                 'resources/css/pages/services.css',
                 'resources/css/pages/entreprise.css',
