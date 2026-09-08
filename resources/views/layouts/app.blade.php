@@ -64,6 +64,10 @@
         @yield('content')
     </main>
 
+    @unless (request()->routeIs('home', 'services'))
+        <x-cee-signature />
+    @endunless
+
     <x-site-footer />
 
     @stack('scripts')
