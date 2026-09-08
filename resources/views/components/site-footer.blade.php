@@ -92,13 +92,13 @@
         </span>
 
         <div>
-            <span>
+            <a href="{{ route('legal.mentions') }}">
                 Mentions légales
-            </span>
+            </a>
 
-            <span>
+            <a href="{{ route('legal.privacy') }}">
                 Confidentialité
-            </span>
+            </a>
         </div>
 
     </div>
