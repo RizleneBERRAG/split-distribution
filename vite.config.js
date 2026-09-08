@@ -7,6 +7,7 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/responsive.css',
 
                 'resources/css/pages/home.css',
                 'resources/css/pages/solutions.css',
@@ -14,9 +15,12 @@ export default defineConfig({
                 'resources/css/pages/pompes-a-chaleur.css',
                 'resources/css/pages/ventilation.css',
                 'resources/css/pages/tertiaire.css',
+                'resources/css/pages/energies-renouvelables.css',
+                'resources/css/pages/accessoires.css',
                 'resources/css/pages/contact.css',
                 'resources/css/pages/services.css',
                 'resources/css/pages/entreprise.css',
+                'resources/css/pages/legal.css',
 
                 'resources/js/app.js',
             ],

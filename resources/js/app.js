@@ -9,6 +9,11 @@ const mobileMenuButton =
 const mobileMenu =
     document.querySelector('#mobile-menu');
 
+let mobileMenuReturnFocus = null;
+
+const mobileMenuFocusable = () =>
+    mobileMenu?.querySelectorAll('a[href], button:not([disabled])') ?? [];
+
 const closeMobileMenu = () => {
 
     mobileMenu?.classList.remove('is-open');
@@ -17,16 +22,26 @@ const closeMobileMenu = () => {
     mobileMenuButton?.setAttribute('aria-expanded', 'false');
     mobileMenuButton?.setAttribute('aria-label', 'Ouvrir le menu');
 
+    document.body.classList.remove('menu-open');
+
 };
 
 
 const openMobileMenu = () => {
+
+    mobileMenuReturnFocus = document.activeElement;
 
     mobileMenu?.classList.add('is-open');
     mobileMenu?.setAttribute('aria-hidden', 'false');
 
     mobileMenuButton?.setAttribute('aria-expanded', 'true');
     mobileMenuButton?.setAttribute('aria-label', 'Fermer le menu');
+
+    document.body.classList.add('menu-open');
+
+    window.requestAnimationFrame(() => {
+        mobileMenuFocusable()[0]?.focus();
+    });
 
 };
 
@@ -81,17 +96,40 @@ mobileMenu?.querySelectorAll('a').forEach((link) => {
 
 document.addEventListener('keydown', (event) => {
 
+    const isMenuOpen = mobileMenu?.classList.contains('is-open');
+
+    if (!isMenuOpen) {
+        return;
+    }
+
+
+    if (event.key === 'Tab') {
+
+        const focusable = [mobileMenuButton, ...mobileMenuFocusable()]
+            .filter(Boolean);
+
+        const firstFocusable = focusable[0];
+        const lastFocusable = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === firstFocusable) {
+            event.preventDefault();
+            lastFocusable?.focus();
+        } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+            event.preventDefault();
+            firstFocusable?.focus();
+        }
+
+        return;
+    }
+
+
     if (event.key !== 'Escape') {
         return;
     }
 
-    const wasOpen = mobileMenu?.classList.contains('is-open');
-
     closeMobileMenu();
 
-    if (wasOpen) {
-        mobileMenuButton?.focus();
-    }
+    mobileMenuReturnFocus?.focus();
 
 });
 
@@ -102,6 +140,11 @@ window.addEventListener('resize', () => {
         closeMobileMenu();
     }
 
+});
+
+
+window.addEventListener('pageshow', () => {
+    closeMobileMenu();
 });
 
 

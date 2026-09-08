@@ -1,0 +1,115 @@
+name: Build temporary GitHub Pages preview
+
+on:
+  push:
+    branches:
+      - polish/responsive-all-devices
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: split-distribution-pages-preview
+  cancel-in-progress: true
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout responsive version
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, sqlite3
+          coverage: none
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install application dependencies
+        run: |
+          composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader
+          npm ci
+
+      - name: Configure preview application
+        run: |
+          cp .env.example .env
+          touch database/database.sqlite
+          php artisan key:generate
+          {
+            echo 'APP_ENV=production'
+            echo 'APP_DEBUG=false'
+            echo 'APP_URL=https://rizleneberrag.github.io/split-distribution'
+            echo 'ASSET_URL=https://rizleneberrag.github.io/split-distribution'
+            echo 'SESSION_DRIVER=array'
+            echo 'CACHE_STORE=array'
+            echo 'QUEUE_CONNECTION=sync'
+          } >> .env
+
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Export public pages
+        shell: bash
+        run: |
+          php artisan serve --host=127.0.0.1 --port=8000 > /tmp/split-preview.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:8000 > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+
+          mkdir -p _site
+
+          while IFS='|' read -r target route; do
+            mkdir -p "_site/$(dirname "$target")"
+            curl --fail --show-error --silent "http://127.0.0.1:8000$route" --output "_site/$target"
+          done <<'PAGES'
+          index.html|/
+          solutions/index.html|/solutions
+          solutions/climatisation/index.html|/solutions/climatisation
+          solutions/pompes-a-chaleur/index.html|/solutions/pompes-a-chaleur
+          solutions/ventilation/index.html|/solutions/ventilation
+          solutions/tertiaire/index.html|/solutions/tertiaire
+          solutions/energies-renouvelables/index.html|/solutions/energies-renouvelables
+          solutions/accessoires/index.html|/solutions/accessoires
+          services/index.html|/services
+          entreprise/index.html|/entreprise
+          contact/index.html|/contact
+          mentions-legales/index.html|/mentions-legales
+          confidentialite/index.html|/confidentialite
+          PAGES
+
+          find _site -type f -name '*.html' -exec \
+            sed -i 's#http://127.0.0.1:8000#https://rizleneberrag.github.io/split-distribution#g' {} +
+
+          cp -R public/build _site/build
+          cp -R public/images _site/images
+          cp public/favicon.ico _site/favicon.ico
+          cp public/robots.txt _site/robots.txt
+          touch _site/.nojekyll
+
+      - name: Publish gh-pages branch
+        shell: bash
+        run: |
+          cp -a _site /tmp/split-pages
+          git switch --orphan pages-deploy
+          git rm -rf . 2>/dev/null || true
+          cp -a /tmp/split-pages/. .
+          git add --all
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git commit -m "Publish temporary responsive preview"
+          git push --force origin HEAD:gh-pages

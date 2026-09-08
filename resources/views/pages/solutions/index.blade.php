@@ -77,7 +77,8 @@
             'width' => 992,
             'height' => 1504,
             'class' => 'solution-card--wide solution-card--energies',
-            'available' => false,
+            'route' => 'solutions.energies-renouvelables',
+            'available' => true,
         ],
         [
             'number' => '06',
@@ -89,7 +90,8 @@
             'width' => 1535,
             'height' => 1024,
             'class' => 'solution-card--compact solution-card--accessoires',
-            'available' => false,
+            'route' => 'solutions.accessoires',
+            'available' => true,
         ],
     ];
 @endphp
