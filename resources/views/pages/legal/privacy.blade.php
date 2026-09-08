@@ -50,8 +50,8 @@
                     <span>01</span>
                     <div>
                         <h2>Responsable du traitement</h2>
-                        <p><strong>Split Distribution</strong><br>50 rue Jean Zay<br>69800 Saint-Priest<br>Téléphone : <a href="tel:+33472230140">04 72 23 01 40</a></p>
-                        <p>Pour toute question relative à vos données, utilisez le <a href="{{ route('contact') }}">formulaire de contact</a>.</p>
+                        <p><strong>SPLIT DISTRIBUTION</strong><br>Bâtiment E, Veellage de Parilly<br>50 rue Jean Zay<br>69800 Saint-Priest – France<br>Téléphone : <a href="tel:+33472230140">04 72 23 01 40</a></p>
+                        <p>Pour toute question relative à vos données ou pour exercer vos droits, écrivez à <a href="mailto:contact@split-distribution.fr">contact@split-distribution.fr</a> ou utilisez le <a href="{{ route('contact') }}">formulaire de contact</a>.</p>
                     </div>
                 </article>
 
@@ -60,6 +60,7 @@
                     <div>
                         <h2>Données collectées</h2>
                         <p>Lorsque vous utilisez le formulaire, nous recevons votre nom et prénom, le nom de votre entreprise, votre adresse e-mail, votre numéro de téléphone si vous le renseignez, le type de demande sélectionné et le contenu de votre message.</p>
+                        <p>Les champs signalés par un astérisque sont obligatoires. Sans ces informations, Split Distribution ne pourra pas transmettre ni traiter votre demande. Le numéro de téléphone est facultatif.</p>
                     </div>
                 </article>
 
@@ -84,8 +85,7 @@
                     <span>05</span>
                     <div>
                         <h2>Durée de conservation</h2>
-                        <p>Les demandes sont conservées pendant le temps nécessaire à leur traitement et au suivi de la relation professionnelle, puis supprimées ou archivées conformément aux obligations applicables.</p>
-                        <div class="legal-pending">La durée précise de conservation doit être validée avec l’organisation interne avant la mise en production.</div>
+                        <p>Les demandes qui ne donnent pas lieu à une relation contractuelle sont conservées pendant trois ans au maximum à compter du dernier échange avec la personne concernée. Lorsqu’une relation contractuelle est engagée, les données utiles sont conservées pendant la durée de cette relation, puis archivées pendant les durées nécessaires au respect des obligations légales et à la défense des droits de Split Distribution.</p>
                     </div>
                 </article>
 
@@ -93,7 +93,7 @@
                     <span>06</span>
                     <div>
                         <h2>Vos droits</h2>
-                        <p>Vous pouvez demander l’accès à vos données, leur rectification, leur effacement, la limitation du traitement ou vous opposer à celui-ci lorsque la loi le permet. Vous pouvez exercer ces droits via notre <a href="{{ route('contact') }}">page de contact</a>.</p>
+                        <p>Vous pouvez demander l’accès à vos données, leur rectification, leur effacement, la limitation du traitement ou vous opposer à celui-ci lorsque la loi le permet. Vous pouvez exercer ces droits en écrivant à <a href="mailto:contact@split-distribution.fr">contact@split-distribution.fr</a> ou via notre <a href="{{ route('contact') }}">page de contact</a>.</p>
                         <p>Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>
                     </div>
                 </article>
