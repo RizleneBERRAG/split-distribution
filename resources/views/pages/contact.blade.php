@@ -75,10 +75,19 @@
 
             <div class="contact-main__layout">
                 <div class="contact-form-panel">
+                    @php($staticContactAction = config('contact.static_action'))
+
                     @if (session('status'))
                         <div class="contact-alert contact-alert--success" role="status">
                             <span aria-hidden="true">✓</span>
                             {{ session('status') }}
+                        </div>
+                    @endif
+
+                    @if ($staticContactAction)
+                        <div class="contact-alert contact-alert--success" role="status" data-static-contact-success hidden>
+                            <span aria-hidden="true">✓</span>
+                            Votre demande a bien été envoyée. Notre équipe reviendra vers vous rapidement.
                         </div>
                     @endif
 
@@ -88,12 +97,25 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('contact.submit') }}" class="contact-form">
-                        @csrf
+                    <form method="POST" action="{{ $staticContactAction ?: route('contact.submit') }}" class="contact-form">
+                        @if ($staticContactAction)
+                            <input type="hidden" name="_subject" value="Nouvelle demande depuis split-distribution.fr">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_next" value="{{ route('contact') }}?sent=1#formulaire">
+                            <input type="hidden" name="_url" value="{{ route('contact') }}">
+                        @else
+                            @csrf
+                        @endif
 
                         <div class="contact-honeypot" aria-hidden="true">
                             <label for="website">Site internet</label>
-                            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+                            <input
+                                id="website"
+                                name="{{ $staticContactAction ? '_honey' : 'website' }}"
+                                type="text"
+                                tabindex="-1"
+                                autocomplete="off"
+                            >
                         </div>
 
                         <fieldset class="contact-topics">

@@ -2,5 +2,7 @@
 
 return [
     'recipient' => env('CONTACT_EMAIL')
-        ?: env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+        ?: 'contact@split-distribution.fr',
+
+    'static_action' => env('CONTACT_FORM_ACTION'),
 ];

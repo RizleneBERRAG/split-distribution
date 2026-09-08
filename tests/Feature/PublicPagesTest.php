@@ -107,6 +107,22 @@ it('sends a valid contact request', function () {
     );
 });
 
+it('uses the Split Distribution mailbox by default', function () {
+    expect(config('contact.recipient'))->toBe('contact@split-distribution.fr');
+});
+
+it('renders a static-compatible contact form when an external action is configured', function () {
+    $this->withoutVite();
+    config(['contact.static_action' => 'https://formsubmit.co/contact@split-distribution.fr']);
+
+    $this->get(route('contact'))
+        ->assertOk()
+        ->assertSee('https://formsubmit.co/contact@split-distribution.fr')
+        ->assertSee('name="_honey"', false)
+        ->assertSee('name="_next"', false)
+        ->assertDontSee('name="_token"', false);
+});
+
 it('rejects contact form bots using the honeypot', function () {
     Mail::fake();
 

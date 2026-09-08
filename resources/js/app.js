@@ -148,6 +148,17 @@ window.addEventListener('pageshow', () => {
 });
 
 
+const staticContactSuccess =
+    document.querySelector('[data-static-contact-success]');
+
+if (
+    staticContactSuccess &&
+    new URLSearchParams(window.location.search).get('sent') === '1'
+) {
+    staticContactSuccess.hidden = false;
+}
+
+
 if (
     document.body.classList.contains('page-home')
 ) {

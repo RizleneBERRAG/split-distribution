@@ -76,6 +76,7 @@
                     <div>
                         <h2>Destinataires</h2>
                         <p>Les données sont accessibles aux membres habilités de Split Distribution ainsi qu’aux prestataires techniques strictement nécessaires à l’acheminement et à l’hébergement des messages. Elles ne sont ni vendues ni utilisées pour envoyer une newsletter sans démarche distincte.</p>
+                        <p>Sur l’aperçu temporaire hébergé par GitHub Pages, les demandes sont relayées par <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a>. Ce relais sera retiré lorsque le formulaire sera exploité directement par l’hébergement Laravel définitif.</p>
                     </div>
                 </article>
 

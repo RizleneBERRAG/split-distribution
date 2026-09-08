@@ -3,7 +3,7 @@ name: Build temporary GitHub Pages preview
 on:
   push:
     branches:
-      - polish/responsive-all-devices
+      - main
   workflow_dispatch:
 
 permissions:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout responsive version
+      - name: Checkout published version
         uses: actions/checkout@v4
 
       - name: Setup PHP
@@ -52,6 +52,8 @@ jobs:
             echo 'SESSION_DRIVER=array'
             echo 'CACHE_STORE=array'
             echo 'QUEUE_CONNECTION=sync'
+            echo 'CONTACT_EMAIL=contact@split-distribution.fr'
+            echo 'CONTACT_FORM_ACTION=https://formsubmit.co/contact@split-distribution.fr'
           } >> .env
 
       - name: Build frontend assets
