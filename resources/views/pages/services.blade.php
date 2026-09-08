@@ -227,23 +227,11 @@
 
     <section class="services-cee" aria-labelledby="services-cee-title">
         <div class="container services-cee__inner">
-            <div class="services-cee__visual">
-                <span>Dispositif national</span>
-                <img
-                    src="{{ asset('images/brand/cee-certificates.png') }}"
-                    alt="Certificats d’économies d’énergie — CEE"
-                    width="738"
-                    height="240"
-                    loading="lazy"
-                >
-                <strong aria-hidden="true">CEE</strong>
-            </div>
-
             <div class="services-cee__copy">
                 <p class="services-kicker"><span aria-hidden="true"></span> Économies d’énergie</p>
                 <h2 id="services-cee-title">
-                    Anticiper les CEE,
-                    <em>sans alourdir le projet.</em>
+                    Anticiper les CEE.
+                    <em>Simplifier la suite.</em>
                 </h2>
                 <p>
                     Une opération peut répondre aux critères du dispositif CEE.
@@ -256,6 +244,22 @@
                 <a href="{{ route('contact') }}">
                     Échanger sur mon projet <span aria-hidden="true">↗</span>
                 </a>
+            </div>
+
+            <div class="services-cee__visual">
+                <span>Un dispositif à étudier en amont</span>
+                <img
+                    src="{{ asset('images/brand/cee-certificates.png') }}"
+                    alt="Certificats d’économies d’énergie — CEE"
+                    width="738"
+                    height="240"
+                    loading="lazy"
+                >
+                <div class="services-cee__facts" aria-label="Les étapes de l’accompagnement CEE">
+                    <span><b>01</b> Repérer</span>
+                    <span><b>02</b> Vérifier</span>
+                    <span><b>03</b> Préparer</span>
+                </div>
             </div>
         </div>
     </section>
