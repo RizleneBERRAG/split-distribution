@@ -234,11 +234,10 @@
                             <label class="contact-consent">
                                 <input type="checkbox" name="privacy" value="1" @checked(old('privacy')) required>
                                 <span>
-                                    J’ai lu la
+                                    J’ai pris connaissance de la
                                     <a href="{{ route('legal.privacy') }}" target="_blank" rel="noopener">
                                         politique de confidentialité
-                                    </a>
-                                    et j’accepte l’utilisation de mes informations pour répondre à ma demande. *
+                                    </a>. *
                                 </span>
                             </label>
 
