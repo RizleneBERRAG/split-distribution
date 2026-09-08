@@ -40,8 +40,8 @@
     <section class="legal-content">
         <div class="container legal-content__layout">
             <aside class="legal-summary">
-                <p>À compléter avant la mise en production</p>
-                <strong>Identité juridique, directeur de publication et hébergeur définitif.</strong>
+                <p>Informations de l’éditeur</p>
+                <strong>L’identité juridique de Split Distribution et le cadre d’utilisation du site.</strong>
                 <a href="{{ route('contact') }}">Contacter Split Distribution <span aria-hidden="true">↗</span></a>
             </aside>
 
@@ -50,12 +50,9 @@
                     <span>01</span>
                     <div>
                         <h2>Éditeur du site</h2>
-                        <p><strong>Split Distribution</strong><br>50 rue Jean Zay<br>69800 Saint-Priest<br>France</p>
-                        <p>Téléphone : <a href="tel:+33472230140">04 72 23 01 40</a><br>Contact : <a href="{{ route('contact') }}">formulaire de contact</a></p>
-                        <div class="legal-pending">
-                            À renseigner : dénomination sociale complète, forme juridique, capital social,
-                            numéro SIREN/SIRET, RCS et numéro de TVA intracommunautaire.
-                        </div>
+                        <p><strong>SPLIT DISTRIBUTION</strong><br>Société par actions simplifiée (SAS) au capital social de 130 000 €<br>Bâtiment E, Veellage de Parilly<br>50 rue Jean Zay<br>69800 Saint-Priest – France</p>
+                        <p>SIREN : 824 080 782<br>SIRET du siège : 824 080 782 00066<br>Immatriculée au RCS de Lyon sous le numéro 824 080 782<br>Numéro de TVA intracommunautaire : FR60 824080782</p>
+                        <p>Téléphone : <a href="tel:+33472230140">04 72 23 01 40</a><br>Adresse électronique : <a href="mailto:contact@split-distribution.fr">contact@split-distribution.fr</a></p>
                     </div>
                 </article>
 
@@ -63,7 +60,7 @@
                     <span>02</span>
                     <div>
                         <h2>Direction de la publication</h2>
-                        <p>Le nom du directeur ou de la directrice de la publication doit être renseigné avant la mise en production du site.</p>
+                        <p>Le directeur de la publication est <strong>Hicham Tahri</strong>, en sa qualité de président de SPLIT DISTRIBUTION.</p>
                     </div>
                 </article>
 
@@ -71,7 +68,8 @@
                     <span>03</span>
                     <div>
                         <h2>Hébergement</h2>
-                        <p>Les coordonnées de l’hébergeur définitif — nom, raison sociale, adresse et numéro de téléphone — seront indiquées après le choix de l’infrastructure de production.</p>
+                        <p>Les coordonnées de l’hébergeur définitif — nom ou dénomination sociale, adresse et numéro de téléphone — seront publiées dès que l’infrastructure de production aura été arrêtée.</p>
+                        <div class="legal-pending">Information en attente du choix de l’hébergement définitif.</div>
                     </div>
                 </article>
 
