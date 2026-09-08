@@ -249,6 +249,42 @@
 
 
     {{-- =========================================================
+        CEE
+    ========================================================== --}}
+
+    <section class="home-cee" aria-labelledby="home-cee-title">
+        <div class="container home-cee__inner">
+            <div class="home-cee__mark">
+                <img
+                    src="{{ asset('images/brand/cee-certificates.png') }}"
+                    alt="Certificats d’économies d’énergie — CEE"
+                    width="738"
+                    height="240"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="home-cee__copy">
+                <span>Un dispositif à intégrer au bon moment</span>
+                <h2 id="home-cee-title">
+                    Les économies d’énergie font aussi partie de l’étude.
+                </h2>
+                <p>
+                    Selon la nature des travaux et l’éligibilité de l’opération,
+                    notre équipe vous aide à prendre en compte le dispositif CEE
+                    dès la préparation du projet.
+                </p>
+            </div>
+
+            <a class="home-cee__link" href="{{ route('contact') }}">
+                Parler de mon opération <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </section>
+
+
+
+    {{-- =========================================================
         INTRO
     ========================================================== --}}
 

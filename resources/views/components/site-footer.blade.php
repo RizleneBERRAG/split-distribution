@@ -22,6 +22,17 @@
                 de la ventilation et des énergies.
             </p>
 
+            <div class="site-footer__cee">
+                <img
+                    src="{{ asset('images/brand/cee-certificates.png') }}"
+                    alt="Certificats d’économies d’énergie — CEE"
+                    width="738"
+                    height="240"
+                    loading="lazy"
+                >
+                <span>Accompagnement selon l’éligibilité de l’opération.</span>
+            </div>
+
         </div>
 
 

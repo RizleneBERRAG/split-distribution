@@ -225,6 +225,41 @@
         </div>
     </section>
 
+    <section class="services-cee" aria-labelledby="services-cee-title">
+        <div class="container services-cee__inner">
+            <div class="services-cee__visual">
+                <span>Dispositif national</span>
+                <img
+                    src="{{ asset('images/brand/cee-certificates.png') }}"
+                    alt="Certificats d’économies d’énergie — CEE"
+                    width="738"
+                    height="240"
+                    loading="lazy"
+                >
+                <strong aria-hidden="true">CEE</strong>
+            </div>
+
+            <div class="services-cee__copy">
+                <p class="services-kicker"><span aria-hidden="true"></span> Économies d’énergie</p>
+                <h2 id="services-cee-title">
+                    Anticiper les CEE,
+                    <em>sans alourdir le projet.</em>
+                </h2>
+                <p>
+                    Une opération peut répondre aux critères du dispositif CEE.
+                    Nous intégrons cette question en amont pour garder une sélection
+                    technique cohérente et réunir les informations utiles au bon moment.
+                </p>
+                <small>
+                    L’éligibilité et le montant éventuel dépendent de chaque opération.
+                </small>
+                <a href="{{ route('contact') }}">
+                    Échanger sur mon projet <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="services-cta">
         <div class="container services-cta__inner">
             <div>

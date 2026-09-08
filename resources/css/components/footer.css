@@ -34,6 +34,29 @@
     color: rgba(255, 255, 255, 0.45);
 }
 
+.site-footer__cee {
+    width: min(250px, 100%);
+    margin-top: 27px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, .09);
+}
+
+.site-footer__cee img {
+    display: block;
+    width: 195px;
+    height: auto;
+    padding: 6px 9px;
+    background: #fff;
+}
+
+.site-footer__cee span {
+    display: block;
+    margin-top: 9px;
+    color: rgba(255, 255, 255, .36);
+    font-size: 9px;
+    line-height: 1.5;
+}
+
 
 .site-footer__logo {
     display: flex;
