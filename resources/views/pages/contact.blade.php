@@ -211,7 +211,13 @@
                         <div class="contact-form__footer">
                             <label class="contact-consent">
                                 <input type="checkbox" name="privacy" value="1" @checked(old('privacy')) required>
-                                <span>J’accepte l’utilisation de mes informations pour répondre à ma demande. *</span>
+                                <span>
+                                    J’ai lu la
+                                    <a href="{{ route('legal.privacy') }}" target="_blank" rel="noopener">
+                                        politique de confidentialité
+                                    </a>
+                                    et j’accepte l’utilisation de mes informations pour répondre à ma demande. *
+                                </span>
                             </label>
 
                             <button type="submit" class="contact-submit">

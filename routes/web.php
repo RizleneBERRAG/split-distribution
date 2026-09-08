@@ -30,6 +30,10 @@ Route::prefix('solutions')->name('solutions.')->group(function () {
 Route::view('/marques', 'pages.marques')->name('marques');
 Route::view('/services', 'pages.services')->name('services');
 Route::view('/entreprise', 'pages.entreprise')->name('entreprise');
+
+Route::view('/mentions-legales', 'pages.legal.mentions')->name('legal.mentions');
+Route::view('/confidentialite', 'pages.legal.privacy')->name('legal.privacy');
+
 Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])
     ->middleware('throttle:5,1')

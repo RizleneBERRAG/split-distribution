@@ -107,26 +107,37 @@
         aria-label="Navigation mobile"
         aria-hidden="true"
     >
+        <div class="mobile-menu__inner">
+            <div class="mobile-menu__links">
+                <a href="{{ route('home') }}" @class(['is-active' => request()->routeIs('home')])>
+                    <span>01</span> Accueil
+                </a>
 
-        <a href="{{ route('home') }}">
-            Accueil
-        </a>
+                <a href="{{ route('solutions.index') }}" @class(['is-active' => request()->routeIs('solutions.*')])>
+                    <span>02</span> Solutions
+                </a>
 
-        <a href="{{ route('solutions.index') }}">
-            Solutions
-        </a>
+                <a href="{{ route('services') }}" @class(['is-active' => request()->routeIs('services')])>
+                    <span>03</span> Services
+                </a>
 
-        <a href="{{ route('services') }}">
-            Services
-        </a>
+                <a href="{{ route('entreprise') }}" @class(['is-active' => request()->routeIs('entreprise')])>
+                    <span>04</span> L'entreprise
+                </a>
+            </div>
 
-        <a href="{{ route('entreprise') }}">
-            L'entreprise
-        </a>
+            <div class="mobile-menu__contact">
+                <p>Un projet à préparer ?</p>
 
-        <a href="{{ route('contact') }}">
-            Contact
-        </a>
+                <a href="tel:+33472230140" class="mobile-menu__phone">
+                    04 72 23 01 40
+                </a>
+
+                <a href="{{ route('contact') }}" class="mobile-menu__cta">
+                    Nous contacter <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
 
     </nav>
 
