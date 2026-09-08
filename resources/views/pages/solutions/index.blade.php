@@ -64,7 +64,8 @@
             'width' => 638,
             'height' => 480,
             'class' => 'solution-card--wide solution-card--tertiaire',
-            'available' => false,
+            'route' => 'solutions.tertiaire',
+            'available' => true,
         ],
         [
             'number' => '05',
@@ -76,7 +77,8 @@
             'width' => 992,
             'height' => 1504,
             'class' => 'solution-card--wide solution-card--energies',
-            'available' => false,
+            'route' => 'solutions.energies-renouvelables',
+            'available' => true,
         ],
         [
             'number' => '06',
@@ -88,7 +90,8 @@
             'width' => 1535,
             'height' => 1024,
             'class' => 'solution-card--compact solution-card--accessoires',
-            'available' => false,
+            'route' => 'solutions.accessoires',
+            'available' => true,
         ],
     ];
 @endphp

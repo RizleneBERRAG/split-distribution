@@ -31,6 +31,16 @@ dataset('completed public pages', [
         'pages.entreprise',
         'La technique compte.',
     ],
+    'mentions légales' => [
+        '/mentions-legales',
+        'pages.legal.mentions',
+        'Mentions légales',
+    ],
+    'confidentialité' => [
+        '/confidentialite',
+        'pages.legal.privacy',
+        'Des données protégées.',
+    ],
 ]);
 
 it('renders a completed public page', function (
@@ -72,6 +82,7 @@ it('validates contact requests', function () {
 
 it('sends a valid contact request', function () {
     Mail::fake();
+    config(['contact.recipient' => 'contact@split.test']);
 
     $contact = [
         'name' => 'Camille Martin',
@@ -91,6 +102,33 @@ it('sends a valid contact request', function () {
     Mail::assertSent(
         ContactRequestMail::class,
         fn (ContactRequestMail $mail) => $mail->contact['email'] === $contact['email']
-            && $mail->contact['subject'] === $contact['subject'],
+            && $mail->contact['subject'] === $contact['subject']
+            && $mail->hasTo('contact@split.test'),
     );
+});
+
+it('rejects contact form bots using the honeypot', function () {
+    Mail::fake();
+
+    $this->post(route('contact.submit'), [
+        'name' => 'Robot Test',
+        'company' => 'Spam Company',
+        'email' => 'robot@example.com',
+        'subject' => 'project',
+        'message' => 'Cette demande automatique remplit volontairement le champ invisible.',
+        'privacy' => '1',
+        'website' => 'https://spam.example.com',
+    ])->assertSessionHasErrors('website');
+
+    Mail::assertNothingSent();
+});
+
+it('links legal information from the footer and contact form', function () {
+    $this->withoutVite();
+
+    $this->get(route('contact'))
+        ->assertOk()
+        ->assertSee(route('legal.mentions'))
+        ->assertSee(route('legal.privacy'))
+        ->assertSeeText('politique de confidentialité');
 });
