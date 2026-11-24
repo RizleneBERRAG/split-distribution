@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('title', 'Nos solutions | Split Distribution')
 
 @section(
@@ -7,11 +8,8 @@
     'Découvrez les solutions Split Distribution : climatisation, pompes à chaleur, ventilation, tertiaire, énergies et accessoires professionnels.'
 )
 
-@push('styles')
-    @vite('resources/css/pages/solutions.css')
-@endpush
-
 @section('body-class', 'page-solutions')
+
 
 @php
     $solutions = [
@@ -24,7 +22,6 @@
             'alt' => 'Unité intérieure de climatisation',
             'width' => 832,
             'height' => 1248,
-            'class' => 'solution-card--wide solution-card--climatisation',
             'route' => 'solutions.climatisation',
             'available' => true,
         ],
@@ -37,7 +34,6 @@
             'alt' => 'Unités extérieures de pompes à chaleur',
             'width' => 735,
             'height' => 495,
-            'class' => 'solution-card--compact solution-card--pac',
             'route' => 'solutions.pompes-a-chaleur',
             'available' => true,
         ],
@@ -50,7 +46,6 @@
             'alt' => 'Installation de ventilation dans des bureaux',
             'width' => 735,
             'height' => 554,
-            'class' => 'solution-card--compact solution-card--ventilation',
             'route' => 'solutions.ventilation',
             'available' => true,
         ],
@@ -63,7 +58,6 @@
             'alt' => 'Local technique d’une installation CVC tertiaire',
             'width' => 638,
             'height' => 480,
-            'class' => 'solution-card--wide solution-card--tertiaire',
             'route' => 'solutions.tertiaire',
             'available' => true,
         ],
@@ -76,7 +70,6 @@
             'alt' => 'Panneaux solaires produisant une énergie renouvelable',
             'width' => 992,
             'height' => 1504,
-            'class' => 'solution-card--wide solution-card--energies',
             'route' => 'solutions.energies-renouvelables',
             'available' => true,
         ],
@@ -89,225 +82,236 @@
             'alt' => 'Accessoires et composants pour installations CVC',
             'width' => 1535,
             'height' => 1024,
-            'class' => 'solution-card--compact solution-card--accessoires',
             'route' => 'solutions.accessoires',
             'available' => true,
         ],
     ];
 @endphp
 
+
 @section('content')
 
-    <section class="solutions-hero">
-        <div class="container solutions-hero__container">
+    {{-- =========================================================
+        EN-TÊTE
+    ========================================================== --}}
 
-            <div class="solutions-hero__eyebrow">
-                <span></span>
-                L’expertise Split Distribution
-            </div>
+    <section class="ax-page-hero ax-page-hero--text" aria-labelledby="page-title">
 
-            <div class="solutions-hero__grid">
-                <div class="solutions-hero__heading">
-                    <span class="solutions-hero__index">01 — Solutions</span>
+        <canvas class="ax-flow" aria-hidden="true"></canvas>
+        <div class="ax-page-hero__glow" aria-hidden="true"></div>
 
-                    <h1>
-                        Des solutions pensées
-                        <span>pour chaque projet.</span>
-                    </h1>
-                </div>
+        <div class="ax-container ax-page-hero__grid">
 
-                <div class="solutions-hero__aside">
-                    <p>
-                        Du résidentiel au tertiaire, nous sélectionnons
-                        les équipements CVC et énergétiques adaptés aux
-                        réalités techniques de chaque installation.
-                    </p>
+            <div>
+                <nav class="ax-crumbs" aria-label="Fil d’Ariane">
+                    <a href="{{ route('home') }}">Accueil</a>
+                    <span aria-hidden="true">/</span>
+                    <span aria-current="page">Solutions</span>
+                </nav>
 
-                    <div class="solutions-hero__figures">
-                        <div>
-                            <strong>06</strong>
-                            <span>familles de solutions</span>
-                        </div>
+                <p class="ax-eyebrow">
+                    <span class="ax-eyebrow__dot" aria-hidden="true"></span>
+                    L’expertise Split Distribution
+                </p>
 
-                        <div>
-                            <strong>01</strong>
-                            <span>équipe à vos côtés</span>
-                        </div>
-                    </div>
+                <h1 class="ax-page-hero__title" id="page-title">
+                    Des solutions pensées
+                    <span>pour chaque projet.</span>
+                </h1>
 
-                    <a href="#expertises" class="solutions-hero__scroll">
-                        Découvrir les expertises
+                <p class="ax-page-hero__lead">
+                    Du résidentiel au tertiaire, nous sélectionnons
+                    les équipements CVC et énergétiques adaptés aux
+                    réalités techniques de chaque installation.
+                </p>
+
+                <div class="ax-page-hero__actions">
+                    <a class="ax-btn ax-btn--green" href="#expertises">
+                        <span>Découvrir les expertises</span>
                         <span aria-hidden="true">↓</span>
                     </a>
-                </div>
-            </div>
 
-        </div>
-    </section>
-
-    <section class="solutions-summary" aria-label="Nos engagements">
-        <div class="container solutions-summary__container">
-            <div class="solutions-summary__item">
-                <span>01</span>
-                <p>Une sélection professionnelle et cohérente</p>
-            </div>
-
-            <div class="solutions-summary__item">
-                <span>02</span>
-                <p>Des équipements disponibles et suivis</p>
-            </div>
-
-            <div class="solutions-summary__item">
-                <span>03</span>
-                <p>Un conseil technique avant et après le chantier</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="solutions-overview" id="expertises">
-        <div class="container">
-
-            <header class="solutions-section-heading">
-                <div class="solutions-section-heading__index">
-                    <span>02</span>
-                    Nos expertises
+                    <a class="ax-btn ax-btn--ghost" href="{{ route('contact') }}">
+                        <span>Parler à notre équipe</span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
                 </div>
 
+                <ul class="ax-chips" aria-label="Nos engagements">
+                    <li><span>01</span> Une sélection professionnelle et cohérente</li>
+                    <li><span>02</span> Des équipements disponibles et suivis</li>
+                    <li><span>03</span> Un conseil technique avant et après le chantier</li>
+                </ul>
+            </div>
+
+            <dl class="ax-figures">
                 <div>
-                    <h2>
+                    <dt>familles de solutions</dt>
+                    <dd>06</dd>
+                </div>
+                <div>
+                    <dt>équipe à vos côtés</dt>
+                    <dd>01</dd>
+                </div>
+            </dl>
+
+        </div>
+
+    </section>
+
+
+
+    {{-- =========================================================
+        01. NOS EXPERTISES
+    ========================================================== --}}
+
+    <section class="ax-section ax-section--light ax-section--lift" id="expertises" aria-labelledby="expertises-title">
+        <div class="ax-container">
+
+            <div class="ax-head">
+                <div>
+                    <p class="ax-kicker">01 — Nos expertises</p>
+                    <h2 id="expertises-title">
                         Une gamme complète.
                         <span>Une lecture simple.</span>
                     </h2>
-
-                    <p>
-                        Retrouvez l’essentiel de nos métiers et identifiez
-                        rapidement la solution adaptée à votre projet.
-                    </p>
                 </div>
-            </header>
 
-            <div class="solutions-grid">
+                <p>
+                    Retrouvez l’essentiel de nos métiers et identifiez
+                    rapidement la solution adaptée à votre projet.
+                </p>
+            </div>
+
+            <div class="ax-tiles ax-tiles--3">
                 @foreach ($solutions as $solution)
-                    <article class="solution-card {{ $solution['class'] }}">
+                    @if ($solution['available'])
+                        <a
+                            class="ax-tile ax-tile--photo"
+                            href="{{ route($solution['route']) }}"
+                            aria-label="Découvrir la solution {{ $solution['name'] }}"
+                        >
+                    @else
+                        <div
+                            class="ax-tile ax-tile--photo"
+                            aria-label="Page {{ $solution['name'] }} prochainement disponible"
+                        >
+                    @endif
+
+                        <img
+                            src="{{ asset($solution['image']) }}"
+                            alt="{{ $solution['alt'] }}"
+                            width="{{ $solution['width'] }}"
+                            height="{{ $solution['height'] }}"
+                            loading="lazy"
+                            decoding="async"
+                        >
 
                         @if ($solution['available'])
-                            <a
-                                href="{{ route($solution['route']) }}"
-                                class="solution-card__link"
-                                aria-label="Découvrir la solution {{ $solution['name'] }}"
-                            >
-                        @else
-                            <div
-                                class="solution-card__link solution-card__link--pending"
-                                aria-label="Page {{ $solution['name'] }} prochainement disponible"
-                            >
+                            <span class="ax-tile__arrow" aria-hidden="true">↗</span>
                         @endif
 
-                            <img
-                                src="{{ asset($solution['image']) }}"
-                                alt="{{ $solution['alt'] }}"
-                                width="{{ $solution['width'] }}"
-                                height="{{ $solution['height'] }}"
-                                loading="lazy"
-                                decoding="async"
-                            >
+                        <span class="ax-tile__number" aria-hidden="true">{{ $solution['number'] }}</span>
 
-                            <div class="solution-card__veil"></div>
+                        <div>
+                            <p class="ax-tile__type">
+                                {{ $solution['eyebrow'] }}
+                                @unless ($solution['available'])
+                                    · Page prochainement
+                                @endunless
+                            </p>
+                            <h3>{{ $solution['name'] }}</h3>
+                            <p>{{ $solution['description'] }}</p>
+                        </div>
 
-                            <div class="solution-card__topline">
-                                <span class="solution-card__number">
-                                    {{ $solution['number'] }}
-                                </span>
-
-                                <span class="solution-card__status">
-                                    {{ $solution['available'] ? 'Découvrir' : 'Page prochainement' }}
-                                </span>
-                            </div>
-
-                            <div class="solution-card__content">
-                                <span class="solution-card__eyebrow">
-                                    {{ $solution['eyebrow'] }}
-                                </span>
-
-                                <div class="solution-card__title-row">
-                                    <h3>{{ $solution['name'] }}</h3>
-
-                                    @if ($solution['available'])
-                                        <span class="solution-card__arrow" aria-hidden="true">
-                                            ↗
-                                        </span>
-                                    @endif
-                                </div>
-
-                                <p>{{ $solution['description'] }}</p>
-                            </div>
-
-                        @if ($solution['available'])
-                            </a>
-                        @else
-                            </div>
-                        @endif
-
-                    </article>
+                    @if ($solution['available'])
+                        </a>
+                    @else
+                        </div>
+                    @endif
                 @endforeach
             </div>
 
         </div>
     </section>
 
-    <section class="solutions-support">
-        <div class="container solutions-support__container">
 
-            <div class="solutions-support__heading">
-                <span class="solutions-support__index">03 — Notre méthode</span>
 
-                <h2>
-                    Le bon matériel ne suffit pas.
-                    <span>Il faut le bon accompagnement.</span>
-                </h2>
+    {{-- =========================================================
+        02. NOTRE MÉTHODE
+    ========================================================== --}}
+
+    <section class="ax-section ax-section--dark" aria-labelledby="methode-title">
+        <div class="ax-container">
+
+            <div class="ax-head ax-head--single">
+                <div>
+                    <p class="ax-kicker">02 — Notre méthode</p>
+                    <h2 id="methode-title">
+                        Le bon matériel ne suffit pas.
+                        <span>Il faut le bon accompagnement.</span>
+                    </h2>
+                </div>
             </div>
 
-            <div class="solutions-support__steps">
-                <article>
-                    <span>01</span>
-                    <div>
-                        <h3>Comprendre</h3>
-                        <p>Vos contraintes, vos délais et les réalités du chantier.</p>
-                    </div>
-                </article>
-
-                <article>
-                    <span>02</span>
-                    <div>
-                        <h3>Sélectionner</h3>
-                        <p>La solution technique cohérente, disponible et durable.</p>
-                    </div>
-                </article>
-
-                <article>
-                    <span>03</span>
-                    <div>
-                        <h3>Accompagner</h3>
-                        <p>De la commande jusqu’au suivi après-vente.</p>
-                    </div>
-                </article>
-            </div>
+            <ol class="ax-steps">
+                <li><span>01</span><h3>Comprendre</h3><p>Vos contraintes, vos délais et les réalités du chantier.</p></li>
+                <li><span>02</span><h3>Sélectionner</h3><p>La solution technique cohérente, disponible et durable.</p></li>
+                <li><span>03</span><h3>Accompagner</h3><p>De la commande jusqu’au suivi après-vente.</p></li>
+            </ol>
 
         </div>
     </section>
 
-    <section class="solutions-cta">
-        <div class="container solutions-cta__container">
-            <div>
-                <span>Un projet à étudier ?</span>
-                <h2>Trouvons la bonne solution ensemble.</h2>
-            </div>
 
-            <a href="{{ route('contact') }}" class="solutions-cta__button">
-                <span>Parler à notre équipe</span>
-                <strong aria-hidden="true">↗</strong>
-            </a>
+
+    {{-- =========================================================
+        BANDEAU DES SOLUTIONS
+    ========================================================== --}}
+
+    <section class="ax-marquee" aria-label="Nos familles de solutions">
+        <div class="ax-marquee__track">
+            @foreach ([false, true] as $copy)
+                <div class="ax-marquee__group" @if ($copy) aria-hidden="true" @endif>
+                    @foreach ($solutions as $solution)
+                        <span>{{ $solution['name'] }}</span>
+                        <i aria-hidden="true"></i>
+                    @endforeach
+                </div>
+            @endforeach
         </div>
+    </section>
+
+
+
+    {{-- =========================================================
+        APPEL FINAL
+    ========================================================== --}}
+
+    <section class="ax-final" aria-labelledby="final-title">
+
+        <canvas class="ax-flow" aria-hidden="true"></canvas>
+
+        <div class="ax-container ax-final__inner">
+            <p class="ax-kicker">Un projet à étudier ?</p>
+
+            <h2 id="final-title">
+                Trouvons la bonne solution
+                <span>ensemble.</span>
+            </h2>
+
+            <div class="ax-final__actions">
+                <a class="ax-final__button" href="{{ route('contact') }}">
+                    <span>Parler à notre équipe</span>
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+                <a class="ax-final__phone" href="tel:+33472230140">
+                    ou appelez le 04 72 23 01 40
+                </a>
+            </div>
+        </div>
+
     </section>
 
 @endsection

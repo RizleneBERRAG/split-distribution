@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('title', 'Énergies renouvelables & photovoltaïque | Split Distribution')
 
 @section(
@@ -7,181 +8,266 @@
     'Split Distribution accompagne les professionnels dans la sélection de solutions photovoltaïques cohérentes avec le bâtiment, les usages et les objectifs énergétiques.'
 )
 
-@push('styles')
-    @vite('resources/css/pages/energies-renouvelables.css')
-@endpush
-
 @section('body-class', 'page-energies')
 
+
 @section('content')
-    <section class="energy-hero">
-        <div class="energy-hero__sun" aria-hidden="true"></div>
 
-        <div class="container">
-            <nav class="energy-breadcrumb" aria-label="Fil d’Ariane">
-                <a href="{{ route('solutions.index') }}">Solutions</a>
-                <span aria-hidden="true">/</span>
-                <span>Énergies renouvelables</span>
-            </nav>
+    {{-- =========================================================
+        EN-TÊTE
+    ========================================================== --}}
 
-            <div class="energy-hero__heading">
-                <div>
-                    <p class="energy-kicker"><span aria-hidden="true"></span> Production locale</p>
-                    <h1>L’énergie est déjà là.<br><em>Capturons-la.</em></h1>
+    <section class="ax-page-hero" aria-labelledby="page-title">
+
+        <canvas class="ax-flow" aria-hidden="true"></canvas>
+        <div class="ax-page-hero__glow" aria-hidden="true"></div>
+
+        <div class="ax-container ax-page-hero__grid">
+
+            <div>
+                <nav class="ax-crumbs" aria-label="Fil d’Ariane">
+                    <a href="{{ route('home') }}">Accueil</a>
+                    <span aria-hidden="true">/</span>
+                    <a href="{{ route('solutions.index') }}">Solutions</a>
+                    <span aria-hidden="true">/</span>
+                    <span aria-current="page">Énergies renouvelables</span>
+                </nav>
+
+                <p class="ax-eyebrow">
+                    <span class="ax-eyebrow__dot" aria-hidden="true"></span>
+                    Production locale
+                </p>
+
+                <h1 class="ax-page-hero__title" id="page-title">
+                    L’énergie est déjà là.
+                    <span>Capturons-la.</span>
+                </h1>
+
+                <p class="ax-page-hero__lead">
+                    Du potentiel de la toiture au pilotage de l’installation, nous aidons
+                    à composer une réponse photovoltaïque lisible, dimensionnée et durable.
+                </p>
+
+                <div class="ax-page-hero__actions">
+                    <a class="ax-btn ax-btn--green" href="{{ route('contact') }}">
+                        <span>Étudier mon projet</span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
+
+                    <a class="ax-btn ax-btn--ghost" href="#trajectoire">
+                        <span>Voir la trajectoire</span>
+                        <span aria-hidden="true">↓</span>
+                    </a>
                 </div>
 
-                <div class="energy-hero__intro">
-                    <p>
-                        Du potentiel de la toiture au pilotage de l’installation, nous aidons
-                        à composer une réponse photovoltaïque lisible, dimensionnée et durable.
-                    </p>
-                    <div>
-                        <a href="{{ route('contact') }}">Étudier mon projet <span aria-hidden="true">↗</span></a>
-                        <a href="#trajectoire">Voir la trajectoire <span aria-hidden="true">↓</span></a>
-                    </div>
-                </div>
+                <ul class="ax-chips">
+                    <li><span>01</span> Photovoltaïque</li>
+                    <li><span>02</span> Micro-onduleurs</li>
+                    <li><span>03</span> Stockage</li>
+                    <li><span>04</span> Pilotage</li>
+                </ul>
             </div>
 
-            <div class="energy-hero__stage">
-                <figure class="energy-hero__photo">
-                    <img
-                        src="{{ asset('images/home/energies.webp') }}"
-                        alt="Panneaux photovoltaïques éclairés par le soleil"
-                        width="992"
-                        height="1504"
-                    >
-                    <figcaption><span>Source</span> Solaire</figcaption>
-                </figure>
+            <figure class="ax-page-hero__media">
+                <img
+                    src="{{ asset('images/home/energies.webp') }}"
+                    alt="Panneaux photovoltaïques éclairés par le soleil"
+                    width="992"
+                    height="1504"
+                    fetchpriority="high"
+                    decoding="async"
+                >
 
-                <div class="energy-orbit" aria-label="Parcours de l’énergie, de la toiture aux usages">
-                    <div class="energy-orbit__ring" aria-hidden="true"></div>
-                    <div class="energy-orbit__core">
-                        <span>Flux actif</span>
-                        <strong>100<small>%</small></strong>
-                        <em>Énergie disponible</em>
-                    </div>
-                    <div class="energy-orbit__point energy-orbit__point--one"><span>01</span><strong>Capter</strong></div>
-                    <div class="energy-orbit__point energy-orbit__point--two"><span>02</span><strong>Convertir</strong></div>
-                    <div class="energy-orbit__point energy-orbit__point--three"><span>03</span><strong>Piloter</strong></div>
+                <div class="ax-badge">
+                    <span>Flux actif</span>
+                    <strong><span data-count="100">100</span>%</strong>
+                    <small>Énergie disponible</small>
                 </div>
 
-                <aside class="energy-hero__reading">
-                    <span>Lecture du projet</span>
-                    <div><strong>Toiture</strong><em>Exposition · surface</em></div>
-                    <div><strong>Production</strong><em>Puissance · rendement</em></div>
-                    <div><strong>Usages</strong><em>Profil · autoconsommation</em></div>
-                </aside>
-            </div>
+                <figcaption><span>Source</span> Solaire</figcaption>
+            </figure>
 
-            <div class="energy-hero__baseline">
-                <span>Photovoltaïque</span>
-                <span>Micro-onduleurs</span>
-                <span>Stockage</span>
-                <span>Pilotage</span>
-            </div>
         </div>
+
     </section>
 
-    <section class="energy-trajectory" id="trajectoire">
-        <div class="container">
-            <header class="energy-trajectory__heading">
-                <p class="energy-index"><span>01</span> La trajectoire</p>
-                <div>
-                    <p class="energy-kicker energy-kicker--dark"><span aria-hidden="true"></span> Du rayon à l’usage</p>
-                    <h2>Une chaîne simple.<br><em>Une cohérence complète.</em></h2>
-                </div>
-            </header>
 
-            <div class="energy-flow">
-                <article>
-                    <span>01</span>
-                    <i aria-hidden="true"></i>
-                    <small>Surface utile</small>
+
+    {{-- =========================================================
+        01. LA TRAJECTOIRE
+    ========================================================== --}}
+
+    <section class="ax-section ax-section--light ax-section--lift" id="trajectoire" aria-labelledby="trajectoire-title">
+        <div class="ax-container">
+
+            <div class="ax-head ax-head--single">
+                <div>
+                    <p class="ax-kicker">01 — La trajectoire · Du rayon à l’usage</p>
+                    <h2 id="trajectoire-title">
+                        Une chaîne simple.
+                        <span>Une cohérence complète.</span>
+                    </h2>
+                </div>
+            </div>
+
+            <ol class="ax-steps" aria-label="Parcours de l’énergie, de la toiture aux usages">
+                <li>
+                    <span>01 · Surface utile</span>
                     <h3>Capter</h3>
                     <p>Lire l’orientation, l’ombrage et la surface réellement exploitable.</p>
-                </article>
-                <article>
-                    <span>02</span>
-                    <i aria-hidden="true"></i>
-                    <small>Courant produit</small>
+                </li>
+                <li>
+                    <span>02 · Courant produit</span>
                     <h3>Convertir</h3>
                     <p>Associer modules et conversion pour une architecture cohérente.</p>
-                </article>
-                <article>
-                    <span>03</span>
-                    <i aria-hidden="true"></i>
-                    <small>Énergie disponible</small>
+                </li>
+                <li>
+                    <span>03 · Énergie disponible</span>
                     <h3>Distribuer</h3>
                     <p>Relier la production au bâtiment, à ses équipements et à son réseau.</p>
-                </article>
-                <article>
-                    <span>04</span>
-                    <i aria-hidden="true"></i>
-                    <small>Vision durable</small>
+                </li>
+                <li>
+                    <span>04 · Vision durable</span>
                     <h3>Piloter</h3>
                     <p>Suivre la production et garder une lecture claire de l’installation.</p>
-                </article>
-            </div>
+                </li>
+            </ol>
+
+            <dl class="ax-criteria" aria-label="Lecture du projet">
+                <div><dt>Toiture</dt><dd>Exposition · surface</dd></div>
+                <div><dt>Production</dt><dd>Puissance · rendement</dd></div>
+                <div><dt>Usages</dt><dd>Profil · autoconsommation</dd></div>
+            </dl>
+
         </div>
     </section>
 
-    <section class="energy-balance">
-        <div class="container energy-balance__grid">
-            <header>
-                <p class="energy-index energy-index--light"><span>02</span> Le juste équilibre</p>
-                <p class="energy-kicker energy-kicker--light"><span aria-hidden="true"></span> Dimensionner avant d’additionner</p>
-                <h2>Produire beaucoup<br>ne veut pas toujours dire <em>produire juste.</em></h2>
-                <p class="energy-balance__lead">
+
+
+    {{-- =========================================================
+        02. LE JUSTE ÉQUILIBRE
+    ========================================================== --}}
+
+    <section class="ax-section ax-section--dark" aria-labelledby="equilibre-title">
+        <div class="ax-container">
+
+            <div class="ax-head ax-head--single">
+                <div>
+                    <p class="ax-kicker">02 — Le juste équilibre · Dimensionner avant d’additionner</p>
+                    <h2 id="equilibre-title">
+                        Produire beaucoup ne veut pas toujours dire
+                        <span>produire juste.</span>
+                    </h2>
+                </div>
+
+                <p>
                     Le bon ensemble met en regard potentiel du site, profil de consommation,
                     matériel et évolution future du besoin.
                 </p>
-            </header>
-
-            <div class="energy-balance__dial" aria-label="Les quatre paramètres d’un projet photovoltaïque cohérent">
-                <div class="energy-balance__circle" aria-hidden="true">
-                    <span></span><span></span><span></span><span></span>
-                </div>
-                <div class="energy-balance__center">
-                    <small>Projet</small>
-                    <strong>Aligné</strong>
-                </div>
-                <article class="energy-balance__item energy-balance__item--one"><span>01</span><strong>Bâtiment</strong><small>Toiture & implantation</small></article>
-                <article class="energy-balance__item energy-balance__item--two"><span>02</span><strong>Usage</strong><small>Consommation réelle</small></article>
-                <article class="energy-balance__item energy-balance__item--three"><span>03</span><strong>Matériel</strong><small>Ensemble compatible</small></article>
-                <article class="energy-balance__item energy-balance__item--four"><span>04</span><strong>Évolution</strong><small>Besoin à venir</small></article>
             </div>
+
+            <ul class="ax-tiles ax-tiles--4" aria-label="Les quatre paramètres d’un projet photovoltaïque cohérent">
+                @foreach ([
+                    ['title' => 'Bâtiment', 'tag' => 'Toiture & implantation'],
+                    ['title' => 'Usage', 'tag' => 'Consommation réelle'],
+                    ['title' => 'Matériel', 'tag' => 'Ensemble compatible'],
+                    ['title' => 'Évolution', 'tag' => 'Besoin à venir'],
+                ] as $parameter)
+                    <li class="ax-tile">
+                        <span class="ax-tile__number" aria-hidden="true">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+
+                        <h3>{{ $parameter['title'] }}</h3>
+
+                        <ul class="ax-tags">
+                            <li>{{ $parameter['tag'] }}</li>
+                        </ul>
+                    </li>
+                @endforeach
+            </ul>
+
+            <ul class="ax-chips" data-ax-fade>
+                <li><span>Projet</span> Aligné</li>
+            </ul>
+
         </div>
     </section>
 
-    <section class="energy-components">
-        <div class="container">
-            <header class="energy-components__heading">
-                <p class="energy-index"><span>03</span> L’ensemble technique</p>
+
+
+    {{-- =========================================================
+        03. L'ENSEMBLE TECHNIQUE
+    ========================================================== --}}
+
+    <section class="ax-section ax-section--white" aria-labelledby="ensemble-title">
+        <div class="ax-container">
+
+            <div class="ax-head ax-head--single">
                 <div>
-                    <p class="energy-kicker energy-kicker--dark"><span aria-hidden="true"></span> Chaque élément a sa place</p>
-                    <h2>Pas une collection de produits.<br><em>Un système.</em></h2>
+                    <p class="ax-kicker">03 — L’ensemble technique · Chaque élément a sa place</p>
+                    <h2 id="ensemble-title">
+                        Pas une collection de produits.
+                        <span>Un système.</span>
+                    </h2>
                 </div>
-            </header>
-
-            <div class="energy-components__list">
-                <article><span>01</span><h3>Modules</h3><p>Technologie, puissance, format et intégration adaptés à la toiture.</p><strong>La surface active</strong></article>
-                <article><span>02</span><h3>Conversion</h3><p>Onduleur ou micro-onduleurs choisis selon l’architecture du projet.</p><strong>Le cœur électrique</strong></article>
-                <article><span>03</span><h3>Protection</h3><p>Coffrets et composants pour compléter une installation maîtrisée.</p><strong>La continuité</strong></article>
-                <article><span>04</span><h3>Supervision</h3><p>Une lecture accessible de la production et du fonctionnement.</p><strong>La visibilité</strong></article>
             </div>
+
+            <div class="ax-tiles">
+                @foreach ([
+                    ['type' => 'La surface active', 'title' => 'Modules', 'text' => 'Technologie, puissance, format et intégration adaptés à la toiture.'],
+                    ['type' => 'Le cœur électrique', 'title' => 'Conversion', 'text' => 'Onduleur ou micro-onduleurs choisis selon l’architecture du projet.'],
+                    ['type' => 'La continuité', 'title' => 'Protection', 'text' => 'Coffrets et composants pour compléter une installation maîtrisée.'],
+                    ['type' => 'La visibilité', 'title' => 'Supervision', 'text' => 'Une lecture accessible de la production et du fonctionnement.'],
+                ] as $component)
+                    <article class="ax-tile">
+                        <span class="ax-tile__number" aria-hidden="true">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+
+                        <div>
+                            <p class="ax-tile__type">{{ $component['type'] }}</p>
+                            <h3>{{ $component['title'] }}</h3>
+                            <p>{{ $component['text'] }}</p>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+
         </div>
     </section>
 
-    <section class="energy-cta">
-        <div class="container energy-cta__grid">
-            <div>
-                <p class="energy-index"><span>04</span> Passer au concret</p>
-                <h2>Commençons par le potentiel de <em>votre projet.</em></h2>
-            </div>
-            <div>
-                <p>Une toiture, un besoin ou une première étude : transmettez-nous les éléments disponibles.</p>
-                <a href="{{ route('contact') }}">Échanger avec l’équipe <span aria-hidden="true">↗</span></a>
+
+
+    {{-- =========================================================
+        APPEL FINAL
+    ========================================================== --}}
+
+    <section class="ax-final" aria-labelledby="final-title">
+
+        <canvas class="ax-flow" aria-hidden="true"></canvas>
+
+        <div class="ax-container ax-final__inner">
+            <p class="ax-kicker">04 — Passer au concret</p>
+
+            <h2 id="final-title">
+                Commençons par le potentiel de
+                <span>votre projet.</span>
+            </h2>
+
+            <p class="ax-final__text">
+                Une toiture, un besoin ou une première étude :
+                transmettez-nous les éléments disponibles.
+            </p>
+
+            <div class="ax-final__actions">
+                <a class="ax-final__button" href="{{ route('contact') }}">
+                    <span>Échanger avec l’équipe</span>
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+                <a class="ax-final__phone" href="tel:+33472230140">
+                    ou appelez le 04 72 23 01 40
+                </a>
             </div>
         </div>
+
     </section>
+
 @endsection

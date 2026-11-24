@@ -13,272 +13,323 @@
 
 @section('body-class', 'page-services')
 
+
+@php
+    $methode = [
+        ['eyebrow' => 'Avant le matériel', 'title' => 'Comprendre', 'text' => 'Usage, volumes, contraintes techniques, délais et attentes du client final.', 'result' => 'Un besoin clairement défini'],
+        ['eyebrow' => 'Faire le bon choix', 'title' => 'Conseiller', 'text' => 'Comparaison des architectures, gammes et références adaptées au projet.', 'result' => 'Une sélection cohérente'],
+        ['eyebrow' => 'Passer à l’action', 'title' => 'Préparer', 'text' => 'Vérification des disponibilités et organisation d’une commande complète.', 'result' => 'Du matériel prêt à partir'],
+        ['eyebrow' => 'Rester disponible', 'title' => 'Suivre', 'text' => 'Un interlocuteur local pour la livraison, les questions techniques et le SAV.', 'result' => 'Une continuité après la commande'],
+    ];
+
+    $etapes = [
+        ['title' => 'Étudier', 'text' => 'Comprendre le besoin'],
+        ['title' => 'Sélectionner', 'text' => 'Choisir la solution'],
+        ['title' => 'Préparer', 'text' => 'Organiser la commande'],
+        ['title' => 'Accompagner', 'text' => 'Rester disponible'],
+    ];
+
+    $services = [
+        [
+            'type' => 'Expertise',
+            'title' => 'Conseil technique',
+            'text' => 'Lecture du besoin, comparaison des solutions et orientation vers un ensemble cohérent avec l’usage du bâtiment.',
+            'tags' => ['Définition du besoin', 'Choix de l’architecture', 'Cohérence des équipements'],
+        ],
+        [
+            'type' => 'Disponibilité',
+            'title' => 'Stock & préparation',
+            'text' => 'Visibilité sur le matériel disponible et préparation soignée pour limiter les oublis au moment du départ.',
+            'tags' => ['Disponibilité locale', 'Contrôle de la commande', 'Enlèvement organisé'],
+        ],
+        [
+            'type' => 'Logistique',
+            'title' => 'Livraison adaptée',
+            'text' => 'Une organisation logistique pensée autour de vos contraintes, de votre planning et du lieu de destination.',
+            'tags' => ['Chantier ou entreprise', 'Coordination du départ', 'Suivi de la livraison'],
+        ],
+        [
+            'type' => 'Continuité',
+            'title' => 'Suivi & SAV',
+            'text' => 'Une équipe identifiable reste disponible lorsque le matériel est livré et que le chantier entre dans sa phase concrète.',
+            'tags' => ['Interlocuteur local', 'Questions après livraison', 'Orientation SAV'],
+        ],
+    ];
+@endphp
+
+
 @section('content')
-    <section class="services-hero">
-        <div class="container">
-            <nav class="services-breadcrumb" aria-label="Fil d’Ariane">
-                <a href="{{ route('home') }}">Accueil</a>
-                <span aria-hidden="true">/</span>
-                <span>Services</span>
-            </nav>
 
-            <div class="services-hero__heading">
-                <div>
-                    <p class="services-kicker"><span aria-hidden="true"></span> Services aux professionnels</p>
-                    <h1>Plus qu’un fournisseur.<br><em>Un appui à chaque étape.</em></h1>
-                </div>
+    {{-- =========================================================
+        EN-TÊTE
+    ========================================================== --}}
 
-                <div class="services-hero__summary">
-                    <p>
-                        De la première question à l’après-vente, nous vous aidons
-                        à sécuriser vos choix, votre commande et l’avancement du chantier.
-                    </p>
+    <section class="ax-page-hero" aria-labelledby="page-title">
 
-                    <div class="services-hero__actions">
-                        <a href="{{ route('contact') }}" class="services-button services-button--green">
-                            Parler de mon projet <span aria-hidden="true">↗</span>
-                        </a>
-                        <a href="#methode" class="services-button services-button--text">
-                            Découvrir notre méthode <span aria-hidden="true">↓</span>
-                        </a>
-                    </div>
+        <canvas class="ax-flow" aria-hidden="true"></canvas>
+        <div class="ax-page-hero__glow" aria-hidden="true"></div>
+
+        <div class="ax-container ax-page-hero__grid">
+
+            <div>
+                <nav class="ax-crumbs" aria-label="Fil d’Ariane">
+                    <a href="{{ route('home') }}">Accueil</a>
+                    <span aria-hidden="true">/</span>
+                    <span aria-current="page">Services</span>
+                </nav>
+
+                <p class="ax-eyebrow">
+                    <span class="ax-eyebrow__dot" aria-hidden="true"></span>
+                    Services aux professionnels
+                </p>
+
+                <h1 class="ax-page-hero__title" id="page-title">
+                    Plus qu’un fournisseur.
+                    <span>Un appui à chaque étape.</span>
+                </h1>
+
+                <p class="ax-page-hero__lead">
+                    De la première question à l’après-vente, nous vous aidons
+                    à sécuriser vos choix, votre commande et l’avancement du chantier.
+                </p>
+
+                <div class="ax-page-hero__actions">
+                    <a class="ax-btn ax-btn--green" href="{{ route('contact') }}">
+                        <span>Parler de mon projet</span>
+                        <span aria-hidden="true">↗</span>
+                    </a>
+
+                    <a class="ax-btn ax-btn--ghost" href="#methode">
+                        <span>Découvrir notre méthode</span>
+                        <span aria-hidden="true">↓</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="services-stage">
-                <figure class="services-stage__image">
-                    <img
-                        src="{{ asset('images/services/order-preparation.webp') }}"
-                        alt="Préparation d’une commande de matériel CVC dans un entrepôt"
-                        width="1536"
-                        height="1024"
-                        fetchpriority="high"
-                    >
-                    <figcaption><span>En action</span> Préparation d’une commande CVC</figcaption>
-                </figure>
+            <figure class="ax-page-hero__media">
+                <img
+                    src="{{ asset('images/services/order-preparation.webp') }}"
+                    alt="Préparation d’une commande de matériel CVC dans un entrepôt"
+                    width="1536"
+                    height="1024"
+                    fetchpriority="high"
+                    decoding="async"
+                >
 
-                <div class="services-stage__count">
+                <div class="ax-badge">
                     <span>Notre accompagnement</span>
                     <strong>04</strong>
-                    <p>services reliés par un même interlocuteur.</p>
+                    <small>services reliés par un même interlocuteur.</small>
                 </div>
 
-                <div class="services-stage__carousel" aria-label="Les quatre étapes de notre accompagnement">
-                    <div class="services-stage__carousel-label" aria-hidden="true">
-                        <span>En continu</span>
-                        <strong>Notre méthode</strong>
-                    </div>
+                <figcaption><span>En action</span> Préparation d’une commande CVC</figcaption>
+            </figure>
 
-                    <div class="services-stage__carousel-window">
-                        <div class="services-stage__carousel-track">
-                            <div class="services-stage__carousel-set">
-                                <a href="#methode"><span>01</span><strong>Étudier</strong><small>Comprendre le besoin</small></a>
-                                <a href="#methode"><span>02</span><strong>Sélectionner</strong><small>Choisir la solution</small></a>
-                                <a href="#methode"><span>03</span><strong>Préparer</strong><small>Organiser la commande</small></a>
-                                <a href="#methode"><span>04</span><strong>Accompagner</strong><small>Rester disponible</small></a>
-                            </div>
+        </div>
 
-                            <div class="services-stage__carousel-set" aria-hidden="true">
-                                <a href="#methode" tabindex="-1"><span>01</span><strong>Étudier</strong><small>Comprendre le besoin</small></a>
-                                <a href="#methode" tabindex="-1"><span>02</span><strong>Sélectionner</strong><small>Choisir la solution</small></a>
-                                <a href="#methode" tabindex="-1"><span>03</span><strong>Préparer</strong><small>Organiser la commande</small></a>
-                                <a href="#methode" tabindex="-1"><span>04</span><strong>Accompagner</strong><small>Rester disponible</small></a>
-                            </div>
-                        </div>
-                    </div>
+    </section>
+
+
+
+    {{-- =========================================================
+        01. NOTRE MÉTHODE
+    ========================================================== --}}
+
+    <section class="ax-section ax-section--light ax-section--lift" id="methode" aria-labelledby="methode-title">
+        <div class="ax-container">
+
+            <div class="ax-head">
+                <div>
+                    <p class="ax-kicker">01 — Notre méthode</p>
+                    <h2 id="methode-title">
+                        Un projet bien cadré
+                        <span>avance mieux.</span>
+                    </h2>
                 </div>
+
+                <p>
+                    Chaque étape répond à une question concrète du chantier.
+                    Vous savez ce qui est choisi, pourquoi et comment la suite est organisée.
+                </p>
             </div>
+
+            <ol class="ax-steps">
+                @foreach ($methode as $step)
+                    <li>
+                        <span><span aria-hidden="true">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }} — </span>{{ $step['eyebrow'] }}</span>
+                        <h3>{{ $step['title'] }}</h3>
+                        <p>{{ $step['text'] }}</p>
+
+                        <ul class="ax-tags">
+                            <li>{{ $step['result'] }}</li>
+                        </ul>
+                    </li>
+                @endforeach
+            </ol>
+
         </div>
     </section>
 
-    <section class="services-method" id="methode">
-        <div class="container">
-            <div class="services-method__heading">
-                <p class="services-section-index"><span>01</span> Notre méthode</p>
-                <div>
-                    <h2>Un projet bien cadré <em>avance mieux.</em></h2>
-                    <p>
-                        Chaque étape répond à une question concrète du chantier.
-                        Vous savez ce qui est choisi, pourquoi et comment la suite est organisée.
-                    </p>
+
+
+    {{-- =========================================================
+        BANDEAU : LES QUATRE ÉTAPES EN CONTINU
+    ========================================================== --}}
+
+    <section class="ax-marquee" aria-label="Les quatre étapes de notre accompagnement">
+        <div class="ax-marquee__track">
+            @foreach ([false, true] as $copy)
+                <div class="ax-marquee__group" @if ($copy) aria-hidden="true" @endif>
+                    @foreach ($etapes as $etape)
+                        <span>{{ $etape['title'] }}</span>
+                        <i aria-hidden="true"></i>
+                        <span>{{ $etape['text'] }}</span>
+                        <i aria-hidden="true"></i>
+                    @endforeach
                 </div>
-            </div>
-
-            <div class="services-method__steps">
-                <article>
-                    <div class="services-method__number">01</div>
-                    <span class="services-method__eyebrow">Avant le matériel</span>
-                    <h3>Comprendre</h3>
-                    <p>Usage, volumes, contraintes techniques, délais et attentes du client final.</p>
-                    <small>Un besoin clairement défini</small>
-                </article>
-
-                <article>
-                    <div class="services-method__number">02</div>
-                    <span class="services-method__eyebrow">Faire le bon choix</span>
-                    <h3>Conseiller</h3>
-                    <p>Comparaison des architectures, gammes et références adaptées au projet.</p>
-                    <small>Une sélection cohérente</small>
-                </article>
-
-                <article>
-                    <div class="services-method__number">03</div>
-                    <span class="services-method__eyebrow">Passer à l’action</span>
-                    <h3>Préparer</h3>
-                    <p>Vérification des disponibilités et organisation d’une commande complète.</p>
-                    <small>Du matériel prêt à partir</small>
-                </article>
-
-                <article>
-                    <div class="services-method__number">04</div>
-                    <span class="services-method__eyebrow">Rester disponible</span>
-                    <h3>Suivre</h3>
-                    <p>Un interlocuteur local pour la livraison, les questions techniques et le SAV.</p>
-                    <small>Une continuité après la commande</small>
-                </article>
-            </div>
+            @endforeach
         </div>
     </section>
 
-    <section class="services-offer">
-        <div class="container">
-            <div class="services-offer__heading">
+
+
+    {{-- =========================================================
+        02. NOS SERVICES
+    ========================================================== --}}
+
+    <section class="ax-section ax-section--dark" aria-labelledby="offre-title">
+        <div class="ax-container">
+
+            <div class="ax-head">
                 <div>
-                    <p class="services-section-index services-section-index--dark"><span>02</span> Nos services</p>
-                    <h2>Des réponses utiles, <em>au bon moment.</em></h2>
+                    <p class="ax-kicker">02 — Nos services</p>
+                    <h2 id="offre-title">
+                        Des réponses utiles,
+                        <span>au bon moment.</span>
+                    </h2>
                 </div>
+
                 <p>
                     Notre rôle ne se limite pas à fournir une référence. Nous facilitons
                     les décisions et les opérations qui entourent votre commande.
                 </p>
             </div>
 
-            <div class="services-offer__grid">
-                <article class="services-card services-card--advice">
-                    <div class="services-card__top">
-                        <span>01</span>
-                        <small>Expertise</small>
-                    </div>
-                    <h3>Conseil technique</h3>
-                    <p>
-                        Lecture du besoin, comparaison des solutions et orientation
-                        vers un ensemble cohérent avec l’usage du bâtiment.
-                    </p>
-                    <ul>
-                        <li>Définition du besoin</li>
-                        <li>Choix de l’architecture</li>
-                        <li>Cohérence des équipements</li>
-                    </ul>
-                </article>
+            <div class="ax-tiles">
+                @foreach ($services as $service)
+                    <article class="ax-tile">
+                        <span class="ax-tile__number" aria-hidden="true">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
 
-                <article class="services-card services-card--stock">
-                    <div class="services-card__top">
-                        <span>02</span>
-                        <small>Disponibilité</small>
-                    </div>
-                    <h3>Stock &amp; préparation</h3>
-                    <p>
-                        Visibilité sur le matériel disponible et préparation soignée
-                        pour limiter les oublis au moment du départ.
-                    </p>
-                    <ul>
-                        <li>Disponibilité locale</li>
-                        <li>Contrôle de la commande</li>
-                        <li>Enlèvement organisé</li>
-                    </ul>
-                </article>
+                        <div>
+                            <p class="ax-tile__type">{{ $service['type'] }}</p>
+                            <h3>{{ $service['title'] }}</h3>
+                            <p>{{ $service['text'] }}</p>
+                        </div>
 
-                <article class="services-card services-card--delivery">
-                    <div class="services-card__top">
-                        <span>03</span>
-                        <small>Logistique</small>
-                    </div>
-                    <h3>Livraison adaptée</h3>
-                    <p>
-                        Une organisation logistique pensée autour de vos contraintes,
-                        de votre planning et du lieu de destination.
-                    </p>
-                    <ul>
-                        <li>Chantier ou entreprise</li>
-                        <li>Coordination du départ</li>
-                        <li>Suivi de la livraison</li>
-                    </ul>
-                </article>
-
-                <article class="services-card services-card--support">
-                    <div class="services-card__top">
-                        <span>04</span>
-                        <small>Continuité</small>
-                    </div>
-                    <h3>Suivi &amp; SAV</h3>
-                    <p>
-                        Une équipe identifiable reste disponible lorsque le matériel
-                        est livré et que le chantier entre dans sa phase concrète.
-                    </p>
-                    <ul>
-                        <li>Interlocuteur local</li>
-                        <li>Questions après livraison</li>
-                        <li>Orientation SAV</li>
-                    </ul>
-                </article>
+                        <ul class="ax-tags">
+                            @foreach ($service['tags'] as $tag)
+                                <li>{{ $tag }}</li>
+                            @endforeach
+                        </ul>
+                    </article>
+                @endforeach
             </div>
+
         </div>
     </section>
 
-    <section class="services-cee" aria-labelledby="services-cee-title">
-        <div class="container services-cee__inner">
-            <div class="services-cee__copy">
-                <p class="services-kicker"><span aria-hidden="true"></span> Économies d’énergie</p>
-                <h2 id="services-cee-title">
-                    Anticiper les CEE.
-                    <em>Simplifier la suite.</em>
-                </h2>
+
+
+    {{-- =========================================================
+        03. CEE
+    ========================================================== --}}
+
+    <section class="ax-section ax-section--white" aria-labelledby="cee-title">
+        <div class="ax-container">
+
+            <div class="ax-head">
+                <div>
+                    <p class="ax-kicker">03 — Économies d’énergie</p>
+                    <h2 id="cee-title">
+                        Anticiper les CEE.
+                        <span>Simplifier la suite.</span>
+                    </h2>
+                </div>
+
                 <p>
                     Une opération peut répondre aux critères du dispositif CEE.
                     Nous intégrons cette question en amont pour garder une sélection
                     technique cohérente et réunir les informations utiles au bon moment.
                 </p>
-                <small>
-                    L’éligibilité et le montant éventuel dépendent de chaque opération.
-                </small>
-                <a href="{{ route('contact') }}">
-                    Échanger sur mon projet <span aria-hidden="true">↗</span>
-                </a>
             </div>
 
-            <div class="services-cee__visual">
-                <span>Un dispositif à étudier en amont</span>
+            <div class="ax-cee">
                 <img
+                    class="ax-cee__mark"
                     src="{{ asset('images/brand/cee-certificates.png') }}"
                     alt="Certificats d’économies d’énergie — CEE"
                     width="738"
                     height="240"
                     loading="lazy"
                 >
-                <div class="services-cee__facts" aria-label="Les étapes de l’accompagnement CEE">
-                    <span><b>01</b> Repérer</span>
-                    <span><b>02</b> Vérifier</span>
-                    <span><b>03</b> Préparer</span>
+
+                <div class="ax-cee__copy">
+                    <p class="ax-kicker">Un dispositif à étudier en amont</p>
+
+                    <ol class="ax-tags" aria-label="Les étapes de l’accompagnement CEE">
+                        <li><span aria-hidden="true">01</span> Repérer</li>
+                        <li><span aria-hidden="true">02</span> Vérifier</li>
+                        <li><span aria-hidden="true">03</span> Préparer</li>
+                    </ol>
+
+                    <p>
+                        <small>L’éligibilité et le montant éventuel dépendent de chaque opération.</small>
+                    </p>
                 </div>
+
+                <a class="ax-link ax-link--dark" href="{{ route('contact') }}">
+                    Échanger sur mon projet <span aria-hidden="true">↗</span>
+                </a>
             </div>
+
         </div>
     </section>
 
-    <section class="services-cta">
-        <div class="container services-cta__inner">
-            <div>
-                <p class="services-kicker"><span aria-hidden="true"></span> Un chantier à préparer ?</p>
-                <h2>Commençons par votre besoin.</h2>
-            </div>
-            <div>
-                <p>
-                    Décrivez-nous le bâtiment, les équipements recherchés
-                    et vos contraintes. Nous vous aiderons à poser la première direction.
-                </p>
-                <a href="{{ route('contact') }}">
-                    Échanger avec l’équipe <span aria-hidden="true">↗</span>
+
+
+    {{-- =========================================================
+        APPEL FINAL
+    ========================================================== --}}
+
+    <section class="ax-final" aria-labelledby="final-title">
+
+        <canvas class="ax-flow" aria-hidden="true"></canvas>
+
+        <div class="ax-container ax-final__inner">
+            <p class="ax-kicker">Un chantier à préparer ?</p>
+
+            <h2 id="final-title">
+                Commençons
+                <span>par votre besoin.</span>
+            </h2>
+
+            <p class="ax-final__text">
+                Décrivez-nous le bâtiment, les équipements recherchés
+                et vos contraintes. Nous vous aiderons à poser la première direction.
+            </p>
+
+            <div class="ax-final__actions">
+                <a class="ax-final__button" href="{{ route('contact') }}">
+                    <span>Échanger avec l’équipe</span>
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+                <a class="ax-final__phone" href="tel:+33472230140">
+                    ou appelez le 04 72 23 01 40
                 </a>
             </div>
         </div>
+
     </section>
+
 @endsection

@@ -1,0 +1,838 @@
+/* ============================================================
+   ACCUEIL — CE QUI LUI EST PROPRE
+   ------------------------------------------------------------
+   Le style commun (boutons, sections, cartes, appel final…)
+   est dans resources/css/ax.css.
+   Animations : resources/js/accueil.js
+============================================================ */
+
+.page-home {
+    background: var(--ax-bg);
+}
+
+
+/* Bulle « Voir » qui suit la souris sur les solutions */
+
+.ax-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1150;
+
+    display: grid;
+    place-items: center;
+
+    width: 96px;
+    height: 96px;
+    margin: -48px 0 0 -48px;
+
+    border-radius: 50%;
+
+    background: var(--color-green);
+    color: #0b100a;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    pointer-events: none;
+
+    transform: scale(0);
+}
+
+
+/* ============================================================
+   1. HERO
+============================================================ */
+
+.ax-hero {
+    position: relative;
+    isolation: isolate;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 100svh;
+    padding: calc(var(--header-height) + 40px) 0 72px;
+
+    overflow: hidden;
+
+    background: var(--ax-bg);
+    color: var(--ax-ink);
+}
+
+.ax-hero__glow {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    bottom: -45%;
+    z-index: -1;
+
+    height: 80%;
+
+    background: radial-gradient(ellipse at 50% 100%, rgba(141, 198, 63, 0.2), transparent 62%);
+
+    pointer-events: none;
+}
+
+.ax-hero__inner {
+    position: relative;
+    z-index: 2;
+}
+
+.ax-hero__title {
+    margin: 0;
+
+    font-family: var(--font-display);
+    font-size: clamp(3.1rem, 8.2vw, 9.4rem);
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.065em;
+}
+
+.ax-line {
+    display: block;
+}
+
+.ax-line--green {
+    color: var(--color-green);
+}
+
+.ax-hero__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 32px 48px;
+
+    max-width: 60%;
+    margin-top: 48px;
+}
+
+.ax-hero__bottom p {
+    max-width: 440px;
+    margin: 0;
+
+    color: var(--ax-dim);
+
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+.ax-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+/* La photo : une fenêtre à droite, qui s'ouvre en plein écran au défilement */
+
+.ax-hero__window {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    margin: 0;
+
+    clip-path:
+        inset(
+            calc(var(--header-height) + 8vh)
+            4vw
+            12vh
+            64vw
+            round var(--ax-radius)
+        );
+}
+
+.ax-hero__window img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: 70% 50%;
+
+    transform: scale(1.18);
+    transform-origin: 70% 50%;
+}
+
+.ax-hero__shade {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5, 8, 6, 0.15) 0%,
+            rgba(5, 8, 6, 0.1) 40%,
+            rgba(5, 8, 6, 0.85) 100%
+        );
+
+    opacity: 0;
+}
+
+.ax-hero__caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: min(calc(100% - 48px), var(--container-width));
+    margin: 0 auto;
+    padding-bottom: 56px;
+
+    opacity: 0;
+}
+
+.ax-hero__caption p {
+    margin: 0 0 36px;
+
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 6vw, 6.4rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+}
+
+.ax-hero__caption p span {
+    display: block;
+    color: var(--color-green);
+}
+
+.ax-hero__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.ax-hero__tags li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+
+    background: rgba(5, 8, 6, 0.45);
+    backdrop-filter: blur(12px);
+
+    color: var(--ax-dim);
+
+    font-size: 13px;
+}
+
+.ax-hero__tags strong {
+    color: var(--ax-ink);
+    font-weight: 600;
+}
+
+.ax-hero__scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    z-index: 2;
+
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+
+    color: var(--ax-dim);
+
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+
+    transform: translateX(-50%);
+
+    transition: opacity 400ms ease, visibility 400ms ease;
+}
+
+/* Caché dès qu'on a commencé à descendre (classe posée par accueil.js) */
+.ax-hero.has-scrolled .ax-hero__scroll {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ax-hero__scroll i {
+    position: relative;
+
+    width: 1px;
+    height: 44px;
+
+    overflow: hidden;
+
+    background: var(--ax-line);
+}
+
+.ax-hero__scroll i::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: var(--color-green);
+
+    animation: ax-scroll-cue 1.8s var(--ax-ease) infinite;
+}
+
+@keyframes ax-scroll-cue {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+
+/* ============================================================
+   3. MANIFESTE
+============================================================ */
+
+.ax-manifesto {
+    padding: 170px 0 150px;
+
+    background: var(--ax-bg);
+    color: var(--ax-ink);
+}
+
+.ax-manifesto .ax-figures {
+    margin-top: 110px;
+}
+
+.ax-manifesto .ax-figures dd {
+    background: linear-gradient(180deg, var(--ax-ink) 30%, rgba(243, 245, 239, 0.35));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.ax-manifesto .ax-figures > div:first-child dd {
+    background: linear-gradient(180deg, var(--color-green-light), var(--color-green-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+
+/* ============================================================
+   4. SOLUTIONS : GALERIE HORIZONTALE
+============================================================ */
+
+.ax-solutions {
+    padding: 40px 0 120px;
+
+    overflow: hidden;
+
+    background: var(--ax-bg);
+    color: var(--ax-ink);
+}
+
+.ax-solutions__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+
+    margin-bottom: 60px;
+}
+
+.ax-solutions__head h2 {
+    margin: 0;
+
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 5.4vw, 5.8rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+}
+
+.ax-solutions__head h2 span {
+    display: block;
+    color: rgba(243, 245, 239, 0.36);
+}
+
+
+/* Par défaut (téléphone, ou sans JavaScript) : on fait glisser au doigt */
+
+.ax-solutions__viewport {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+.ax-solutions__viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.ax-solutions__track {
+    display: flex;
+    gap: 24px;
+
+    width: max-content;
+    margin: 0;
+    padding: 0 max(24px, calc((100vw - var(--container-width)) / 2));
+
+    list-style: none;
+}
+
+.ax-panel {
+    position: relative;
+
+    flex: 0 0 clamp(290px, 34vw, 540px);
+    height: clamp(440px, 64vh, 660px);
+
+    overflow: hidden;
+
+    border-radius: var(--ax-radius);
+
+    background: var(--ax-bg-soft);
+
+    scroll-snap-align: center;
+}
+
+.ax-panel a {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 34px;
+
+    color: var(--ax-ink);
+    text-decoration: none;
+}
+
+.ax-panel__media {
+    position: absolute;
+    inset: 0 -10%;
+}
+
+.ax-panel__media img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform: scale(1.04);
+
+    transition: transform 1s var(--ax-ease);
+}
+
+.ax-panel__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(5, 8, 6, 0.1) 0%,
+            rgba(5, 8, 6, 0.25) 45%,
+            rgba(5, 8, 6, 0.94) 100%
+        );
+}
+
+.ax-panel:hover .ax-panel__media img {
+    transform: scale(1.12);
+}
+
+.ax-panel__number {
+    position: absolute;
+    top: 14px;
+    right: 26px;
+
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 9vw, 9rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.06em;
+
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.55);
+
+    transition: color 500ms ease, -webkit-text-stroke-color 500ms ease;
+}
+
+.ax-panel:hover .ax-panel__number {
+    color: var(--color-green);
+    -webkit-text-stroke-color: var(--color-green);
+}
+
+.ax-panel__body {
+    position: relative;
+
+    max-width: 420px;
+
+    transition: transform 600ms var(--ax-ease);
+}
+
+.ax-panel:hover .ax-panel__body {
+    transform: translateY(-8px);
+}
+
+.ax-panel__eyebrow {
+    color: var(--color-green);
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.ax-panel h3 {
+    margin: 12px 0 12px;
+
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 3.4vw, 3.6rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+}
+
+.ax-panel p {
+    margin: 0;
+
+    color: var(--ax-dim);
+
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.ax-panel__arrow {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+
+    display: grid;
+    place-items: center;
+
+    width: 52px;
+    height: 52px;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+
+    backdrop-filter: blur(8px);
+
+    font-size: 18px;
+
+    transition:
+        transform 500ms var(--ax-ease),
+        background 300ms ease,
+        color 300ms ease,
+        border-color 300ms ease;
+}
+
+.ax-panel:hover .ax-panel__arrow {
+    transform: rotate(45deg);
+
+    border-color: var(--color-green);
+    background: var(--color-green);
+    color: #0b100a;
+}
+
+.ax-solutions__progress {
+    position: relative;
+
+    height: 2px;
+    margin-top: 44px;
+
+    background: var(--ax-line);
+}
+
+.ax-solutions__progress span {
+    position: absolute;
+    inset: 0;
+
+    background: var(--color-green);
+
+    transform: scaleX(0.16);
+    transform-origin: 0 50%;
+}
+
+
+/* Ordinateur avec JavaScript : la galerie défile à l'horizontale pendant qu'on descend */
+
+.ax-solutions.is-pinned {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 100vh;
+    padding: calc(var(--header-height) + 24px) 0 32px;
+}
+
+.ax-solutions.is-pinned .ax-solutions__head {
+    margin-bottom: 36px;
+}
+
+.ax-solutions.is-pinned .ax-solutions__head h2 {
+    font-size: clamp(2.4rem, min(4.6vw, 7.4vh), 5.2rem);
+}
+
+.ax-solutions.is-pinned .ax-solutions__head .ax-kicker {
+    margin-bottom: 18px;
+}
+
+.ax-solutions.is-pinned .ax-solutions__viewport {
+    overflow: visible;
+    scroll-snap-type: none;
+}
+
+.ax-solutions.is-pinned .ax-solutions__track {
+    will-change: transform;
+}
+
+.ax-solutions.is-pinned .ax-panel {
+    height: min(50vh, 600px);
+}
+
+.ax-solutions.is-pinned .ax-solutions__progress {
+    margin-top: 32px;
+}
+
+
+/* ============================================================
+   5. ENGAGEMENTS
+============================================================ */
+
+.ax-engagements__cta {
+    margin-top: 56px;
+}
+
+
+/* ============================================================
+   7. MARQUES
+============================================================ */
+
+.ax-brands {
+    overflow: hidden;
+}
+
+.ax-brands__list {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    overflow: hidden;
+
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.ax-brands__row {
+    display: flex;
+
+    overflow: hidden;
+
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.ax-brands__row + .ax-brands__row {
+    margin-top: 18px;
+}
+
+.ax-brands__track {
+    display: flex;
+    gap: 18px;
+
+    width: max-content;
+    padding-right: 18px;
+
+    animation: ax-marquee 60s linear infinite;
+}
+
+.ax-brands__row--reverse .ax-brands__track {
+    animation-direction: reverse;
+    animation-duration: 70s;
+}
+
+.ax-brands__row:hover .ax-brands__track {
+    animation-play-state: paused;
+}
+
+.ax-brands__logo {
+    display: block;
+    flex: none;
+
+    box-sizing: border-box;
+    width: 220px;
+    height: 120px;
+    padding: 26px 30px;
+
+    border: 1px solid var(--color-border-light);
+    border-radius: 20px;
+
+    background: #fafbf8;
+
+    transition: background 300ms ease, border-color 300ms ease;
+}
+
+/* Le logo remplit la zone utile du cadre et s'y adapte sans être coupé */
+.ax-brands__logo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    max-width: none;
+
+    object-fit: contain;
+    object-position: center;
+
+    filter: grayscale(1);
+    opacity: 0.7;
+
+    transition: filter 400ms ease, opacity 400ms ease;
+}
+
+.ax-brands__logo:hover {
+    border-color: var(--color-green);
+    background: #ffffff;
+}
+
+.ax-brands__logo:hover img {
+    filter: none;
+    opacity: 1;
+}
+
+
+/* ============================================================
+   TABLETTE ET TÉLÉPHONE
+============================================================ */
+
+@media (max-width: 1023px) {
+
+    /* La photo passe sous le texte */
+    .ax-hero {
+        flex-direction: column-reverse;
+        align-items: stretch;
+
+        min-height: 0;
+        padding-bottom: 28px;
+    }
+
+    .ax-hero__bottom {
+        max-width: none;
+    }
+
+    .ax-hero__window {
+        position: relative;
+        inset: auto;
+
+        width: min(calc(100% - 48px), var(--container-width));
+        height: 58svh;
+        margin: 0 auto 28px;
+
+        overflow: hidden;
+
+        border-radius: var(--ax-radius);
+
+        clip-path: none;
+    }
+
+    .ax-hero__window img {
+        transform: none;
+    }
+
+    .ax-hero__shade {
+        opacity: 1;
+    }
+
+    .ax-hero__caption {
+        width: auto;
+        padding: 0 22px 22px;
+
+        opacity: 1;
+    }
+
+    .ax-hero__caption p {
+        display: none;
+    }
+
+    .ax-hero__tags li:nth-child(n + 2) {
+        display: none;
+    }
+
+    .ax-hero__scroll {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .ax-hero__window {
+        width: calc(100% - 32px);
+        height: 46svh;
+    }
+
+    .ax-hero {
+        padding-top: calc(var(--header-height) + 24px);
+    }
+
+    .ax-hero__bottom {
+        margin-top: 28px;
+    }
+
+    .ax-hero__actions,
+    .ax-hero__actions .ax-btn {
+        width: 100%;
+    }
+
+    .ax-hero__actions .ax-btn {
+        justify-content: space-between;
+    }
+
+    .ax-manifesto {
+        padding: 110px 0 100px;
+    }
+
+    .ax-manifesto .ax-figures {
+        margin-top: 64px;
+    }
+
+    .ax-solutions__head {
+        margin-bottom: 36px;
+    }
+
+    .ax-panel {
+        flex-basis: 82vw;
+        height: 62svh;
+    }
+
+    .ax-panel a {
+        padding: 24px;
+    }
+
+    .ax-brands__logo {
+        width: 160px;
+        height: 92px;
+        padding: 20px;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ax-brands__track,
+    .ax-hero__scroll i::after {
+        animation: none;
+    }
+
+    .ax-hero__window img {
+        transform: none;
+    }
+
+}
