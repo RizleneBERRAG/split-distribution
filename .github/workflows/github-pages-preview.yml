@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      # Aperçu de la refonte, à montrer avant de la fusionner dans main.
+      - redesign/accueil-impressionnant
   workflow_dispatch:
 
 permissions:
