@@ -6,8 +6,11 @@
 
             <div class="site-footer__logo">
                 <img
-                    src="{{ asset('images/brand/chameleon-temp.png') }}"
+                    src="{{ asset('images/brand/chameleon-mark.png') }}"
                     alt=""
+                    width="148"
+                    height="128"
+                    loading="lazy"
                 >
 
                 <div>

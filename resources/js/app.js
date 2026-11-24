@@ -52,13 +52,28 @@ const updateHeader = () => {
         return;
     }
 
+    const scrollY = window.scrollY;
+
     header.classList.toggle(
         'is-scrolled',
-        window.scrollY > 30
+        scrollY > 30
     );
+
+    // La barre se cache quand on descend et revient dès qu'on remonte.
+    const menuIsOpen = mobileMenu?.classList.contains('is-open');
+
+    if (scrollY > lastScrollY + 6 && scrollY > 240 && !menuIsOpen) {
+        header.classList.add('is-hidden');
+    } else if (scrollY < lastScrollY - 6 || scrollY <= 240 || menuIsOpen) {
+        header.classList.remove('is-hidden');
+    }
+
+    lastScrollY = scrollY;
 
 };
 
+
+let lastScrollY = window.scrollY;
 
 updateHeader();
 
@@ -146,6 +161,89 @@ window.addEventListener('resize', () => {
 window.addEventListener('pageshow', () => {
     closeMobileMenu();
 });
+
+
+/* =========================================================
+   NAVIGATION : surlignage qui glisse d'un lien à l'autre
+========================================================= */
+
+const siteNav = document.querySelector('.site-nav');
+const navIndicator = siteNav?.querySelector('.site-nav__indicator');
+
+if (siteNav && navIndicator) {
+
+    const navLinks = [...siteNav.querySelectorAll('.site-nav__link')];
+    const activeLink = navLinks.find((link) => link.classList.contains('is-active'));
+
+    const moveIndicator = (link) => {
+
+        if (!link) {
+            navIndicator.style.opacity = '0';
+            return;
+        }
+
+        const navBox = siteNav.getBoundingClientRect();
+        const linkBox = link.getBoundingClientRect();
+
+        navIndicator.style.width = `${linkBox.width}px`;
+        navIndicator.style.transform = `translateX(${linkBox.left - navBox.left}px)`;
+        navIndicator.style.opacity = '1';
+
+    };
+
+    const placeIndicator = () => {
+        navIndicator.style.transition = 'none';
+        moveIndicator(activeLink);
+        navIndicator.getBoundingClientRect();
+        navIndicator.style.transition = '';
+    };
+
+    navLinks.forEach((link) => {
+        link.addEventListener('pointerenter', () => moveIndicator(link));
+        link.addEventListener('focus', () => moveIndicator(link));
+    });
+
+    siteNav.addEventListener('pointerleave', () => moveIndicator(activeLink));
+
+    siteNav.addEventListener('focusout', (event) => {
+        if (!siteNav.contains(event.relatedTarget)) {
+            moveIndicator(activeLink);
+        }
+    });
+
+    placeIndicator();
+    document.fonts?.ready.then(placeIndicator);
+    window.addEventListener('resize', placeIndicator);
+
+}
+
+
+/* =========================================================
+   GRAND MENU « SOLUTIONS » : Échap le referme
+========================================================= */
+
+const megaItem = document.querySelector('.site-nav__item--mega');
+
+if (megaItem) {
+
+    megaItem.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            megaItem.classList.add('is-dismissed');
+            megaItem.querySelector('.site-nav__link')?.focus();
+        }
+    });
+
+    megaItem.addEventListener('pointerleave', () => {
+        megaItem.classList.remove('is-dismissed');
+    });
+
+    megaItem.addEventListener('focusout', (event) => {
+        if (!megaItem.contains(event.relatedTarget)) {
+            megaItem.classList.remove('is-dismissed');
+        }
+    });
+
+}
 
 
 const staticContactSuccess =
