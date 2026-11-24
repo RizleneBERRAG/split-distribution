@@ -8,7 +8,7 @@
                 <img
                     src="{{ asset('images/brand/chameleon-mark.png') }}"
                     alt=""
-                    width="294"
+                    width="292"
                     height="254"
                     loading="lazy"
                 >
