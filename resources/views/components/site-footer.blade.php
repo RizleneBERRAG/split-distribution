@@ -99,6 +99,12 @@
             <a href="{{ route('legal.privacy') }}">
                 Confidentialité
             </a>
+
+            @if (config('services.gtm.id'))
+                <button type="button" class="site-footer__cookies" data-open-cookie-consent>
+                    Gestion des cookies
+                </button>
+            @endif
         </div>
 
     </div>

@@ -839,7 +839,7 @@
     PARTENAIRES
 ========================================================== --}}
 
-<section class="home-brands">
+<section class="home-brands" id="marques">
 
     <div class="container">
 

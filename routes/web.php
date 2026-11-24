@@ -27,7 +27,15 @@ Route::prefix('solutions')->name('solutions.')->group(function () {
         ->name('accessoires');
 });
 
-Route::view('/marques', 'pages.marques')->name('marques');
+// Pas encore de page Marques : on renvoie vers la section partenaires de l'accueil.
+Route::redirect('/marques', '/#marques')->name('marques');
+
+// Anciennes adresses du site WordPress, gardées pour Google et les favoris.
+// (/contact/ et /mentions-legales/ existent déjà : le .htaccess retire la barre finale.)
+Route::permanentRedirect('/accueil-2', '/');
+Route::permanentRedirect('/a-propos', '/entreprise');
+Route::permanentRedirect('/nos-partenaires', '/#marques');
+Route::permanentRedirect('/politique-de-confidentialite', '/confidentialite');
 Route::view('/services', 'pages.services')->name('services');
 Route::view('/entreprise', 'pages.entreprise')->name('entreprise');
 

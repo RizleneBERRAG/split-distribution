@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    // Vide = pas de bandeau cookies ni de Google Tag Manager.
+    'gtm' => [
+        'id' => env('GTM_ID'),
+    ],
+
 ];

@@ -29,7 +29,7 @@ dataset('completed public pages', [
     'entreprise' => [
         '/entreprise',
         'pages.entreprise',
-        'La technique compte.',
+        'Des réponses claires.',
     ],
     'mentions légales' => [
         '/mentions-legales',
@@ -57,6 +57,21 @@ it('renders a completed public page', function (
         ->assertViewIs($view)
         ->assertSeeText($expectedText);
 })->with('completed public pages');
+
+it('sends /marques to the partners section of the home page', function () {
+    $this->get('/marques')->assertRedirect('/#marques');
+});
+
+it('permanently redirects the old WordPress addresses', function (string $old, string $new) {
+    $this->get($old)
+        ->assertStatus(301)
+        ->assertRedirect($new);
+})->with([
+    ['/accueil-2', '/'],
+    ['/a-propos', '/entreprise'],
+    ['/nos-partenaires', '/#marques'],
+    ['/politique-de-confidentialite', '/confidentialite'],
+]);
 
 it('ships every image used as a completed page hero', function () {
     expect([

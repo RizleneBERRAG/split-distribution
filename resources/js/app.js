@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import './cookie-consent';
 
 
 const header = document.querySelector('#site-header');
