@@ -92,19 +92,34 @@
 
                 <div class="contact-desk__panel devis-panel">
 
-                    @if (session('status'))
-                        <div class="contact-note contact-note--success" role="status" @if (session('quote_sent')) data-quote-sent @endif>
-                            <span aria-hidden="true">✓</span>
-                            {{ session('status') }}
+                    {{-- Confirmation après l'envoi (à la place du formulaire) --}}
+                    @if (session('quote_sent'))
+                        <div class="devis-done" role="status" data-quote-sent>
+                            <span class="devis-done__icon" aria-hidden="true">✓</span>
+                            <p class="devis-done__kicker">Demande envoyée</p>
+                            <h2 class="devis-done__title">Merci, c’est bien reçu !</h2>
+                            <p>Votre demande de devis <strong>{{ session('quote_reference') }}</strong> est arrivée chez notre équipe. Nous revenons vers vous rapidement.</p>
+                            <div class="devis-done__actions">
+                                <a class="ax-btn ax-btn--dark" href="{{ route('home') }}"><span>Retour à l’accueil</span><span aria-hidden="true">↗</span></a>
+                                <a class="ax-link ax-link--dark" href="{{ route('solutions.index') }}">Voir nos solutions <span aria-hidden="true">↗</span></a>
+                            </div>
                         </div>
                     @endif
 
-                    @if ($staticAction)
-                        <div class="contact-note contact-note--success" role="status" data-static-contact-success data-quote-sent hidden>
-                            <span aria-hidden="true">✓</span>
-                            Merci ! Votre demande de devis est bien envoyée. Notre équipe revient vers vous rapidement.
+                    @if ($staticAction && ! session('quote_sent'))
+                        <div class="devis-done" role="status" data-static-contact-success data-quote-sent hidden>
+                            <span class="devis-done__icon" aria-hidden="true">✓</span>
+                            <p class="devis-done__kicker">Demande envoyée</p>
+                            <h2 class="devis-done__title">Merci, c’est bien reçu !</h2>
+                            <p>Votre demande de devis est bien envoyée. Notre équipe revient vers vous rapidement.</p>
+                            <div class="devis-done__actions">
+                                <a class="ax-btn ax-btn--dark" href="{{ route('home') }}"><span>Retour à l’accueil</span><span aria-hidden="true">↗</span></a>
+                                <a class="ax-link ax-link--dark" href="{{ route('solutions.index') }}">Voir nos solutions <span aria-hidden="true">↗</span></a>
+                            </div>
                         </div>
                     @endif
+
+                    @unless (session('quote_sent'))
 
                     @if ($errors->any())
                         <div class="contact-note contact-note--error" role="alert">
@@ -386,12 +401,14 @@
                             </button>
                         </div>
                     </form>
+
+                    @endunless
                 </div>
 
 
                 <aside class="contact-desk__aside">
                     <div class="contact-tile contact-tile--phone" data-ax-fade>
-                        <p>Une question avant d’envoyer ?</p>
+                        <p>{{ session('quote_sent') ? 'Une question sur votre demande ?' : 'Une question avant d’envoyer ?' }}</p>
                         <a href="tel:+33472230140">04 72 23 01 40</a>
                         <span>Appeler l’équipe <b aria-hidden="true">↗</b></span>
                     </div>

@@ -106,6 +106,18 @@ it('stores the request, emails the team with the attachment and thanks the visit
     );
 });
 
+it('shows a confirmation instead of the form once the request is sent', function () {
+    Mail::fake();
+    $this->withoutVite();
+
+    $this->followingRedirects()
+        ->post(route('devis.submit'), validQuote())
+        ->assertOk()
+        ->assertSeeText('Merci, c’est bien reçu !')
+        ->assertSeeText('DEV-000001')
+        ->assertDontSee('data-devis-form', false);
+});
+
 it('rejects quote bots using the honeypot', function () {
     Mail::fake();
 

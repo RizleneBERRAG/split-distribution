@@ -8,9 +8,11 @@
    Les classes du formulaire (contact-desk, contact-need,
    contact-input…) sont volontairement différentes des
    anciennes : responsive.css cible encore les anciens noms.
+   La page « Demander un devis » réutilise ces styles (d'où .page-devis).
 ============================================================ */
 
-.page-contact {
+.page-contact,
+.page-devis {
     --contact-field-bg: #f6f7f2;
     --contact-field-line: rgba(17, 22, 17, 0.14);
     --contact-field-line-strong: rgba(17, 22, 17, 0.3);

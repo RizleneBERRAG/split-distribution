@@ -73,6 +73,7 @@ class QuoteController extends Controller
         return redirect()
             ->route('devis')
             ->with('status', 'Merci ! Votre demande de devis '.$quote->reference().' est bien envoyée. Notre équipe revient vers vous rapidement.')
-            ->with('quote_sent', true);
+            ->with('quote_sent', true)
+            ->with('quote_reference', $quote->reference());
     }
 }

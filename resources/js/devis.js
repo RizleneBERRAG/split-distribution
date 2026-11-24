@@ -19,6 +19,13 @@ export const initDevis = () => {
     }
 
     const panel = form.closest('.devis-panel');
+
+    // Aperçu statique : après l'envoi (?sent=1), on montre la confirmation à la place du formulaire.
+    if (panel?.querySelector('.devis-done:not([hidden])')) {
+        form.hidden = true;
+        panel.querySelector('.devis-progress')?.setAttribute('hidden', '');
+        return;
+    }
     const steps = [...form.querySelectorAll('[data-step]')];
     const progress = [...document.querySelectorAll('[data-progress-step]')];
     const nav = form.querySelector('[data-devis-nav]');
