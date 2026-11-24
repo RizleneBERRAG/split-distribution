@@ -92,6 +92,7 @@ jobs:
           services/index.html|/services
           entreprise/index.html|/entreprise
           contact/index.html|/contact
+          devis/index.html|/devis
           mentions-legales/index.html|/mentions-legales
           confidentialite/index.html|/confidentialite
           PAGES

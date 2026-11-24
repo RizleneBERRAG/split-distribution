@@ -50,8 +50,8 @@
                 </p>
 
                 <div class="ax-page-hero__actions">
-                    <a class="ax-btn ax-btn--green" href="{{ route('contact') }}">
-                        <span>Demander une référence</span>
+                    <a class="ax-btn ax-btn--green" href="{{ route('devis', ['famille' => 'accessoires']) }}">
+                        <span>Demander un devis</span>
                         <span aria-hidden="true">↗</span>
                     </a>
 

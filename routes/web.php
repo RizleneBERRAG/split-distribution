@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
@@ -46,3 +47,9 @@ Route::view('/contact', 'pages.contact')->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])
     ->middleware('throttle:5,1')
     ->name('contact.submit');
+
+// Demande de devis en 4 étapes (?famille=pompes-a-chaleur pour cocher une famille)
+Route::get('/devis', [QuoteController::class, 'create'])->name('devis');
+Route::post('/devis', [QuoteController::class, 'store'])
+    ->middleware('throttle:5,1')
+    ->name('devis.submit');

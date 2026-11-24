@@ -1,0 +1,532 @@
+/* ============================================================
+   PAGE « DEMANDER UN DEVIS »
+   ------------------------------------------------------------
+   Le formulaire reprend le style de la page Contact (contact.css).
+   Ici : la progression, les cartes de familles, les choix en
+   pastilles, le fichier joint et la navigation entre étapes.
+   Sans JavaScript, les 4 étapes s'affichent les unes sous les
+   autres et le formulaire fonctionne normalement.
+============================================================ */
+
+.devis-hero {
+    min-height: min(84svh, 820px);
+}
+
+.devis-hero__steps {
+    margin-top: 40px;
+}
+
+
+/* ----------------------------------------
+   PROGRESSION
+---------------------------------------- */
+
+.devis-progress {
+    display: none;
+}
+
+.devis-panel.is-wizard .devis-progress {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+
+    margin: 0 0 36px;
+    padding: 0;
+
+    list-style: none;
+}
+
+.devis-progress li {
+    position: relative;
+
+    display: grid;
+    gap: 8px;
+
+    padding-top: 14px;
+
+    color: #8a9188;
+
+    font-size: 12px;
+}
+
+.devis-progress li::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    border-radius: 4px;
+
+    background: rgba(17, 22, 17, 0.1);
+
+    transition: background 400ms ease;
+}
+
+.devis-progress li > span {
+    color: inherit;
+
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.devis-progress li.is-done::before,
+.devis-progress li.is-current::before {
+    background: var(--color-green);
+}
+
+.devis-progress li.is-current {
+    color: var(--color-text);
+}
+
+.devis-progress li.is-done {
+    color: var(--color-green-dark);
+}
+
+
+/* ----------------------------------------
+   ÉTAPES
+---------------------------------------- */
+
+.devis-step {
+    min-width: 0;
+    margin: 0 0 44px;
+    padding: 0;
+
+    border: 0;
+}
+
+/* Avec JavaScript : une seule étape à la fois */
+.devis-form.is-wizard .devis-step {
+    display: none;
+    margin-bottom: 0;
+}
+
+.devis-form.is-wizard .devis-step.is-current {
+    display: block;
+
+    animation: devis-step-in 500ms var(--ax-ease, ease) both;
+}
+
+@keyframes devis-step-in {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+}
+
+.devis-form.is-wizard .devis-step.is-current.is-back {
+    animation-name: devis-step-back;
+}
+
+@keyframes devis-step-back {
+    from {
+        opacity: 0;
+        transform: translateX(-24px);
+    }
+}
+
+.devis-step__title {
+    display: grid;
+    gap: 8px;
+
+    margin: 0 0 26px;
+    padding: 0;
+
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+}
+
+.devis-step__title:focus {
+    outline: none;
+}
+
+.devis-step__title > span {
+    color: var(--color-green-dark);
+
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+
+/* ----------------------------------------
+   ÉTAPE 1 : LES FAMILLES EN CARTES
+---------------------------------------- */
+
+.devis-families {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+}
+
+.devis-family {
+    position: relative;
+
+    cursor: pointer;
+}
+
+.devis-family input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.devis-family__card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    height: 100%;
+    padding: 10px 14px 10px 10px;
+
+    border: 1px solid var(--color-border-light);
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    transition:
+        border-color 250ms ease,
+        background 250ms ease,
+        transform 400ms var(--ax-ease, ease),
+        box-shadow 300ms ease;
+}
+
+.devis-family:hover .devis-family__card {
+    transform: translateY(-2px);
+
+    border-color: rgba(141, 198, 63, 0.6);
+}
+
+.devis-family__thumb {
+    display: grid;
+    place-items: center;
+
+    flex: none;
+
+    width: 64px;
+    height: 64px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    background: #eef1ea;
+}
+
+.devis-family__thumb img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.devis-family__thumb--more {
+    color: var(--color-green-dark);
+
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.devis-family__copy {
+    display: grid;
+    gap: 4px;
+}
+
+.devis-family__copy small {
+    color: #6f766d;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.devis-family__copy strong {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.devis-family input:checked + .devis-family__card {
+    border-color: var(--color-background);
+
+    background: var(--color-background);
+    color: #ffffff;
+
+    box-shadow: 0 12px 30px rgba(5, 8, 6, 0.18);
+}
+
+.devis-family input:checked + .devis-family__card small {
+    color: var(--color-green);
+}
+
+.devis-family input:focus-visible + .devis-family__card {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+
+/* ----------------------------------------
+   ÉTAPE 2 : CHOIX EN PASTILLES
+---------------------------------------- */
+
+.devis-choices {
+    margin-bottom: 26px;
+}
+
+.devis-choices__label {
+    margin: 0 0 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.devis-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.devis-pill {
+    position: relative;
+
+    cursor: pointer;
+}
+
+.devis-pill input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.devis-pill span {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 46px;
+    padding: 0 18px;
+
+    border: 1px solid var(--color-border-light-strong);
+    border-radius: 999px;
+
+    background: #ffffff;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: background 250ms ease, color 250ms ease, border-color 250ms ease;
+}
+
+.devis-pill:hover span {
+    border-color: var(--color-green);
+}
+
+.devis-pill input:checked + span {
+    border-color: var(--color-background);
+
+    background: var(--color-background);
+    color: #ffffff;
+}
+
+.devis-pill input:focus-visible + span {
+    outline: 2px solid var(--color-green);
+    outline-offset: 3px;
+}
+
+.devis-form select {
+    width: 100%;
+}
+
+
+/* ----------------------------------------
+   ÉTAPE 3 : FICHIER JOINT
+---------------------------------------- */
+
+.devis-file {
+    position: relative;
+
+    display: block;
+
+    cursor: pointer;
+}
+
+.devis-file input {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+.devis-file__box {
+    display: grid;
+    gap: 6px;
+
+    padding: 22px 24px;
+
+    border: 1.5px dashed var(--color-border-light-strong);
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    transition: border-color 250ms ease, background 250ms ease;
+}
+
+.devis-file:hover .devis-file__box,
+.devis-file input:focus-visible + .devis-file__box {
+    border-color: var(--color-green);
+    background: #fbfdf8;
+}
+
+.devis-file__box strong {
+    font-size: 15px;
+}
+
+.devis-file__box small {
+    color: #6f766d;
+
+    font-size: 13px;
+}
+
+.devis-file.has-file .devis-file__box {
+    border-style: solid;
+    border-color: var(--color-green);
+}
+
+
+/* ----------------------------------------
+   ÉTAPE 4 : RÉCAPITULATIF
+---------------------------------------- */
+
+.devis-recap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: 24px;
+}
+
+.devis-recap[hidden] {
+    display: none;
+}
+
+.devis-recap span {
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    background: rgba(141, 198, 63, 0.16);
+    color: var(--color-green-dark);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ----------------------------------------
+   NAVIGATION ENTRE ÉTAPES
+---------------------------------------- */
+
+.devis-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    margin-top: 32px;
+    padding-top: 24px;
+
+    border-top: 1px solid var(--color-border-light);
+}
+
+.devis-nav[hidden] {
+    display: none;
+}
+
+.devis-nav__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 4px;
+
+    border: 0;
+    background: none;
+    color: var(--color-text);
+
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.devis-nav__back:hover {
+    color: var(--color-green-dark);
+}
+
+.devis-nav__back[hidden] {
+    visibility: hidden;
+    display: inline-flex;
+}
+
+.devis-nav__next[hidden] {
+    display: none;
+}
+
+
+/* ----------------------------------------
+   COLONNE DE DROITE
+---------------------------------------- */
+
+.devis-next-steps li {
+    align-items: flex-start;
+}
+
+
+@media (max-width: 700px) {
+
+    .devis-progress li small {
+        display: none;
+    }
+
+    .devis-families {
+        grid-template-columns: 1fr;
+    }
+
+    .devis-nav__next {
+        flex: 1;
+        justify-content: space-between;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    .devis-form.is-wizard .devis-step.is-current {
+        animation: none;
+    }
+
+}

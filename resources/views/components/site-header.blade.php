@@ -119,8 +119,8 @@
                 04 72 23 01 40
             </a>
 
-            <a href="{{ route('contact') }}" class="site-header__cta">
-                <span>Nous contacter</span>
+            <a href="{{ route('devis') }}" class="site-header__cta">
+                <span>Demander un devis</span>
                 <span class="site-header__cta-arrow" aria-hidden="true">↗</span>
             </a>
 
@@ -187,8 +187,12 @@
                     04 72 23 01 40
                 </a>
 
-                <a href="{{ route('contact') }}" class="mobile-menu__cta">
-                    Nous contacter <span aria-hidden="true">↗</span>
+                <a href="{{ route('devis') }}" class="mobile-menu__cta">
+                    Demander un devis <span aria-hidden="true">↗</span>
+                </a>
+
+                <a href="{{ route('contact') }}" class="mobile-menu__contact-link">
+                    ou nous écrire un message <span aria-hidden="true">→</span>
                 </a>
             </div>
 

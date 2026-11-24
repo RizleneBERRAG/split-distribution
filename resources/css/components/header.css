@@ -873,6 +873,21 @@
         text-decoration: none;
     }
 
+    .mobile-menu__contact-link {
+        justify-self: center;
+
+        padding: 6px 0;
+
+        color: rgba(255, 255, 255, 0.6);
+
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .mobile-menu__contact-link:hover {
+        color: #ffffff;
+    }
+
     .mobile-menu__cta {
         display: flex;
         align-items: center;

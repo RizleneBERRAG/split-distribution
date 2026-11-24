@@ -49,8 +49,8 @@
                 </p>
 
                 <div class="ax-page-hero__actions">
-                    <a class="ax-btn ax-btn--green" href="{{ route('contact') }}">
-                        <span>Étudier mon projet</span>
+                    <a class="ax-btn ax-btn--green" href="{{ route('devis', ['famille' => 'energies-renouvelables']) }}">
+                        <span>Demander un devis</span>
                         <span aria-hidden="true">↗</span>
                     </a>
 

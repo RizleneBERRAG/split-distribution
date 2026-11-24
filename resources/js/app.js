@@ -263,3 +263,12 @@ if (document.body.classList.contains('page-home')) {
 } else {
     import('./ax').then(({ initShared }) => initShared());
 }
+
+
+// Page « Demander un devis » : le parcours en 4 étapes.
+if (document.body.classList.contains('page-devis')) {
+    import('./devis').then(({ initDevis, trackQuoteSent }) => {
+        initDevis();
+        trackQuoteSent();
+    });
+}

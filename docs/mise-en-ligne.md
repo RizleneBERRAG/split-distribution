@@ -21,7 +21,7 @@ Mise à jour : 24 novembre 2026.
 
 Les prix changent souvent : on les confirme sur le site de l'hébergeur avant de commander.
 
-Le site n'a pas besoin de base de données en production : les sessions et le cache sont stockés dans des fichiers.
+Les sessions et le cache sont stockés dans des fichiers. Seules les **demandes de devis** sont enregistrées en base : un simple fichier SQLite (`database/database.sqlite`) suffit, pas besoin de base MySQL.
 
 ## 2. Ce qu'il faut demander à Christophe
 
@@ -42,13 +42,17 @@ Le site n'a pas besoin de base de données en production : les sessions et le ca
 6. Sur le serveur, en SSH :
    ```bash
    php artisan key:generate
+   touch database/database.sqlite
+   php artisan migrate --force
    php artisan config:cache
    php artisan route:cache
    php artisan view:cache
    ```
 7. Dans OVH (Multisite), changer le dossier racine du domaine pour `split-site/public`.
    Pour revenir à l'ancien site, il suffit de remettre l'ancien dossier.
-8. Tester : toutes les pages, le formulaire de contact et les anciennes adresses (point 7).
+8. Tester : toutes les pages, le formulaire de contact, une demande de devis avec un fichier joint, et les anciennes adresses (point 7).
+
+Les dossiers `storage/` et `database/` doivent rester accessibles en écriture : c'est là que sont gardés les demandes et les fichiers joints.
 
 ## 4. Envoi réel du formulaire
 
@@ -81,6 +85,7 @@ APP_DEBUG=false
 APP_URL=https://split-distribution.fr
 APP_LOCALE=fr
 
+DB_CONNECTION=sqlite
 SESSION_DRIVER=file
 CACHE_STORE=file
 QUEUE_CONNECTION=sync
@@ -114,6 +119,28 @@ Les anciennes adresses renvoient vers les nouvelles pages (redirections 301, dé
 | `/contact/`, `/mentions-legales/` | même page, sans la barre finale |
 
 Après la bascule, on envoie le nouveau plan du site à Google Search Console.
+
+## 7 bis. Les demandes de devis
+
+La page `/devis` propose un parcours en 4 étapes. On y arrive par le bouton « Demander un devis » de la barre du haut, et par les pages Solutions, qui cochent déjà la bonne famille (`/devis?famille=pompes-a-chaleur`).
+
+Chaque demande :
+
+- part par e-mail à `CONTACT_EMAIL`, avec un numéro (`DEV-000012`), la pièce jointe éventuelle, et la réponse qui va directement au demandeur ;
+- est enregistrée sur le site (table `quote_requests`, fichiers joints dans `storage/app/private/devis`).
+
+Pour récupérer toutes les demandes dans Excel, en SSH :
+
+```bash
+php artisan devis:export
+php artisan devis:export --depuis=2026-12-01
+```
+
+Le fichier CSV est créé dans `storage/app/private/exports/`.
+
+Pour les publicités, ajoutez la provenance aux liens : `/devis?utm_source=meta&utm_campaign=haier-r290`. Elle est enregistrée avec chaque demande. Si les cookies sont acceptés, l'événement `demande_devis` est aussi envoyé à Google Tag Manager, ce qui permet de compter les demandes comme conversions.
+
+Les choix proposés (familles, types de projet, délais, profils) se modifient dans `config/quote.php`.
 
 ## 8. Cookies et Google Tag Manager
 

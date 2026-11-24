@@ -103,7 +103,8 @@
                     <div class="legal-article__body">
                         <h2 id="donnees-title">Données collectées</h2>
                         <p>Lorsque vous utilisez le formulaire, nous recevons votre nom et prénom, le nom de votre entreprise, votre adresse e-mail, votre numéro de téléphone si vous le renseignez, le type de demande sélectionné et le contenu de votre message.</p>
-                        <p>Les champs signalés par un astérisque sont obligatoires. Sans ces informations, Split Distribution ne pourra pas transmettre ni traiter votre demande. Le numéro de téléphone est facultatif.</p>
+                        <p>Lorsque vous demandez un devis, nous recevons en plus votre profil professionnel, votre numéro de téléphone, le code postal du chantier, la description de votre projet (famille d’équipements, type de projet et de bâtiment, quantités, délai souhaité, références) et, si vous en joignez un, votre fichier. Si vous arrivez depuis une de nos publicités, le nom de la campagne est également enregistré avec votre demande.</p>
+                        <p>Les champs signalés par un astérisque sont obligatoires. Sans ces informations, Split Distribution ne pourra pas transmettre ni traiter votre demande. Dans le formulaire de contact, le numéro de téléphone est facultatif.</p>
                     </div>
                 </article>
 
@@ -112,6 +113,7 @@
                     <div class="legal-article__body">
                         <h2 id="finalite-title">Finalité et base juridique</h2>
                         <p>Ces informations permettent de qualifier votre besoin, transmettre la demande au bon interlocuteur et vous répondre. Le traitement repose sur votre demande de contact et, selon sa nature, sur l’exécution de mesures précontractuelles ou sur l’intérêt légitime de Split Distribution à répondre aux sollicitations professionnelles.</p>
+                        <p>Les demandes de devis servent à préparer une proposition commerciale et à assurer son suivi. Elles reposent sur l’exécution de mesures précontractuelles prises à votre demande. La provenance publicitaire éventuelle sert uniquement à savoir quelles campagnes amènent des demandes.</p>
                     </div>
                 </article>
 
