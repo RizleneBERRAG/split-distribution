@@ -30,8 +30,8 @@
                 <img
                     src="{{ asset('images/brand/chameleon-mark.png') }}"
                     alt=""
-                    width="147"
-                    height="127"
+                    width="294"
+                    height="254"
                 >
             </span>
 

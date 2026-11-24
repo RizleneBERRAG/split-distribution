@@ -94,13 +94,16 @@
     text-decoration: none;
 }
 
-/* Le caméléon détouré, posé directement dans la barre (sans pastille) */
+/* Le caméléon de Split, détouré et posé directement dans la barre.
+   Clin d'œil à l'animal : il change de couleur (froid → chaud, comme le
+   flux d'air du site) à l'arrivée sur la page et au survol, puis redevient vert. */
 .site-brand__mark {
     display: block;
 
     flex: none;
 
-    width: 52px;
+    width: 60px;
+    margin: -4px 0 -2px;
 }
 
 .site-brand__mark img {
@@ -109,15 +112,35 @@
     width: 100%;
     height: auto;
 
-    transition:
-        transform 600ms var(--ax-ease, ease),
-        filter 400ms ease;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+
+    transform-origin: 40% 60%;
+
+    transition: transform 600ms var(--ax-ease, ease);
+}
+
+/* Classe posée par app.js à l'arrivée sur la page et à chaque survol */
+.site-brand__mark img.is-shifting {
+    animation: chameleon-colors 2.4s ease-in-out both;
 }
 
 .site-brand:hover .site-brand__mark img {
-    transform: rotate(-8deg) scale(1.08);
+    transform: rotate(-7deg) scale(1.06);
+}
 
-    filter: drop-shadow(0 0 10px rgba(141, 198, 63, 0.45));
+@keyframes chameleon-colors {
+    0%,
+    100% {
+        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)) hue-rotate(0deg);
+    }
+
+    35% {
+        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)) hue-rotate(95deg) saturate(1.2);
+    }
+
+    70% {
+        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)) hue-rotate(-55deg) saturate(1.3);
+    }
 }
 
 .site-brand__text {
@@ -909,7 +932,8 @@
     }
 
     .site-brand__mark {
-        width: 44px;
+        width: 50px;
+        margin: -2px 0 -1px;
     }
 
     .site-brand__text strong {
@@ -939,6 +963,7 @@
 
     .site-header,
     .site-header__bar,
+    .site-brand__mark img,
     .site-nav__indicator,
     .site-mega,
     .site-mega__grid li,

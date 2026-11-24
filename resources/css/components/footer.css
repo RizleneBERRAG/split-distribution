@@ -41,12 +41,14 @@
 }
 
 
-/* Le même caméléon détouré que dans l'en-tête, sans fond */
+/* Le même caméléon que dans l'en-tête, sans fond, avec une ombre douce */
 .site-footer__logo img {
     flex: none;
 
-    width: 62px;
+    width: 72px;
     height: auto;
+
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.45));
 }
 
 

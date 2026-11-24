@@ -167,6 +167,29 @@ window.addEventListener('pageshow', () => {
    NAVIGATION : surlignage qui glisse d'un lien à l'autre
 ========================================================= */
 
+/* Le caméléon change de couleur à l'arrivée sur la page et à chaque survol */
+
+const brandMark = document.querySelector('.site-brand__mark img');
+
+if (brandMark && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+
+    const shiftColors = () => {
+        brandMark.classList.remove('is-shifting');
+        brandMark.getBoundingClientRect();
+        brandMark.classList.add('is-shifting');
+    };
+
+    brandMark.addEventListener('animationend', () => {
+        brandMark.classList.remove('is-shifting');
+    });
+
+    window.setTimeout(shiftColors, 1100);
+
+    brandMark.closest('.site-brand')?.addEventListener('pointerenter', shiftColors);
+
+}
+
+
 const siteNav = document.querySelector('.site-nav');
 const navIndicator = siteNav?.querySelector('.site-nav__indicator');
 
