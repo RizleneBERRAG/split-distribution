@@ -13,9 +13,7 @@ class ContactRequestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public function __construct(public array $contact)
-    {
-    }
+    public function __construct(public array $contact) {}
 
     public function envelope(): Envelope
     {
