@@ -28,7 +28,7 @@
         <a href="{{ route('home') }}" class="site-brand" aria-label="Split Distribution - Accueil">
             <span class="site-brand__mark" aria-hidden="true">
                 <img
-                    src="{{ asset('images/brand/chameleon-mark.png') }}"
+                    src="{{ asset('images/brand/chameleon-mark.png') }}?v={{ filemtime(public_path('images/brand/chameleon-mark.png')) }}"
                     alt=""
                     width="292"
                     height="254"
