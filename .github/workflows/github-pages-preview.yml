@@ -112,6 +112,9 @@ jobs:
           cp -a _site /tmp/split-pages
           git switch --orphan pages-deploy
           git rm -rf . 2>/dev/null || true
+          # Vide aussi les fichiers non suivis (.env, database.sqlite, vendor,
+          # node_modules…) : seul le contenu de _site doit être publié.
+          git clean -ffdxq
           cp -a /tmp/split-pages/. .
           git add --all
           git config user.name github-actions[bot]
